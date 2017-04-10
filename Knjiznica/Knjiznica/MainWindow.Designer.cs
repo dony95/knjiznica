@@ -33,8 +33,6 @@
             this.novaKnjigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.izbrisiKnjiguToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izbrisiKorisnikaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -83,9 +81,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaKnjigaToolStripMenuItem,
             this.dodajKorisnikaToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.izbrisiKnjiguToolStripMenuItem,
-            this.izbrisiKorisnikaToolStripMenuItem1});
+            this.toolStripSeparator1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -94,7 +90,7 @@
             // 
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
             this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.novaKnjigaToolStripMenuItem.Text = "Nova knjiga";
+            this.novaKnjigaToolStripMenuItem.Text = "Dodaj knjigu";
             // 
             // dodajKorisnikaToolStripMenuItem
             // 
@@ -107,18 +103,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
-            // 
-            // izbrisiKnjiguToolStripMenuItem
-            // 
-            this.izbrisiKnjiguToolStripMenuItem.Name = "izbrisiKnjiguToolStripMenuItem";
-            this.izbrisiKnjiguToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.izbrisiKnjiguToolStripMenuItem.Text = "Izbrisi knjigu";
-            // 
-            // izbrisiKorisnikaToolStripMenuItem1
-            // 
-            this.izbrisiKorisnikaToolStripMenuItem1.Name = "izbrisiKorisnikaToolStripMenuItem1";
-            this.izbrisiKorisnikaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.izbrisiKorisnikaToolStripMenuItem1.Text = "Izbrisi korisnika";
             // 
             // optionsToolStripMenuItem
             // 
@@ -238,6 +222,7 @@
             this.btn_Pretraga.TabIndex = 37;
             this.btn_Pretraga.Text = "Pretraži";
             this.btn_Pretraga.UseVisualStyleBackColor = true;
+            this.btn_Pretraga.Click += new System.EventHandler(this.btn_Pretraga_Click);
             // 
             // num_Godina
             // 
@@ -343,7 +328,7 @@
             this.tabPage3.Text = "Posudbe";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -352,7 +337,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(940, 300);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Knjiznica";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -397,8 +382,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn edit;
         private System.Windows.Forms.ToolStripMenuItem dodajKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem izbrisiKnjiguToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem izbrisiKorisnikaToolStripMenuItem1;
     }
 }
 
