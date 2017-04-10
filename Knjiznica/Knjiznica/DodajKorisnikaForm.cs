@@ -1,5 +1,4 @@
-﻿using Knjiznica.Modeli;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Knjiznica.Model;
 
 namespace Knjiznica
 {
     public partial class DodajKorisnikaForm : Form
     {
+        bool error = false;
         public DodajKorisnikaForm()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Knjiznica
                 datumRodenja = dateTimePicker.Value,
                 ime = imeTextBox.Text,
                 prebivaliste = prebivalisteTextBox.Text,
-                prezime = prebivalisteTextBox.Text
+                prezime = prezimeTextBox.Text
             };
             if (muskiRadioButton.Enabled)
                 korisnik.spol = 'M';
@@ -35,17 +36,17 @@ namespace Knjiznica
 
             string ConnectionString = string.Empty;
 
-            DialogResult dialog =  MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
-            if(dialog == DialogResult.Yes)
+            DialogResult dialog = MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
                 ConnectionString = "server=192.168.1.8;uid=suky;" +
                     "pwd=0000;database=knjiznica;";
-            else if(dialog == DialogResult.No)
+            else if (dialog == DialogResult.No)
                 ConnectionString = "server=donyslav.ddns.net;uid=suky;" +
                     "pwd=0000;database=knjiznica;";
 
             MySqlConnection conn = new MySqlConnection(ConnectionString);
-            conn.Open();
-
+            if(!error)
+                conn.Open();
             try
             {
                 MySqlCommand command = conn.CreateCommand();
@@ -61,10 +62,16 @@ namespace Knjiznica
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                error = true;
             }
             finally
             {
-                conn.Close();
+                if (!error)
+                {
+                    MessageBox.Show("Korisnik uspjesno unesen");
+                    this.Close();
+                    conn.Close();
+                }
             }
         }
     }

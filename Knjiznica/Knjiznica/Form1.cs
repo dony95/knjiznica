@@ -16,5 +16,18 @@ namespace Knjiznica
         {
             InitializeComponent();
         }
+
+        private void btn_DodajKnjigu_Click(object sender, EventArgs e)
+        {
+            //Prikazi formu za dodavanje i uredjivanje knjige
+            DodajUrediKnjigu DodajUrediForma = new DodajUrediKnjigu();
+            DodajUrediForma.Show();
+        }
+
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DodajKorisnikaForm forma = new DodajKorisnikaForm();
+            forma.Show();
+        }
     }
 }
