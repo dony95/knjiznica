@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Knjiznica
 {
-    public partial class MainForm : Form
+    public partial class MainWindow : Form
     {
-        public MainForm()
+        public MainWindow()
         {
             InitializeComponent();
         }
