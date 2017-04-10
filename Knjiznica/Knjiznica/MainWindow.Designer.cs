@@ -72,7 +72,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(947, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(946, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -127,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(925, 546);
+            this.tabControl1.Size = new System.Drawing.Size(924, 514);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -150,14 +150,15 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(917, 520);
+            this.tabPage1.Size = new System.Drawing.Size(916, 488);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Knjige";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btn_DodajKnjigu
             // 
-            this.btn_DodajKnjigu.Location = new System.Drawing.Point(798, 487);
+            this.btn_DodajKnjigu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_DodajKnjigu.Location = new System.Drawing.Point(797, 455);
             this.btn_DodajKnjigu.Name = "btn_DodajKnjigu";
             this.btn_DodajKnjigu.Size = new System.Drawing.Size(110, 25);
             this.btn_DodajKnjigu.TabIndex = 44;
@@ -264,7 +265,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -274,7 +276,7 @@
             this.edit});
             this.dataGridView1.Location = new System.Drawing.Point(9, 50);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(899, 431);
+            this.dataGridView1.Size = new System.Drawing.Size(898, 397);
             this.dataGridView1.TabIndex = 32;
             // 
             // ID
@@ -332,11 +334,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 583);
+            this.ClientSize = new System.Drawing.Size(946, 551);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(940, 300);
+            this.MinimumSize = new System.Drawing.Size(962, 300);
             this.Name = "MainWindow";
             this.Text = "Knjiznica";
             this.menuStrip1.ResumeLayout(false);
