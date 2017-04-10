@@ -24,13 +24,13 @@ namespace Knjiznica
         {
             Korisnik korisnik = new Korisnik()
             {
-                adresa = adresaTextBox.Text,
-                datumRodenja = dateTimePicker.Value,
-                ime = imeTextBox.Text,
-                mjestoStanovanja = mjestoStanovanjaTextBox.Text,
-                prezime = prezimeTextBox.Text
+                adresa = tb_Adresa.Text,
+                datumRodenja = dtp_DatRodjenja.Value,
+                ime = tb_Ime.Text,
+                mjestoStanovanja = tb_MjestoStan.Text,
+                prezime = tb_Prezime.Text
             };
-            if (muskiRadioButton.Enabled)
+            if (rb_Muski.Enabled)
                 korisnik.spol = 'M';
             else korisnik.spol = 'Ž';
 

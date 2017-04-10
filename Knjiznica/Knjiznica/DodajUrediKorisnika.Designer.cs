@@ -28,84 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.prezimeTextBox = new System.Windows.Forms.TextBox();
+            this.tb_Prezime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.imeTextBox = new System.Windows.Forms.TextBox();
-            this.mjestoStanovanjaTextBox = new System.Windows.Forms.TextBox();
-            this.adresaTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.muskiRadioButton = new System.Windows.Forms.RadioButton();
-            this.zenskiRadioButton = new System.Windows.Forms.RadioButton();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tb_Ime = new System.Windows.Forms.TextBox();
+            this.tb_MjestoStan = new System.Windows.Forms.TextBox();
+            this.tb_Adresa = new System.Windows.Forms.TextBox();
+            this.dtp_DatRodjenja = new System.Windows.Forms.DateTimePicker();
+            this.btn_SpremiKorisnika = new System.Windows.Forms.Button();
+            this.rb_Muski = new System.Windows.Forms.RadioButton();
+            this.rb_Zenski = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tb_Prezime
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.prezimeTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.imeTextBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.mjestoStanovanjaTextBox, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.adresaTextBox, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 24);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(349, 218);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // prezimeTextBox
-            // 
-            this.prezimeTextBox.Location = new System.Drawing.Point(100, 29);
-            this.prezimeTextBox.Name = "prezimeTextBox";
-            this.prezimeTextBox.Size = new System.Drawing.Size(181, 20);
-            this.prezimeTextBox.TabIndex = 7;
+            this.tb_Prezime.Location = new System.Drawing.Point(110, 54);
+            this.tb_Prezime.Name = "tb_Prezime";
+            this.tb_Prezime.Size = new System.Drawing.Size(181, 20);
+            this.tb_Prezime.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ime korisnika";
+            this.label1.Text = "Ime";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 26);
+            this.label2.Location = new System.Drawing.Point(6, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Prezime korisnika";
+            this.label2.Text = "Prezime";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 52);
+            this.label3.Location = new System.Drawing.Point(6, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 2;
@@ -114,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 78);
+            this.label4.Location = new System.Drawing.Point(6, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 3;
@@ -123,7 +92,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 104);
+            this.label5.Location = new System.Drawing.Point(6, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 4;
@@ -132,115 +101,127 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 130);
+            this.label6.Location = new System.Drawing.Point(6, 196);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "mjestoStanovanja";
+            this.label6.Text = "Mjesto stanovanja";
             // 
-            // imeTextBox
+            // tb_Ime
             // 
-            this.imeTextBox.Location = new System.Drawing.Point(100, 3);
-            this.imeTextBox.Name = "imeTextBox";
-            this.imeTextBox.Size = new System.Drawing.Size(181, 20);
-            this.imeTextBox.TabIndex = 6;
+            this.tb_Ime.Location = new System.Drawing.Point(110, 21);
+            this.tb_Ime.Name = "tb_Ime";
+            this.tb_Ime.Size = new System.Drawing.Size(181, 20);
+            this.tb_Ime.TabIndex = 6;
             // 
-            // mjestoStanovanjaTextBox
+            // tb_MjestoStan
             // 
-            this.mjestoStanovanjaTextBox.Location = new System.Drawing.Point(100, 133);
-            this.mjestoStanovanjaTextBox.Name = "mjestoStanovanjaTextBox";
-            this.mjestoStanovanjaTextBox.Size = new System.Drawing.Size(181, 20);
-            this.mjestoStanovanjaTextBox.TabIndex = 9;
+            this.tb_MjestoStan.Location = new System.Drawing.Point(110, 193);
+            this.tb_MjestoStan.Name = "tb_MjestoStan";
+            this.tb_MjestoStan.Size = new System.Drawing.Size(181, 20);
+            this.tb_MjestoStan.TabIndex = 9;
             // 
-            // adresaTextBox
+            // tb_Adresa
             // 
-            this.adresaTextBox.Location = new System.Drawing.Point(100, 107);
-            this.adresaTextBox.Name = "adresaTextBox";
-            this.adresaTextBox.Size = new System.Drawing.Size(181, 20);
-            this.adresaTextBox.TabIndex = 8;
+            this.tb_Adresa.Location = new System.Drawing.Point(110, 157);
+            this.tb_Adresa.Name = "tb_Adresa";
+            this.tb_Adresa.Size = new System.Drawing.Size(181, 20);
+            this.tb_Adresa.TabIndex = 8;
             // 
-            // panel1
+            // dtp_DatRodjenja
             // 
-            this.panel1.Controls.Add(this.muskiRadioButton);
-            this.panel1.Controls.Add(this.zenskiRadioButton);
-            this.panel1.Location = new System.Drawing.Point(100, 55);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(181, 20);
-            this.panel1.TabIndex = 10;
+            this.dtp_DatRodjenja.Location = new System.Drawing.Point(110, 121);
+            this.dtp_DatRodjenja.Name = "dtp_DatRodjenja";
+            this.dtp_DatRodjenja.Size = new System.Drawing.Size(181, 20);
+            this.dtp_DatRodjenja.TabIndex = 11;
             // 
-            // muskiRadioButton
+            // btn_SpremiKorisnika
             // 
-            this.muskiRadioButton.AutoSize = true;
-            this.muskiRadioButton.Location = new System.Drawing.Point(3, 0);
-            this.muskiRadioButton.Name = "muskiRadioButton";
-            this.muskiRadioButton.Size = new System.Drawing.Size(53, 17);
-            this.muskiRadioButton.TabIndex = 1;
-            this.muskiRadioButton.TabStop = true;
-            this.muskiRadioButton.Text = "Muški";
-            this.muskiRadioButton.UseVisualStyleBackColor = true;
+            this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 243);
+            this.btn_SpremiKorisnika.Name = "btn_SpremiKorisnika";
+            this.btn_SpremiKorisnika.Size = new System.Drawing.Size(93, 30);
+            this.btn_SpremiKorisnika.TabIndex = 1;
+            this.btn_SpremiKorisnika.Text = "Spremi";
+            this.btn_SpremiKorisnika.UseVisualStyleBackColor = true;
+            this.btn_SpremiKorisnika.Click += new System.EventHandler(this.button1_Click);
             // 
-            // zenskiRadioButton
+            // rb_Muski
             // 
-            this.zenskiRadioButton.AutoSize = true;
-            this.zenskiRadioButton.Location = new System.Drawing.Point(62, 0);
-            this.zenskiRadioButton.Name = "zenskiRadioButton";
-            this.zenskiRadioButton.Size = new System.Drawing.Size(57, 17);
-            this.zenskiRadioButton.TabIndex = 0;
-            this.zenskiRadioButton.TabStop = true;
-            this.zenskiRadioButton.Text = "Ženski";
-            this.zenskiRadioButton.UseVisualStyleBackColor = true;
+            this.rb_Muski.AutoSize = true;
+            this.rb_Muski.Location = new System.Drawing.Point(173, 89);
+            this.rb_Muski.Name = "rb_Muski";
+            this.rb_Muski.Size = new System.Drawing.Size(53, 17);
+            this.rb_Muski.TabIndex = 1;
+            this.rb_Muski.TabStop = true;
+            this.rb_Muski.Text = "Muški";
+            this.rb_Muski.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker
+            // rb_Zenski
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(100, 81);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker.TabIndex = 11;
+            this.rb_Zenski.AutoSize = true;
+            this.rb_Zenski.Location = new System.Drawing.Point(110, 89);
+            this.rb_Zenski.Name = "rb_Zenski";
+            this.rb_Zenski.Size = new System.Drawing.Size(57, 17);
+            this.rb_Zenski.TabIndex = 0;
+            this.rb_Zenski.TabStop = true;
+            this.rb_Zenski.Text = "Ženski";
+            this.rb_Zenski.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // groupBox1
             // 
-            this.button1.Location = new System.Drawing.Point(216, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btn_SpremiKorisnika);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.tb_Ime);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tb_MjestoStan);
+            this.groupBox1.Controls.Add(this.dtp_DatRodjenja);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.rb_Zenski);
+            this.groupBox1.Controls.Add(this.tb_Prezime);
+            this.groupBox1.Controls.Add(this.rb_Muski);
+            this.groupBox1.Controls.Add(this.tb_Adresa);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 286);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Podaci o korisniku";
             // 
-            // DodajKorisnikaForm
+            // DodajUrediKorisnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 304);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "DodajKorisnikaForm";
-            this.Text = "DodajKorisnikaForm";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.ClientSize = new System.Drawing.Size(326, 309);
+            this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(342, 348);
+            this.MinimumSize = new System.Drawing.Size(342, 348);
+            this.Name = "DodajUrediKorisnika";
+            this.Text = "DodajUrediKorisnika";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox prezimeTextBox;
+        private System.Windows.Forms.TextBox tb_Prezime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox imeTextBox;
-        private System.Windows.Forms.TextBox mjestoStanovanjaTextBox;
-        private System.Windows.Forms.TextBox adresaTextBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton muskiRadioButton;
-        private System.Windows.Forms.RadioButton zenskiRadioButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tb_Ime;
+        private System.Windows.Forms.TextBox tb_MjestoStan;
+        private System.Windows.Forms.TextBox tb_Adresa;
+        private System.Windows.Forms.DateTimePicker dtp_DatRodjenja;
+        private System.Windows.Forms.Button btn_SpremiKorisnika;
+        private System.Windows.Forms.RadioButton rb_Muski;
+        private System.Windows.Forms.RadioButton rb_Zenski;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
