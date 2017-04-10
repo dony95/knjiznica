@@ -13,7 +13,7 @@ namespace Knjiznica.Model
         public DateTime datumIstekaClanarine { get; set; }
         public DateTime datumRodenja { get; set; }
         public string ime { get; set; }
-        public string prebivaliste { get; set; }
+        public string mjestoStanovanja { get; set; }
         public string prezime { get; set; }
         public char spol { get; set; }
 

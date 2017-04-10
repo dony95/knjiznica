@@ -37,7 +37,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.imeTextBox = new System.Windows.Forms.TextBox();
-            this.prebivalisteTextBox = new System.Windows.Forms.TextBox();
+            this.mjestoStanovanjaTextBox = new System.Windows.Forms.TextBox();
             this.adresaTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.muskiRadioButton = new System.Windows.Forms.RadioButton();
@@ -61,7 +61,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.imeTextBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.prebivalisteTextBox, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.mjestoStanovanjaTextBox, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.adresaTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 3);
@@ -79,7 +79,7 @@
             // 
             // prezimeTextBox
             // 
-            this.prezimeTextBox.Location = new System.Drawing.Point(98, 29);
+            this.prezimeTextBox.Location = new System.Drawing.Point(100, 29);
             this.prezimeTextBox.Name = "prezimeTextBox";
             this.prezimeTextBox.Size = new System.Drawing.Size(181, 20);
             this.prezimeTextBox.TabIndex = 7;
@@ -134,27 +134,27 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(91, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Prebivaliste";
+            this.label6.Text = "mjestoStanovanja";
             // 
             // imeTextBox
             // 
-            this.imeTextBox.Location = new System.Drawing.Point(98, 3);
+            this.imeTextBox.Location = new System.Drawing.Point(100, 3);
             this.imeTextBox.Name = "imeTextBox";
             this.imeTextBox.Size = new System.Drawing.Size(181, 20);
             this.imeTextBox.TabIndex = 6;
             // 
-            // prebivalisteTextBox
+            // mjestoStanovanjaTextBox
             // 
-            this.prebivalisteTextBox.Location = new System.Drawing.Point(98, 133);
-            this.prebivalisteTextBox.Name = "prebivalisteTextBox";
-            this.prebivalisteTextBox.Size = new System.Drawing.Size(181, 20);
-            this.prebivalisteTextBox.TabIndex = 9;
+            this.mjestoStanovanjaTextBox.Location = new System.Drawing.Point(100, 133);
+            this.mjestoStanovanjaTextBox.Name = "mjestoStanovanjaTextBox";
+            this.mjestoStanovanjaTextBox.Size = new System.Drawing.Size(181, 20);
+            this.mjestoStanovanjaTextBox.TabIndex = 9;
             // 
             // adresaTextBox
             // 
-            this.adresaTextBox.Location = new System.Drawing.Point(98, 107);
+            this.adresaTextBox.Location = new System.Drawing.Point(100, 107);
             this.adresaTextBox.Name = "adresaTextBox";
             this.adresaTextBox.Size = new System.Drawing.Size(181, 20);
             this.adresaTextBox.TabIndex = 8;
@@ -163,7 +163,7 @@
             // 
             this.panel1.Controls.Add(this.muskiRadioButton);
             this.panel1.Controls.Add(this.zenskiRadioButton);
-            this.panel1.Location = new System.Drawing.Point(98, 55);
+            this.panel1.Location = new System.Drawing.Point(100, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(181, 20);
             this.panel1.TabIndex = 10;
@@ -192,7 +192,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(98, 81);
+            this.dateTimePicker.Location = new System.Drawing.Point(100, 81);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(181, 20);
             this.dateTimePicker.TabIndex = 11;
@@ -235,7 +235,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox imeTextBox;
-        private System.Windows.Forms.TextBox prebivalisteTextBox;
+        private System.Windows.Forms.TextBox mjestoStanovanjaTextBox;
         private System.Windows.Forms.TextBox adresaTextBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton muskiRadioButton;
