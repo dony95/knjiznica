@@ -1,6 +1,6 @@
 ﻿namespace Knjiznica
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaKnjigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.izbrisiKnjiguToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izbrisiKorisnikaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -55,10 +59,6 @@
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.izbrisiKnjiguToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izbrisiKorisnikaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -95,6 +95,30 @@
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
             this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.novaKnjigaToolStripMenuItem.Text = "Nova knjiga";
+            // 
+            // dodajKorisnikaToolStripMenuItem
+            // 
+            this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
+            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
+            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            // 
+            // izbrisiKnjiguToolStripMenuItem
+            // 
+            this.izbrisiKnjiguToolStripMenuItem.Name = "izbrisiKnjiguToolStripMenuItem";
+            this.izbrisiKnjiguToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.izbrisiKnjiguToolStripMenuItem.Text = "Izbrisi knjigu";
+            // 
+            // izbrisiKorisnikaToolStripMenuItem1
+            // 
+            this.izbrisiKorisnikaToolStripMenuItem1.Name = "izbrisiKorisnikaToolStripMenuItem1";
+            this.izbrisiKorisnikaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.izbrisiKorisnikaToolStripMenuItem1.Text = "Izbrisi korisnika";
             // 
             // optionsToolStripMenuItem
             // 
@@ -319,30 +343,6 @@
             this.tabPage3.Text = "Posudbe";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dodajKorisnikaToolStripMenuItem
-            // 
-            this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
-            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
-            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
-            // 
-            // izbrisiKnjiguToolStripMenuItem
-            // 
-            this.izbrisiKnjiguToolStripMenuItem.Name = "izbrisiKnjiguToolStripMenuItem";
-            this.izbrisiKnjiguToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.izbrisiKnjiguToolStripMenuItem.Text = "Izbrisi knjigu";
-            // 
-            // izbrisiKorisnikaToolStripMenuItem1
-            // 
-            this.izbrisiKorisnikaToolStripMenuItem1.Name = "izbrisiKorisnikaToolStripMenuItem1";
-            this.izbrisiKorisnikaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.izbrisiKorisnikaToolStripMenuItem1.Text = "Izbrisi korisnika";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,7 +353,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(940, 300);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Knjiznica";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
