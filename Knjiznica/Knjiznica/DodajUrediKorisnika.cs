@@ -12,10 +12,10 @@ using Knjiznica.Model;
 
 namespace Knjiznica
 {
-    public partial class DodajKorisnikaForm : Form
+    public partial class DodajUrediKorisnika : Form
     {
         bool error = false;
-        public DodajKorisnikaForm()
+        public DodajUrediKorisnika()
         {
             InitializeComponent();
         }

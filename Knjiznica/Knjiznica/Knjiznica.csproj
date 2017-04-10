@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DodajKorisnikaForm.cs">
+    <Compile Include="DodajUrediKorisnika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DodajKorisnikaForm.Designer.cs">
-      <DependentUpon>DodajKorisnikaForm.cs</DependentUpon>
+    <Compile Include="DodajUrediKorisnika.Designer.cs">
+      <DependentUpon>DodajUrediKorisnika.cs</DependentUpon>
     </Compile>
     <Compile Include="DodajUrediKnjigu.cs">
       <SubType>Form</SubType>
@@ -71,8 +71,8 @@
     <Compile Include="Model\Korisnik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DodajKorisnikaForm.resx">
-      <DependentUpon>DodajKorisnikaForm.cs</DependentUpon>
+    <EmbeddedResource Include="DodajUrediKorisnika.resx">
+      <DependentUpon>DodajUrediKorisnika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajUrediKnjigu.resx">
       <DependentUpon>DodajUrediKnjigu.cs</DependentUpon>

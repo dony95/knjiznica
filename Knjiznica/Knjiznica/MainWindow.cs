@@ -26,7 +26,7 @@ namespace Knjiznica
 
         private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DodajKorisnikaForm forma = new DodajKorisnikaForm();
+            DodajUrediKorisnika forma = new DodajUrediKorisnika();
             forma.Show();
         }
     }

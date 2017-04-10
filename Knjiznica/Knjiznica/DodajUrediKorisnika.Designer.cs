@@ -1,6 +1,6 @@
 ﻿namespace Knjiznica
 {
-    partial class DodajKorisnikaForm
+    partial class DodajUrediKorisnika
     {
         /// <summary>
         /// Required designer variable.
