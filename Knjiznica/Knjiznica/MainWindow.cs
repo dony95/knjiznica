@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Knjiznica
 {
     public partial class MainWindow : Form
     {
+        MySqlCommand conn;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +30,11 @@ namespace Knjiznica
         {
             DodajUrediKorisnika forma = new DodajUrediKorisnika();
             forma.Show();
+        }
+
+        private void btn_Pretraga_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
