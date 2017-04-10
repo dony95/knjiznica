@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_Autor = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.num_BrojStranica = new System.Windows.Forms.NumericUpDown();
+            this.btn_DodajUredi = new System.Windows.Forms.Button();
+            this.dtp_Godina = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cb_Kategorija = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_Izdavac = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tb_ISBN = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cb_Kategorija = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tb_Izdavac = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtp_Godina = new System.Windows.Forms.DateTimePicker();
-            this.btn_DodajUredi = new System.Windows.Forms.Button();
+            this.num_BrojStranica = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_Autor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).BeginInit();
             this.SuspendLayout();
@@ -75,53 +75,65 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci o knjizi";
             // 
-            // label1
+            // btn_DodajUredi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Autor";
+            this.btn_DodajUredi.Location = new System.Drawing.Point(121, 244);
+            this.btn_DodajUredi.Name = "btn_DodajUredi";
+            this.btn_DodajUredi.Size = new System.Drawing.Size(146, 32);
+            this.btn_DodajUredi.TabIndex = 11;
+            this.btn_DodajUredi.Text = "Potvrdi";
+            this.btn_DodajUredi.UseVisualStyleBackColor = true;
+            this.btn_DodajUredi.Click += new System.EventHandler(this.btn_DodajUredi_Click);
             // 
-            // tb_Autor
+            // dtp_Godina
             // 
-            this.tb_Autor.Location = new System.Drawing.Point(9, 51);
-            this.tb_Autor.Name = "tb_Autor";
-            this.tb_Autor.Size = new System.Drawing.Size(181, 20);
-            this.tb_Autor.TabIndex = 1;
+            this.dtp_Godina.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Godina.Location = new System.Drawing.Point(196, 150);
+            this.dtp_Godina.Name = "dtp_Godina";
+            this.dtp_Godina.Size = new System.Drawing.Size(181, 20);
+            this.dtp_Godina.TabIndex = 6;
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Naziv knjige";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(193, 134);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Godina izdavanja";
             // 
-            // tb_NazivKnjige
+            // cb_Kategorija
             // 
-            this.tb_NazivKnjige.Location = new System.Drawing.Point(196, 51);
-            this.tb_NazivKnjige.Name = "tb_NazivKnjige";
-            this.tb_NazivKnjige.Size = new System.Drawing.Size(181, 20);
-            this.tb_NazivKnjige.TabIndex = 2;
+            this.cb_Kategorija.FormattingEnabled = true;
+            this.cb_Kategorija.Location = new System.Drawing.Point(9, 102);
+            this.cb_Kategorija.Name = "cb_Kategorija";
+            this.cb_Kategorija.Size = new System.Drawing.Size(181, 21);
+            this.cb_Kategorija.TabIndex = 3;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 182);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Broj stranica";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Kategorija";
             // 
-            // num_BrojStranica
+            // tb_Izdavac
             // 
-            this.num_BrojStranica.Location = new System.Drawing.Point(9, 198);
-            this.num_BrojStranica.Name = "num_BrojStranica";
-            this.num_BrojStranica.Size = new System.Drawing.Size(181, 20);
-            this.num_BrojStranica.TabIndex = 7;
+            this.tb_Izdavac.Location = new System.Drawing.Point(9, 150);
+            this.tb_Izdavac.Name = "tb_Izdavac";
+            this.tb_Izdavac.Size = new System.Drawing.Size(181, 20);
+            this.tb_Izdavac.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Izdavač";
             // 
             // tb_ISBN
             // 
@@ -139,64 +151,53 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "ISBN";
             // 
-            // label5
+            // num_BrojStranica
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Kategorija";
+            this.num_BrojStranica.Location = new System.Drawing.Point(9, 198);
+            this.num_BrojStranica.Name = "num_BrojStranica";
+            this.num_BrojStranica.Size = new System.Drawing.Size(181, 20);
+            this.num_BrojStranica.TabIndex = 7;
             // 
-            // cb_Kategorija
+            // label3
             // 
-            this.cb_Kategorija.FormattingEnabled = true;
-            this.cb_Kategorija.Location = new System.Drawing.Point(9, 102);
-            this.cb_Kategorija.Name = "cb_Kategorija";
-            this.cb_Kategorija.Size = new System.Drawing.Size(181, 21);
-            this.cb_Kategorija.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Broj stranica";
             // 
-            // label6
+            // tb_NazivKnjige
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 134);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Izdavač";
+            this.tb_NazivKnjige.Location = new System.Drawing.Point(196, 51);
+            this.tb_NazivKnjige.Name = "tb_NazivKnjige";
+            this.tb_NazivKnjige.Size = new System.Drawing.Size(181, 20);
+            this.tb_NazivKnjige.TabIndex = 2;
             // 
-            // tb_Izdavac
+            // label2
             // 
-            this.tb_Izdavac.Location = new System.Drawing.Point(9, 150);
-            this.tb_Izdavac.Name = "tb_Izdavac";
-            this.tb_Izdavac.Size = new System.Drawing.Size(181, 20);
-            this.tb_Izdavac.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Naziv knjige";
             // 
-            // label7
+            // tb_Autor
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(193, 134);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Godina izdavanja";
+            this.tb_Autor.Location = new System.Drawing.Point(9, 51);
+            this.tb_Autor.Name = "tb_Autor";
+            this.tb_Autor.Size = new System.Drawing.Size(181, 20);
+            this.tb_Autor.TabIndex = 1;
             // 
-            // dtp_Godina
+            // label1
             // 
-            this.dtp_Godina.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Godina.Location = new System.Drawing.Point(196, 150);
-            this.dtp_Godina.Name = "dtp_Godina";
-            this.dtp_Godina.Size = new System.Drawing.Size(181, 20);
-            this.dtp_Godina.TabIndex = 6;
-            // 
-            // btn_DodajUredi
-            // 
-            this.btn_DodajUredi.Location = new System.Drawing.Point(121, 244);
-            this.btn_DodajUredi.Name = "btn_DodajUredi";
-            this.btn_DodajUredi.Size = new System.Drawing.Size(146, 32);
-            this.btn_DodajUredi.TabIndex = 11;
-            this.btn_DodajUredi.Text = "Potvrdi";
-            this.btn_DodajUredi.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Autor";
             // 
             // DodajUrediKnjigu
             // 

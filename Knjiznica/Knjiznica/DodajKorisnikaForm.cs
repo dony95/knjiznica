@@ -50,11 +50,11 @@ namespace Knjiznica
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, spol) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @spol)";
+                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, prebivaliste, adresa, spol) VALUES (@ime, @prezime, @datumRodenja, @prebivaliste, @adresa, @spol)";
                 command.Parameters.AddWithValue("@ime", korisnik.ime);
                 command.Parameters.AddWithValue("@prezime", korisnik.prezime);
                 command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja);
-                command.Parameters.AddWithValue("@mjestoStanovanja", korisnik.prebivaliste);
+                command.Parameters.AddWithValue("@prebivaliste", korisnik.prebivaliste);
                 command.Parameters.AddWithValue("@adresa", korisnik.adresa);
                 command.Parameters.AddWithValue("@spol", korisnik.spol);
                 command.ExecuteNonQuery();
