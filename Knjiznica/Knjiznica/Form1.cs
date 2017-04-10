@@ -16,5 +16,11 @@ namespace Knjiznica
         {
             InitializeComponent();
         }
+
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DodajKorisnikaForm form1 = new DodajKorisnikaForm();
+            form1.ShowDialog();
+        }
     }
 }
