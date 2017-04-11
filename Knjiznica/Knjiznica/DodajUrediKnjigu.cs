@@ -18,6 +18,9 @@ namespace Knjiznica
         public DodajUrediKnjigu()
         {
             InitializeComponent();
+            dtp_Godina.Format = DateTimePickerFormat.Custom;
+            dtp_Godina.CustomFormat = "yyyy";
+            dtp_Godina.ShowUpDown = true;
         }
 
         private void btn_DodajUredi_Click(object sender, EventArgs e)
@@ -30,7 +33,9 @@ namespace Knjiznica
                 godina = dtp_Godina.Value.Year,
                 isbn = Int32.Parse(tb_ISBN.Text),
                 kategorija = cb_Kategorija.SelectedText,
-                brojStranica = (int)num_BrojStranica.Value
+                brojStranica = (int)num_BrojStranica.Value,
+                cijena = double.Parse(tb_Cijena.Text),
+                brojKopija = (int)num_BrKopija.Value
             };
 
             string ConnectionString = string.Empty;
@@ -49,7 +54,7 @@ namespace Knjiznica
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica)";
+                command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, cijena, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @Cijena, @BrojKopija)";
                 command.Parameters.AddWithValue("@Autor", knjiga.autor);
                 command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
                 command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
@@ -57,6 +62,8 @@ namespace Knjiznica
                 command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
                 command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
                 command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
+                command.Parameters.AddWithValue("@Cijena", knjiga.cijena);
+                command.Parameters.AddWithValue("@BrojKopija", knjiga.brojStranica);
                 command.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -75,6 +82,27 @@ namespace Knjiznica
             }
 
 
+        }
+
+        private void tb_ISBN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb_Cijena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

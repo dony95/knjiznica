@@ -32,7 +32,35 @@ namespace Knjiznica
             forma.Show();
         }
 
-        private void btn_Pretraga_Click(object sender, EventArgs e)
+        private void btn_PretragaKnjiga_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_DodajKorisnika_Click(object sender, EventArgs e)
+        {
+            DodajUrediKorisnika forma = new DodajUrediKorisnika();
+            forma.Show();
+        }
+
+        private void btn_PretragaKorisnika_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NovaPosudba_Click(object sender, EventArgs e)
+        {
+            NovaPosudba forma = new NovaPosudba();
+            forma.Show();
+        }
+
+        private void novaPosudbaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NovaPosudba forma = new NovaPosudba();
+            forma.Show();
+        }
+
+        private void btn_PretragaPosudbe_Click(object sender, EventArgs e)
         {
 
         }
