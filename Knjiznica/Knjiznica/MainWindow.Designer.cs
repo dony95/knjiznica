@@ -50,7 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tb_AutorKnjige = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.data_Knjige = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -58,7 +58,7 @@
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_DodajKorisnika = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.data_Korisnici = new System.Windows.Forms.DataGridView();
             this.btn_PretragaKorisnika = new System.Windows.Forms.Button();
             this.tb_Prezime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btn_NovaPosudba = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.data_Posudbe = new System.Windows.Forms.DataGridView();
             this.btn_PretragaPosudbe = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -82,11 +82,11 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Godina)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Knjige)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Korisnici)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Posudbe)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -177,7 +177,7 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.tb_AutorKnjige);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.data_Knjige);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.tb_NazivKnjige);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -296,22 +296,22 @@
             this.label2.TabIndex = 33;
             this.label2.Text = "Autor knjige";
             // 
-            // dataGridView1
+            // data_Knjige
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.data_Knjige.AllowUserToOrderColumns = true;
+            this.data_Knjige.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.data_Knjige.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.data_Knjige.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_Knjige.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NazivKnjige,
             this.edit});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(904, 444);
-            this.dataGridView1.TabIndex = 8;
+            this.data_Knjige.Location = new System.Drawing.Point(6, 46);
+            this.data_Knjige.Name = "data_Knjige";
+            this.data_Knjige.Size = new System.Drawing.Size(904, 444);
+            this.data_Knjige.TabIndex = 8;
             // 
             // ID
             // 
@@ -348,7 +348,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btn_DodajKorisnika);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.data_Korisnici);
             this.tabPage2.Controls.Add(this.btn_PretragaKorisnika);
             this.tabPage2.Controls.Add(this.tb_Prezime);
             this.tabPage2.Controls.Add(this.label9);
@@ -375,17 +375,17 @@
             this.btn_DodajKorisnika.UseVisualStyleBackColor = true;
             this.btn_DodajKorisnika.Click += new System.EventHandler(this.btn_DodajKorisnika_Click);
             // 
-            // dataGridView2
+            // data_Korisnici
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.data_Korisnici.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 84);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(904, 437);
-            this.dataGridView2.TabIndex = 5;
+            this.data_Korisnici.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.data_Korisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_Korisnici.Location = new System.Drawing.Point(6, 84);
+            this.data_Korisnici.Name = "data_Korisnici";
+            this.data_Korisnici.Size = new System.Drawing.Size(904, 437);
+            this.data_Korisnici.TabIndex = 5;
             // 
             // btn_PretragaKorisnika
             // 
@@ -452,7 +452,7 @@
             this.tabPage3.Controls.Add(this.textBox3);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.btn_NovaPosudba);
-            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.data_Posudbe);
             this.tabPage3.Controls.Add(this.btn_PretragaPosudbe);
             this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.label10);
@@ -508,17 +508,17 @@
             this.btn_NovaPosudba.UseVisualStyleBackColor = true;
             this.btn_NovaPosudba.Click += new System.EventHandler(this.btn_NovaPosudba_Click);
             // 
-            // dataGridView3
+            // data_Posudbe
             // 
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.data_Posudbe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 84);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(904, 437);
-            this.dataGridView3.TabIndex = 6;
+            this.data_Posudbe.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.data_Posudbe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
+            this.data_Posudbe.Name = "data_Posudbe";
+            this.data_Posudbe.Size = new System.Drawing.Size(904, 437);
+            this.data_Posudbe.TabIndex = 6;
             // 
             // btn_PretragaPosudbe
             // 
@@ -579,13 +579,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Godina)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Knjige)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Korisnici)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_Posudbe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,7 +612,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_AutorKnjige;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView data_Knjige;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_NazivKnjige;
         private System.Windows.Forms.TabPage tabPage2;
@@ -624,7 +624,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_DodajKorisnika;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView data_Korisnici;
         private System.Windows.Forms.Button btn_PretragaKorisnika;
         private System.Windows.Forms.TextBox tb_Prezime;
         private System.Windows.Forms.Label label9;
@@ -635,7 +635,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_NovaPosudba;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView data_Posudbe;
         private System.Windows.Forms.Button btn_PretragaPosudbe;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label10;
