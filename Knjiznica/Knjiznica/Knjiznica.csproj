@@ -61,6 +61,12 @@
     <Compile Include="DodajUrediKnjigu.Designer.cs">
       <DependentUpon>DodajUrediKnjigu.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForma.Designer.cs">
+      <DependentUpon>LoginForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,13 @@
     </Compile>
     <Compile Include="Model\Knjiga.cs" />
     <Compile Include="Model\Korisnik.cs" />
+    <Compile Include="Model\Posudba.cs" />
+    <Compile Include="NovaPosudba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaPosudba.Designer.cs">
+      <DependentUpon>NovaPosudba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DodajUrediKorisnika.resx">
@@ -77,8 +90,14 @@
     <EmbeddedResource Include="DodajUrediKnjigu.resx">
       <DependentUpon>DodajUrediKnjigu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForma.resx">
+      <DependentUpon>LoginForma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaPosudba.resx">
+      <DependentUpon>NovaPosudba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,9 +120,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
