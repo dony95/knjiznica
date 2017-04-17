@@ -22,8 +22,15 @@ namespace Knjiznica
             listaKnjiga = new List<Knjiga>();
             connectionType();
             conn = new MySqlConnection(ConnectionString);
+            conn.Open();
+            if(ucitajLoginFormu() != DialogResult.OK)
+            {
+                MessageBox.Show("Neuspjesna prijava. Aplikacija ce se sada zatvoriti!");
+                this.Close();
+                return;
+            }
             InitializeComponent();
-            ucitajPodatke(conn);
+            ucitajPodatke();
         }
 
         //_____________________________________________________________________
@@ -119,9 +126,8 @@ namespace Knjiznica
             Properties.Settings.Default.Save();
         }
 
-        public void ucitajPodatke(MySqlConnection conn)
+        public void ucitajPodatke()
         {
-            conn.Open();
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT * FROM knjige";
             command.ExecuteNonQuery();
@@ -146,7 +152,6 @@ namespace Knjiznica
                     });
                 }
             }
-            conn.Close();
 
             dodajKnjigeUGrid(listaKnjiga);
         }
@@ -173,5 +178,19 @@ namespace Knjiznica
                 dataGridCount++;
             }
         }
-}
+
+        private DialogResult ucitajLoginFormu()
+        {
+            LoginForma forma = new LoginForma(conn);
+            return forma.ShowDialog();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            conn.Close();
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
+    }
 }

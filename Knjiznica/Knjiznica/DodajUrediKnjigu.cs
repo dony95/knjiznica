@@ -41,8 +41,6 @@ namespace Knjiznica
                 brojKopija = (int)num_BrKopija.Value
             };
 
-            if (!error)
-                conn.Open();
             try
             {
                 MySqlCommand command = conn.CreateCommand();
@@ -69,7 +67,6 @@ namespace Knjiznica
                 {
                     MessageBox.Show("Knjiga uspjesno unesena");
                     this.Close();
-                    conn.Close();
                 }
             }
 

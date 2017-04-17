@@ -36,8 +36,6 @@ namespace Knjiznica
                 korisnik.spol = 'M';
             else korisnik.spol = 'Ž';
 
-            if(!error)
-                conn.Open();
             try
             {
                 MySqlCommand command = conn.CreateCommand();
@@ -61,7 +59,6 @@ namespace Knjiznica
                 {
                     MessageBox.Show("Korisnik uspjesno unesen");
                     this.Close();
-                    conn.Close();
                 }
             }
         }
