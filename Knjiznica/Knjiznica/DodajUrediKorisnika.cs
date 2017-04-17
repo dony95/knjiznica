@@ -14,9 +14,11 @@ namespace Knjiznica
 {
     public partial class DodajUrediKorisnika : Form
     {
+        MySqlConnection conn;
         bool error = false;
-        public DodajUrediKorisnika()
+        public DodajUrediKorisnika(MySqlConnection conn)
         {
+            this.conn = conn;
             InitializeComponent();
         }
 
@@ -34,17 +36,6 @@ namespace Knjiznica
                 korisnik.spol = 'M';
             else korisnik.spol = 'Ž';
 
-            string ConnectionString = string.Empty;
-
-            DialogResult dialog = MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-                ConnectionString = "server=192.168.1.8;uid=suky;" +
-                    "pwd=0000;database=knjiznica;";
-            else if (dialog == DialogResult.No)
-                ConnectionString = "server=donyslav.ddns.net;uid=suky;" +
-                    "pwd=0000;database=knjiznica;";
-
-            MySqlConnection conn = new MySqlConnection(ConnectionString);
             if(!error)
                 conn.Open();
             try

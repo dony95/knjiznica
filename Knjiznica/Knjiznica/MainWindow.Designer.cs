@@ -117,13 +117,14 @@
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
             this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.novaKnjigaToolStripMenuItem.Text = "Dodaj knjigu";
+            this.novaKnjigaToolStripMenuItem.Click += new System.EventHandler(this.btn_DodajKnjigu_Click);
             // 
             // dodajKorisnikaToolStripMenuItem
             // 
             this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
             this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
-            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
+            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.btn_DodajKorisnika_Click);
             // 
             // toolStripSeparator1
             // 
@@ -135,7 +136,7 @@
             this.novaPosudbaToolStripMenuItem.Name = "novaPosudbaToolStripMenuItem";
             this.novaPosudbaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.novaPosudbaToolStripMenuItem.Text = "Nova posudba";
-            this.novaPosudbaToolStripMenuItem.Click += new System.EventHandler(this.novaPosudbaToolStripMenuItem_Click);
+            this.novaPosudbaToolStripMenuItem.Click += new System.EventHandler(this.btn_NovaPosudba_Click);
             // 
             // optionsToolStripMenuItem
             // 
