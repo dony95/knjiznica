@@ -271,6 +271,11 @@
             this.num_Godina.Name = "num_Godina";
             this.num_Godina.Size = new System.Drawing.Size(102, 20);
             this.num_Godina.TabIndex = 6;
+            this.num_Godina.Value = new decimal(new int[] {
+            2017,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -313,6 +318,7 @@
             this.data_Knjige.Name = "data_Knjige";
             this.data_Knjige.Size = new System.Drawing.Size(904, 444);
             this.data_Knjige.TabIndex = 8;
+            this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
             // 
             // ID
             // 

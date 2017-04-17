@@ -34,7 +34,27 @@ namespace Knjiznica
 
         private void btn_PretragaKnjiga_Click(object sender, EventArgs e)
         {
+            IEnumerable<Knjiga> listaKnjigatmp = listaKnjiga;
 
+            if (tb_AutorKnjige.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.autor.ToLower().Contains(tb_AutorKnjige.Text.ToLower()));
+
+            if (tb_IDknjiga.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.id == int.Parse(tb_IDknjiga.Text));
+
+            if (tb_Izdavac.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.izdavac.ToLower().Contains(tb_Izdavac.Text.ToLower()));
+
+            if (num_Godina.Value != 0)
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == num_Godina.Value);
+
+            if (cb_Kategorija.SelectedIndex != 0)
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
+
+            if (tb_NazivKnjige.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
+
+            dodajKnjigeUGrid(listaKnjigatmp.ToList());
         }
 
         private void btn_PretragaKorisnika_Click(object sender, EventArgs e)
@@ -126,16 +146,32 @@ namespace Knjiznica
                     });
                 }
             }
+            conn.Close();
 
+            dodajKnjigeUGrid(listaKnjiga);
+        }
+
+        private void data_Knjige_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView data_grid = (DataGridView)sender;
+
+            if(data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                MessageBox.Show("Id knjige je " + data_grid.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            }
+        }
+
+        private void dodajKnjigeUGrid(List<Knjiga> listaKnjiga)
+        {
+            data_Knjige.Rows.Clear();
             int dataGridCount = 0;
 
             foreach (Knjiga k in listaKnjiga)
             {
                 data_Knjige.Rows.Add(k.id, k.naziv);
-                Button b = (Button)data_Knjige.Rows[dataGridCount].Cells["edit"].Value;
-                b.Text = "asd";
+                data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
+                dataGridCount++;
             }
-            conn.Close();
         }
-    }
+}
 }
