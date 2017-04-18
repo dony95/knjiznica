@@ -174,7 +174,7 @@ namespace Knjiznica
 
             foreach (Knjiga k in listaKnjiga)
             {
-                data_Knjige.Rows.Add(k.id, k.naziv);
+                data_Knjige.Rows.Add(k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.isbn, k.brojStranica, k.cijena, k.brojKopija);
                 data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
                 dataGridCount++;
             }

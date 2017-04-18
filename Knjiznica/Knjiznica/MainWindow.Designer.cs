@@ -51,9 +51,6 @@
             this.tb_AutorKnjige = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.data_Knjige = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -78,6 +75,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AutorKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -97,7 +104,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(946, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1083, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -161,7 +168,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(924, 553);
+            this.tabControl1.Size = new System.Drawing.Size(1061, 553);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -185,7 +192,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(916, 527);
+            this.tabPage1.Size = new System.Drawing.Size(1053, 527);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Knjige";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -193,7 +200,7 @@
             // btn_DodajKnjigu
             // 
             this.btn_DodajKnjigu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DodajKnjigu.Location = new System.Drawing.Point(800, 496);
+            this.btn_DodajKnjigu.Location = new System.Drawing.Point(937, 496);
             this.btn_DodajKnjigu.Name = "btn_DodajKnjigu";
             this.btn_DodajKnjigu.Size = new System.Drawing.Size(110, 25);
             this.btn_DodajKnjigu.TabIndex = 9;
@@ -300,37 +307,30 @@
             // 
             // data_Knjige
             // 
+            this.data_Knjige.AllowUserToAddRows = false;
+            this.data_Knjige.AllowUserToDeleteRows = false;
             this.data_Knjige.AllowUserToOrderColumns = true;
-            this.data_Knjige.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.data_Knjige.AllowUserToResizeRows = false;
             this.data_Knjige.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.data_Knjige.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_Knjige.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.NazivKnjige,
+            this.AutorKnjige,
+            this.Kategorija,
+            this.Izdavac,
+            this.Godina,
+            this.ISBN,
+            this.BrojStranica,
+            this.Cijena,
+            this.BrojKopija,
             this.edit});
             this.data_Knjige.Location = new System.Drawing.Point(6, 46);
             this.data_Knjige.Name = "data_Knjige";
-            this.data_Knjige.Size = new System.Drawing.Size(904, 444);
+            this.data_Knjige.ReadOnly = true;
+            this.data_Knjige.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.data_Knjige.Size = new System.Drawing.Size(1044, 444);
             this.data_Knjige.TabIndex = 8;
             this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // NazivKnjige
-            // 
-            this.NazivKnjige.HeaderText = "Naziv Knjige";
-            this.NazivKnjige.Name = "NazivKnjige";
-            // 
-            // edit
-            // 
-            this.edit.HeaderText = "Kontrola";
-            this.edit.Name = "edit";
-            this.edit.Text = "Uredi";
             // 
             // label1
             // 
@@ -362,7 +362,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(916, 527);
+            this.tabPage2.Size = new System.Drawing.Size(1053, 527);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Korisnici";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -370,7 +370,7 @@
             // btn_DodajKorisnika
             // 
             this.btn_DodajKorisnika.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DodajKorisnika.Location = new System.Drawing.Point(801, 53);
+            this.btn_DodajKorisnika.Location = new System.Drawing.Point(938, 53);
             this.btn_DodajKorisnika.Name = "btn_DodajKorisnika";
             this.btn_DodajKorisnika.Size = new System.Drawing.Size(110, 25);
             this.btn_DodajKorisnika.TabIndex = 6;
@@ -387,7 +387,7 @@
             this.data_Korisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_Korisnici.Location = new System.Drawing.Point(6, 84);
             this.data_Korisnici.Name = "data_Korisnici";
-            this.data_Korisnici.Size = new System.Drawing.Size(904, 437);
+            this.data_Korisnici.Size = new System.Drawing.Size(1041, 437);
             this.data_Korisnici.TabIndex = 5;
             // 
             // btn_PretragaKorisnika
@@ -463,7 +463,7 @@
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(916, 527);
+            this.tabPage3.Size = new System.Drawing.Size(1053, 527);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Posudbe";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -503,7 +503,7 @@
             // btn_NovaPosudba
             // 
             this.btn_NovaPosudba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_NovaPosudba.Location = new System.Drawing.Point(801, 53);
+            this.btn_NovaPosudba.Location = new System.Drawing.Point(938, 53);
             this.btn_NovaPosudba.Name = "btn_NovaPosudba";
             this.btn_NovaPosudba.Size = new System.Drawing.Size(110, 25);
             this.btn_NovaPosudba.TabIndex = 7;
@@ -520,7 +520,7 @@
             this.data_Posudbe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
             this.data_Posudbe.Name = "data_Posudbe";
-            this.data_Posudbe.Size = new System.Drawing.Size(904, 437);
+            this.data_Posudbe.Size = new System.Drawing.Size(1041, 437);
             this.data_Posudbe.TabIndex = 6;
             // 
             // btn_PretragaPosudbe
@@ -565,12 +565,73 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
+            // NazivKnjige
+            // 
+            this.NazivKnjige.HeaderText = "Naziv Knjige";
+            this.NazivKnjige.Name = "NazivKnjige";
+            this.NazivKnjige.ReadOnly = true;
+            // 
+            // AutorKnjige
+            // 
+            this.AutorKnjige.HeaderText = "Autor Knjige";
+            this.AutorKnjige.Name = "AutorKnjige";
+            this.AutorKnjige.ReadOnly = true;
+            // 
+            // Kategorija
+            // 
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.HeaderText = "Izdavac";
+            this.Izdavac.Name = "Izdavac";
+            this.Izdavac.ReadOnly = true;
+            // 
+            // Godina
+            // 
+            this.Godina.HeaderText = "Godina";
+            this.Godina.Name = "Godina";
+            this.Godina.ReadOnly = true;
+            // 
+            // ISBN
+            // 
+            this.ISBN.HeaderText = "ISBN";
+            this.ISBN.Name = "ISBN";
+            this.ISBN.ReadOnly = true;
+            // 
+            // BrojStranica
+            // 
+            this.BrojStranica.HeaderText = "BrojStranica";
+            this.BrojStranica.Name = "BrojStranica";
+            this.BrojStranica.ReadOnly = true;
+            // 
+            // Cijena
+            // 
+            this.Cijena.HeaderText = "Cijena";
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            // 
+            // BrojKopija
+            // 
+            this.BrojKopija.HeaderText = "BrojKopija";
+            this.BrojKopija.Name = "BrojKopija";
+            this.BrojKopija.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.HeaderText = "Kontrola";
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Text = "Uredi";
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.btn_PretragaKnjige;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 590);
+            this.ClientSize = new System.Drawing.Size(1083, 590);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -621,9 +682,6 @@
         private System.Windows.Forms.TextBox tb_NazivKnjige;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazivKnjige;
-        private System.Windows.Forms.DataGridViewButtonColumn edit;
         private System.Windows.Forms.ToolStripMenuItem dodajKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label label7;
@@ -647,6 +705,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivKnjige;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AutorKnjige;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kategorija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Godina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojStranica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojKopija;
+        private System.Windows.Forms.DataGridViewButtonColumn edit;
     }
 }
 
