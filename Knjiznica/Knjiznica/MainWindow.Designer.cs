@@ -370,7 +370,7 @@
             // btn_DodajKorisnika
             // 
             this.btn_DodajKorisnika.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DodajKorisnika.Location = new System.Drawing.Point(801, 53);
+            this.btn_DodajKorisnika.Location = new System.Drawing.Point(800, 496);
             this.btn_DodajKorisnika.Name = "btn_DodajKorisnika";
             this.btn_DodajKorisnika.Size = new System.Drawing.Size(110, 25);
             this.btn_DodajKorisnika.TabIndex = 6;
@@ -387,7 +387,7 @@
             this.data_Korisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_Korisnici.Location = new System.Drawing.Point(6, 84);
             this.data_Korisnici.Name = "data_Korisnici";
-            this.data_Korisnici.Size = new System.Drawing.Size(904, 437);
+            this.data_Korisnici.Size = new System.Drawing.Size(904, 406);
             this.data_Korisnici.TabIndex = 5;
             // 
             // btn_PretragaKorisnika
@@ -503,7 +503,7 @@
             // btn_NovaPosudba
             // 
             this.btn_NovaPosudba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_NovaPosudba.Location = new System.Drawing.Point(801, 53);
+            this.btn_NovaPosudba.Location = new System.Drawing.Point(800, 496);
             this.btn_NovaPosudba.Name = "btn_NovaPosudba";
             this.btn_NovaPosudba.Size = new System.Drawing.Size(110, 25);
             this.btn_NovaPosudba.TabIndex = 7;
@@ -520,7 +520,7 @@
             this.data_Posudbe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
             this.data_Posudbe.Name = "data_Posudbe";
-            this.data_Posudbe.Size = new System.Drawing.Size(904, 437);
+            this.data_Posudbe.Size = new System.Drawing.Size(904, 406);
             this.data_Posudbe.TabIndex = 6;
             // 
             // btn_PretragaPosudbe
