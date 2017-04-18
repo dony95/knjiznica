@@ -1,4 +1,5 @@
 ﻿using Knjiznica.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,11 @@ namespace Knjiznica
 {
     public partial class NovaPosudba : Form
     {
-        List<Knjiga> knjige;
+        List<Knjiga> listaKnjiga;
 
         public NovaPosudba()
         {
             InitializeComponent();
-            knjige = new List<Knjiga>();
         }
 
         private void tb_ISBN_KeyPress(object sender, KeyPressEventArgs e)
