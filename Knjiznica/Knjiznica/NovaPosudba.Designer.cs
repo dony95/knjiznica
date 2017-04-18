@@ -38,6 +38,7 @@
             this.tb_IDkorisnik = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gb_Knjiga = new System.Windows.Forms.GroupBox();
+            this.tb_Godina = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tb_Izdavac = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,15 +49,19 @@
             this.tb_ISBN = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgw_KnjigeSearch = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgw_KorisnikSearch = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_Posudi = new System.Windows.Forms.Button();
-            this.tb_Godina = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MjestoStan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OznaciKorisnik = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Posudi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gb_Korisnik.SuspendLayout();
             this.gb_Knjiga.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_KnjigeSearch)).BeginInit();
@@ -167,6 +172,13 @@
             this.gb_Knjiga.TabStop = false;
             this.gb_Knjiga.Text = "Podaci o knjizi";
             // 
+            // tb_Godina
+            // 
+            this.tb_Godina.Location = new System.Drawing.Point(486, 71);
+            this.tb_Godina.Name = "tb_Godina";
+            this.tb_Godina.Size = new System.Drawing.Size(89, 20);
+            this.tb_Godina.TabIndex = 18;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -245,65 +257,38 @@
             // 
             this.dgw_KnjigeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgw_KnjigeSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgw_KnjigeSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgw_KnjigeSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.isbn,
+            this.NazivKnjige,
+            this.Autor,
+            this.Izdavac,
+            this.godina,
+            this.Posudi});
             this.dgw_KnjigeSearch.Location = new System.Drawing.Point(12, 385);
             this.dgw_KnjigeSearch.Name = "dgw_KnjigeSearch";
             this.dgw_KnjigeSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgw_KnjigeSearch.Size = new System.Drawing.Size(804, 121);
             this.dgw_KnjigeSearch.TabIndex = 11;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // dgw_KorisnikSearch
             // 
             this.dgw_KorisnikSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgw_KorisnikSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgw_KorisnikSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgw_KorisnikSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
+            this.ID,
+            this.Ime,
+            this.Prezime,
+            this.MjestoStan,
+            this.OznaciKorisnik});
             this.dgw_KorisnikSearch.Location = new System.Drawing.Point(12, 119);
             this.dgw_KorisnikSearch.Name = "dgw_KorisnikSearch";
             this.dgw_KorisnikSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgw_KorisnikSearch.Size = new System.Drawing.Size(804, 121);
             this.dgw_KorisnikSearch.TabIndex = 12;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Column1";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Column2";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Column3";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // btn_Posudi
             // 
@@ -314,12 +299,67 @@
             this.btn_Posudi.Text = "Posudi";
             this.btn_Posudi.UseVisualStyleBackColor = true;
             // 
-            // tb_Godina
+            // ID
             // 
-            this.tb_Godina.Location = new System.Drawing.Point(486, 71);
-            this.tb_Godina.Name = "tb_Godina";
-            this.tb_Godina.Size = new System.Drawing.Size(89, 20);
-            this.tb_Godina.TabIndex = 18;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // MjestoStan
+            // 
+            this.MjestoStan.HeaderText = "Mjesto stanovanja";
+            this.MjestoStan.Name = "MjestoStan";
+            this.MjestoStan.Width = 150;
+            // 
+            // OznaciKorisnik
+            // 
+            this.OznaciKorisnik.HeaderText = "Označi";
+            this.OznaciKorisnik.Name = "OznaciKorisnik";
+            this.OznaciKorisnik.Width = 50;
+            // 
+            // isbn
+            // 
+            this.isbn.HeaderText = "ISBN";
+            this.isbn.Name = "isbn";
+            // 
+            // NazivKnjige
+            // 
+            this.NazivKnjige.HeaderText = "Naziv knjige";
+            this.NazivKnjige.Name = "NazivKnjige";
+            this.NazivKnjige.ReadOnly = true;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.HeaderText = "Izdavač";
+            this.Izdavac.Name = "Izdavac";
+            // 
+            // godina
+            // 
+            this.godina.HeaderText = "Godina";
+            this.godina.Name = "godina";
+            // 
+            // Posudi
+            // 
+            this.Posudi.HeaderText = "Posudi";
+            this.Posudi.Name = "Posudi";
+            this.Posudi.Width = 50;
             // 
             // NovaPosudba
             // 
@@ -367,13 +407,18 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgw_KorisnikSearch;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btn_Posudi;
         private System.Windows.Forms.TextBox tb_Godina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MjestoStan;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn OznaciKorisnik;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isbn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivKnjige;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn godina;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Posudi;
     }
 }
