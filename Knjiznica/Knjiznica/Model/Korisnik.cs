@@ -16,6 +16,6 @@ namespace Knjiznica.Model
         public string mjestoStanovanja { get; set; }
         public string prezime { get; set; }
         public char spol { get; set; }
-
+        public string email { get; set; }
     }
 }

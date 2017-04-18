@@ -15,6 +15,7 @@ namespace Knjiznica
     public partial class MainWindow : Form
     {
         List<Knjiga> listaKnjiga;
+        List<Korisnik> listaKorisnika;
         MySqlConnection conn;
         string ConnectionString = string.Empty;
         public MainWindow()
@@ -30,6 +31,7 @@ namespace Knjiznica
             }
             InitializeComponent();
             ucitajPodatke();
+            ucitajKorisnike();
         }
 
         //_____________________________________________________________________
@@ -207,6 +209,45 @@ namespace Knjiznica
                 case 2:
                     this.AcceptButton = btn_PretragaPosudbe;
                     return;
+            }
+        }
+
+        private void ucitajKorisnike()
+        {
+            listaKorisnika = new List<Korisnik>();
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * FROM users";
+            command.ExecuteNonQuery();
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    listaKorisnika.Add(new Korisnik()
+                    {
+                        id = (int)dt.Rows[i][0],
+                        ime = (string)dt.Rows[i][1],
+                        prezime = (string)dt.Rows[i][2],
+                        datumRodenja = DateTime.ParseExact((string)dt.Rows[i][3], "dd.mm.YYYY",System.Globalization.CultureInfo.CurrentCulture),
+                        mjestoStanovanja = (string)dt.Rows[i][4],
+                        adresa = (string)dt.Rows[i][5],
+                        datumIstekaClanarine = DateTime.ParseExact((string)dt.Rows[i][6], "dd.mm.YYYY", System.Globalization.CultureInfo.CurrentCulture),
+                        spol = (char)dt.Rows[i][7],
+                        email = (string)dt.Rows[i][8]
+                    });
+                }
+            }
+            dodajKorisnikeUGrid(listaKorisnika);
+        }
+
+        private void dodajKorisnikeUGrid(List<Korisnik> listaKorisnika)
+        {
+            data_Korisnici.Rows.Clear();
+
+            foreach (Korisnik k in listaKorisnika)
+            {
+                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja, k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine, k.spol);
             }
         }
     }

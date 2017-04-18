@@ -51,6 +51,16 @@
             this.tb_AutorKnjige = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.data_Knjige = new System.Windows.Forms.DataGridView();
+            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AutorKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -75,16 +85,15 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AutorKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumRodenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MjestoStanovanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIstekaClanarine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -332,6 +341,67 @@
             this.data_Knjige.TabIndex = 8;
             this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
             // 
+            // NazivKnjige
+            // 
+            this.NazivKnjige.HeaderText = "Naziv Knjige";
+            this.NazivKnjige.Name = "NazivKnjige";
+            this.NazivKnjige.ReadOnly = true;
+            // 
+            // AutorKnjige
+            // 
+            this.AutorKnjige.HeaderText = "Autor Knjige";
+            this.AutorKnjige.Name = "AutorKnjige";
+            this.AutorKnjige.ReadOnly = true;
+            // 
+            // Kategorija
+            // 
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.HeaderText = "Izdavac";
+            this.Izdavac.Name = "Izdavac";
+            this.Izdavac.ReadOnly = true;
+            // 
+            // Godina
+            // 
+            this.Godina.HeaderText = "Godina";
+            this.Godina.Name = "Godina";
+            this.Godina.ReadOnly = true;
+            // 
+            // ISBN
+            // 
+            this.ISBN.HeaderText = "ISBN";
+            this.ISBN.Name = "ISBN";
+            this.ISBN.ReadOnly = true;
+            // 
+            // BrojStranica
+            // 
+            this.BrojStranica.HeaderText = "BrojStranica";
+            this.BrojStranica.Name = "BrojStranica";
+            this.BrojStranica.ReadOnly = true;
+            // 
+            // Cijena
+            // 
+            this.Cijena.HeaderText = "Cijena";
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            // 
+            // BrojKopija
+            // 
+            this.BrojKopija.HeaderText = "BrojKopija";
+            this.BrojKopija.Name = "BrojKopija";
+            this.BrojKopija.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.HeaderText = "Kontrola";
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Text = "Uredi";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -380,13 +450,27 @@
             // 
             // data_Korisnici
             // 
+            this.data_Korisnici.AllowUserToAddRows = false;
+            this.data_Korisnici.AllowUserToDeleteRows = false;
+            this.data_Korisnici.AllowUserToResizeRows = false;
             this.data_Korisnici.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.data_Korisnici.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.data_Korisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_Korisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Ime,
+            this.Prezime,
+            this.Email,
+            this.DatumRodenja,
+            this.MjestoStanovanja,
+            this.Adresa,
+            this.Spol,
+            this.DatumIstekaClanarine});
             this.data_Korisnici.Location = new System.Drawing.Point(6, 84);
             this.data_Korisnici.Name = "data_Korisnici";
+            this.data_Korisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_Korisnici.Size = new System.Drawing.Size(1041, 437);
             this.data_Korisnici.TabIndex = 5;
             // 
@@ -565,66 +649,50 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
-            // NazivKnjige
+            // ID
             // 
-            this.NazivKnjige.HeaderText = "Naziv Knjige";
-            this.NazivKnjige.Name = "NazivKnjige";
-            this.NazivKnjige.ReadOnly = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
             // 
-            // AutorKnjige
+            // Ime
             // 
-            this.AutorKnjige.HeaderText = "Autor Knjige";
-            this.AutorKnjige.Name = "AutorKnjige";
-            this.AutorKnjige.ReadOnly = true;
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
             // 
-            // Kategorija
+            // Prezime
             // 
-            this.Kategorija.HeaderText = "Kategorija";
-            this.Kategorija.Name = "Kategorija";
-            this.Kategorija.ReadOnly = true;
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
             // 
-            // Izdavac
+            // Email
             // 
-            this.Izdavac.HeaderText = "Izdavac";
-            this.Izdavac.Name = "Izdavac";
-            this.Izdavac.ReadOnly = true;
+            this.Email.HeaderText = "email";
+            this.Email.Name = "Email";
             // 
-            // Godina
+            // DatumRodenja
             // 
-            this.Godina.HeaderText = "Godina";
-            this.Godina.Name = "Godina";
-            this.Godina.ReadOnly = true;
+            this.DatumRodenja.HeaderText = "Datum Rodenja";
+            this.DatumRodenja.Name = "DatumRodenja";
             // 
-            // ISBN
+            // MjestoStanovanja
             // 
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
+            this.MjestoStanovanja.HeaderText = "Mjesto Stanovanja";
+            this.MjestoStanovanja.Name = "MjestoStanovanja";
             // 
-            // BrojStranica
+            // Adresa
             // 
-            this.BrojStranica.HeaderText = "BrojStranica";
-            this.BrojStranica.Name = "BrojStranica";
-            this.BrojStranica.ReadOnly = true;
+            this.Adresa.HeaderText = "Adresa";
+            this.Adresa.Name = "Adresa";
             // 
-            // Cijena
+            // Spol
             // 
-            this.Cijena.HeaderText = "Cijena";
-            this.Cijena.Name = "Cijena";
-            this.Cijena.ReadOnly = true;
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
             // 
-            // BrojKopija
+            // DatumIstekaClanarine
             // 
-            this.BrojKopija.HeaderText = "BrojKopija";
-            this.BrojKopija.Name = "BrojKopija";
-            this.BrojKopija.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.HeaderText = "Kontrola";
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Text = "Uredi";
+            this.DatumIstekaClanarine.HeaderText = "Istek clanarine";
+            this.DatumIstekaClanarine.Name = "DatumIstekaClanarine";
             // 
             // MainWindow
             // 
@@ -715,6 +783,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojKopija;
         private System.Windows.Forms.DataGridViewButtonColumn edit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumRodenja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MjestoStanovanja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Spol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumIstekaClanarine;
     }
 }
 
