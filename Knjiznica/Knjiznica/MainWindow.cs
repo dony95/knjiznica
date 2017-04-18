@@ -193,5 +193,21 @@ namespace Knjiznica
 
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                    this.AcceptButton = btn_PretragaKnjige;
+                    return;
+                case 1:
+                    this.AcceptButton = btn_PretragaKorisnika;
+                    return;
+                case 2:
+                    this.AcceptButton = btn_PretragaPosudbe;
+                    return;
+            }
+        }
     }
 }

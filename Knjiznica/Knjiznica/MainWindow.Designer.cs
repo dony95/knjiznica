@@ -163,6 +163,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(924, 553);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -271,11 +272,6 @@
             this.num_Godina.Name = "num_Godina";
             this.num_Godina.Size = new System.Drawing.Size(102, 20);
             this.num_Godina.TabIndex = 6;
-            this.num_Godina.Value = new decimal(new int[] {
-            2017,
-            0,
-            0,
-            0});
             // 
             // label3
             // 
@@ -571,6 +567,7 @@
             // 
             // MainWindow
             // 
+            this.AcceptButton = this.btn_PretragaKnjige;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 590);
