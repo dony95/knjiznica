@@ -19,7 +19,6 @@ namespace Knjiznica
         string ConnectionString = string.Empty;
         public MainWindow()
         {
-            
             connectionType();
             conn = new MySqlConnection(ConnectionString);
             conn.Open();
@@ -55,10 +54,10 @@ namespace Knjiznica
             if (num_Godina.Value != 0)
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == num_Godina.Value);
 
-            if (cb_Kategorija.SelectedIndex != 0)
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
+            //if (cb_Kategorija.SelectedIndex != 0)
+            //    listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
 
-            if (tb_NazivKnjige.Text != "" || tb_NazivKnjige.Text != null)
+            if (tb_NazivKnjige.Text != "")
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
 
             dodajKnjigeUGrid(listaKnjigatmp.ToList());
@@ -84,7 +83,8 @@ namespace Knjiznica
         {
             //Prikazi formu za dodavanje i uredjivanje knjige
             DodajUrediKnjigu forma = new DodajUrediKnjigu(conn);
-            forma.Show();
+            forma.ShowDialog();
+            ucitajPodatke();
         }
 
         private void btn_DodajKorisnika_Click(object sender, EventArgs e)
