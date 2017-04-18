@@ -16,7 +16,13 @@ namespace Knjiznica
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            try
+            {
+                Application.Run(new MainWindow());
+            }
+            catch(System.ObjectDisposedException e)
+            {
+            }
         }
     }
 }

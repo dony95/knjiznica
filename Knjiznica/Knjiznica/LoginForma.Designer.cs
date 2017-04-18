@@ -76,12 +76,14 @@
             this.btn_Login.TabIndex = 4;
             this.btn_Login.Text = "Prijava";
             this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // LoginForma
             // 
+            this.AcceptButton = this.btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 194);
+            this.ClientSize = new System.Drawing.Size(343, 195);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.tb_Password);
             this.Controls.Add(this.label2);

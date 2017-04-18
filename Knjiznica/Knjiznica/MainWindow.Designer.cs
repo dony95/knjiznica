@@ -117,13 +117,14 @@
             this.novaKnjigaToolStripMenuItem.Name = "novaKnjigaToolStripMenuItem";
             this.novaKnjigaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.novaKnjigaToolStripMenuItem.Text = "Dodaj knjigu";
+            this.novaKnjigaToolStripMenuItem.Click += new System.EventHandler(this.btn_DodajKnjigu_Click);
             // 
             // dodajKorisnikaToolStripMenuItem
             // 
             this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
             this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
-            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
+            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.btn_DodajKorisnika_Click);
             // 
             // toolStripSeparator1
             // 
@@ -135,7 +136,7 @@
             this.novaPosudbaToolStripMenuItem.Name = "novaPosudbaToolStripMenuItem";
             this.novaPosudbaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.novaPosudbaToolStripMenuItem.Text = "Nova posudba";
-            this.novaPosudbaToolStripMenuItem.Click += new System.EventHandler(this.novaPosudbaToolStripMenuItem_Click);
+            this.novaPosudbaToolStripMenuItem.Click += new System.EventHandler(this.btn_NovaPosudba_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -270,6 +271,11 @@
             this.num_Godina.Name = "num_Godina";
             this.num_Godina.Size = new System.Drawing.Size(102, 20);
             this.num_Godina.TabIndex = 6;
+            this.num_Godina.Value = new decimal(new int[] {
+            2017,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -312,6 +318,7 @@
             this.data_Knjige.Name = "data_Knjige";
             this.data_Knjige.Size = new System.Drawing.Size(904, 444);
             this.data_Knjige.TabIndex = 8;
+            this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
             // 
             // ID
             // 

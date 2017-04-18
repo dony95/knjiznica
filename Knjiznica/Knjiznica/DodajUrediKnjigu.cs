@@ -14,9 +14,12 @@ namespace Knjiznica
 {
     public partial class DodajUrediKnjigu : Form
     {
+
+        MySqlConnection conn;
         bool error = false;
-        public DodajUrediKnjigu()
+        public DodajUrediKnjigu(MySqlConnection conn)
         {
+            this.conn = conn;
             InitializeComponent();
             dtp_Godina.Format = DateTimePickerFormat.Custom;
             dtp_Godina.CustomFormat = "yyyy";
@@ -38,19 +41,6 @@ namespace Knjiznica
                 brojKopija = (int)num_BrKopija.Value
             };
 
-            string ConnectionString = string.Empty;
-
-            DialogResult dialog = MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-                ConnectionString = "server=192.168.1.8;uid=suky;" +
-                    "pwd=0000;database=knjiznica;";
-            else if (dialog == DialogResult.No)
-                ConnectionString = "server=donyslav.ddns.net;uid=suky;" +
-                    "pwd=0000;database=knjiznica;";
-
-            MySqlConnection conn = new MySqlConnection(ConnectionString);
-            if (!error)
-                conn.Open();
             try
             {
                 MySqlCommand command = conn.CreateCommand();
@@ -77,7 +67,6 @@ namespace Knjiznica
                 {
                     MessageBox.Show("Knjiga uspjesno unesena");
                     this.Close();
-                    conn.Close();
                 }
             }
 
