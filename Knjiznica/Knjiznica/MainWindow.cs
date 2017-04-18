@@ -229,11 +229,11 @@ namespace Knjiznica
                         id = (int)dt.Rows[i][0],
                         ime = (string)dt.Rows[i][1],
                         prezime = (string)dt.Rows[i][2],
-                        datumRodenja = DateTime.ParseExact((string)dt.Rows[i][3], "dd.mm.YYYY",System.Globalization.CultureInfo.CurrentCulture),
+                        datumRodenja = parsirajDatum((string)dt.Rows[i][3]),
                         mjestoStanovanja = (string)dt.Rows[i][4],
                         adresa = (string)dt.Rows[i][5],
-                        datumIstekaClanarine = DateTime.ParseExact((string)dt.Rows[i][6], "dd.mm.YYYY", System.Globalization.CultureInfo.CurrentCulture),
-                        spol = (char)dt.Rows[i][7],
+                        datumIstekaClanarine = parsirajDatum((string)dt.Rows[i][6]),
+                        spol = ((string)dt.Rows[i][7])[0],
                         email = (string)dt.Rows[i][8]
                     });
                 }
@@ -249,6 +249,11 @@ namespace Knjiznica
             {
                 data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja, k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine, k.spol);
             }
+        }
+
+        private DateTime parsirajDatum(string s)
+        {
+            return DateTime.ParseExact("10.4.2017.", )
         }
     }
 }
