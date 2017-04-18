@@ -19,7 +19,7 @@ namespace Knjiznica
         string ConnectionString = string.Empty;
         public MainWindow()
         {
-            listaKnjiga = new List<Knjiga>();
+            
             connectionType();
             conn = new MySqlConnection(ConnectionString);
             conn.Open();
@@ -58,7 +58,7 @@ namespace Knjiznica
             if (cb_Kategorija.SelectedIndex != 0)
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
 
-            if (tb_NazivKnjige.Text != "")
+            if (tb_NazivKnjige.Text != "" || tb_NazivKnjige.Text != null)
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
 
             dodajKnjigeUGrid(listaKnjigatmp.ToList());
@@ -128,6 +128,7 @@ namespace Knjiznica
 
         public void ucitajPodatke()
         {
+            listaKnjiga = new List<Knjiga>();
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT * FROM knjige";
             command.ExecuteNonQuery();

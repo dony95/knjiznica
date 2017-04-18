@@ -70,6 +70,8 @@ namespace Knjiznica
                 }
             }
 
+            //MainWindow mw = (MainWindow)Application.OpenForms["MainWindow"];
+            //mw.ucitajPodatke();
 
         }
 
