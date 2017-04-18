@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
+using System.Globalization;
 
 namespace Knjiznica
 {
@@ -253,7 +254,7 @@ namespace Knjiznica
 
         private DateTime parsirajDatum(string s)
         {
-            return DateTime.ParseExact("10.4.2017.", )
+            return DateTime.ParseExact("10.4.2017", "dd.M.YYYY", CultureInfo.InvariantCulture);
         }
     }
 }
