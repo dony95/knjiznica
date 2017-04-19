@@ -17,6 +17,7 @@ namespace Knjiznica
     {
         List<Knjiga> listaKnjiga;
         List<Korisnik> listaKorisnika;
+        List<Posudba> listaPosudba;
         MySqlConnection conn;
         string ConnectionString = string.Empty;
         public MainWindow()
@@ -31,8 +32,9 @@ namespace Knjiznica
                 return;
             }
             InitializeComponent();
-            ucitajPodatke();
+            ucitajKnjige();
             ucitajKorisnike();
+            ucitajPosudbe();
         }
 
         //_____________________________________________________________________
@@ -104,7 +106,7 @@ namespace Knjiznica
             //Prikazi formu za dodavanje i uredjivanje knjige
             DodajUrediKnjigu forma = new DodajUrediKnjigu(conn);
             forma.ShowDialog();
-            ucitajPodatke();
+            ucitajKnjige();
         }
 
         private void btn_DodajKorisnika_Click(object sender, EventArgs e)
@@ -116,38 +118,18 @@ namespace Knjiznica
 
         private void btn_NovaPosudba_Click(object sender, EventArgs e)
         {
-            NovaPosudba forma = new NovaPosudba(listaKnjiga, listaKorisnika);
+            NovaPosudba forma = new NovaPosudba(conn, listaKnjiga, listaKorisnika);
             forma.Show();
+            ucitajPosudbe();
         }
 
-        private void connectionType()
-        {
-            if (Properties.Settings.Default["databaseLocation"].ToString() == "local")
-            {
-                ConnectionString = Properties.Settings.Default["localConnection"].ToString();
-                return;
-            }
-            else if (Properties.Settings.Default["databaseLocation"].ToString() == "remote")
-            {
-                ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
-                return;
-            }
+        //_____________________________________________________________________
 
-            DialogResult dialog = MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                ConnectionString = Properties.Settings.Default["localConnection"].ToString();
-                Properties.Settings.Default["databaseLocation"] = "local";
-            }
-            else if (dialog == DialogResult.No)
-            {
-                ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
-                Properties.Settings.Default["databaseLocation"] = "remote";
-            }
-            Properties.Settings.Default.Save();
-        }
+        //funkcije za ucitavanje
 
-        public void ucitajPodatke()
+        //_____________________________________________________________________
+
+        public void ucitajKnjige()
         {
             listaKnjiga = new List<Knjiga>();
             MySqlCommand command = conn.CreateCommand();
@@ -176,59 +158,6 @@ namespace Knjiznica
             }
 
             dodajKnjigeUGrid(listaKnjiga);
-        }
-
-        private void data_Knjige_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridView data_grid = (DataGridView)sender;
-
-            if(data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                MessageBox.Show("Id knjige je " + data_grid.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            }
-        }
-
-        private void dodajKnjigeUGrid(List<Knjiga> listaKnjiga)
-        {
-            data_Knjige.Rows.Clear();
-            int dataGridCount = 0;
-
-            foreach (Knjiga k in listaKnjiga)
-            {
-                data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.brojStranica, k.cijena, k.brojKopija);
-                data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
-                dataGridCount++;
-            }
-        }
-
-        private DialogResult ucitajLoginFormu()
-        {
-            LoginForma forma = new LoginForma(conn);
-            return forma.ShowDialog();
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            conn.Close();
-            base.OnFormClosing(e);
-
-            if (e.CloseReason == CloseReason.WindowsShutDown) return;
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch((sender as TabControl).SelectedIndex)
-            {
-                case 0:
-                    this.AcceptButton = btn_PretragaKnjige;
-                    return;
-                case 1:
-                    this.AcceptButton = btn_PretragaKorisnika;
-                    return;
-                case 2:
-                    this.AcceptButton = btn_PretragaPosudbe;
-                    return;
-            }
         }
 
         private void ucitajKorisnike()
@@ -260,20 +189,160 @@ namespace Knjiznica
             dodajKorisnikeUGrid(listaKorisnika);
         }
 
+        private void ucitajPosudbe()
+        {
+            listaPosudba = new List<Posudba>();
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * FROM posudbe";
+            command.ExecuteNonQuery();
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    listaPosudba.Add(new Posudba()
+                    {
+                        ID = (int)dt.Rows[i][0],
+                        korisnik = listaKorisnika.Find(k => k.id == (int)dt.Rows[i][1]),
+                        listaKnjiga = knjigeIdUObjekte((string)dt.Rows[i][2]),
+                        datumIstekaPosudbe = parsirajDatum((string)dt.Rows[i][3]),
+                        datumPosudbe = parsirajDatum((string)dt.Rows[i][4])
+                    });
+                }
+            }
+
+            dodajPosudbeUGrid(listaPosudba);
+        }
+
+        private DialogResult ucitajLoginFormu()
+        {
+            LoginForma forma = new LoginForma(conn);
+            return forma.ShowDialog();
+        }
+
+        //_____________________________________________________________________
+
+        //dodaj u grid funkcije
+
+        //_____________________________________________________________________
+
+        private void dodajKnjigeUGrid(List<Knjiga> listaKnjiga)
+        {
+            data_Knjige.Rows.Clear();
+            int dataGridCount = 0;
+
+            foreach (Knjiga k in listaKnjiga)
+            {
+                data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.brojStranica, k.cijena, k.brojKopija);
+                data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
+                dataGridCount++;
+            }
+        }
+
         private void dodajKorisnikeUGrid(List<Korisnik> listaKorisnika)
         {
             data_Korisnici.Rows.Clear();
 
             foreach (Korisnik k in listaKorisnika)
             {
-                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja.ToShortDateString(), 
+                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja.ToShortDateString(),
                     k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine.ToShortDateString(), k.spol);
             }
+        }
+
+        private void dodajPosudbeUGrid(List<Posudba> listaPosudba)
+        {
+            foreach (Posudba p in listaPosudba)
+                data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
+                                        p.datumPosudbe.ToShortDateString(), p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
+        }
+
+        //_____________________________________________________________________
+
+        //parsiranje podataka
+
+        //_____________________________________________________________________
+
+        private List<Knjiga> knjigeIdUObjekte(string stringID)
+        {
+            List<Knjiga> lista = new List<Knjiga>();
+            string[] polje = stringID.Split(',');
+
+            for (int i = 0; i < polje.Length; i++)
+                lista.Add(listaKnjiga.Find(k => k.id == int.Parse(polje[i])));
+
+            return lista;
         }
 
         private DateTime parsirajDatum(string s)
         {
             return DateTime.ParseExact(s, "dd.MM.yyyy.", CultureInfo.InvariantCulture);
+        }
+
+        //odredivanje tipa konekcije
+        private void connectionType()
+        {
+            if (Properties.Settings.Default["databaseLocation"].ToString() == "local")
+            {
+                ConnectionString = Properties.Settings.Default["localConnection"].ToString();
+                return;
+            }
+            else if (Properties.Settings.Default["databaseLocation"].ToString() == "remote")
+            {
+                ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
+                return;
+            }
+
+            DialogResult dialog = MessageBox.Show("Lokalna baza podataka?", "Upit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                ConnectionString = Properties.Settings.Default["localConnection"].ToString();
+                Properties.Settings.Default["databaseLocation"] = "local";
+            }
+            else if (dialog == DialogResult.No)
+            {
+                ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
+                Properties.Settings.Default["databaseLocation"] = "remote";
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        //test
+        private void data_Knjige_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView data_grid = (DataGridView)sender;
+
+            if(data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                MessageBox.Show("Id knjige je " + data_grid.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            }
+        }
+
+        //zatvaranje apliakcije
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            conn.Close();
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
+
+        //switchanje funkcije aktiviranje enter tipkom na promejnu aktivnog taba
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                    this.AcceptButton = btn_PretragaKnjige;
+                    return;
+                case 1:
+                    this.AcceptButton = btn_PretragaKorisnika;
+                    return;
+                case 2:
+                    this.AcceptButton = btn_PretragaPosudbe;
+                    return;
+            }
         }
 
         private void tb_Godina_KeyPress(object sender, KeyPressEventArgs e)
@@ -282,6 +351,6 @@ namespace Knjiznica
             {
                 e.Handled = true;
             }
-        }
+        }    
     }
 }

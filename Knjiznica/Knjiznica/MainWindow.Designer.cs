@@ -38,6 +38,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tb_Godina = new System.Windows.Forms.TextBox();
             this.btn_DodajKnjigu = new System.Windows.Forms.Button();
             this.tb_Izdavac = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,6 +68,15 @@
             this.tb_email = new System.Windows.Forms.TextBox();
             this.btn_DodajKorisnika = new System.Windows.Forms.Button();
             this.data_Korisnici = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumRodenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MjestoStanovanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIstekaClanarine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_PretragaKorisnika = new System.Windows.Forms.Button();
             this.tb_Prezime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -90,16 +100,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tb_Godina = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumRodenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MjestoStanovanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumIstekaClanarine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posudbaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imeIprezimeKorisnika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumIstekaPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brojKnjiga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -210,6 +215,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Knjige";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tb_Godina
+            // 
+            this.tb_Godina.Location = new System.Drawing.Point(801, 19);
+            this.tb_Godina.MaxLength = 4;
+            this.tb_Godina.Name = "tb_Godina";
+            this.tb_Godina.Size = new System.Drawing.Size(100, 20);
+            this.tb_Godina.TabIndex = 43;
+            this.tb_Godina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Godina_KeyPress);
             // 
             // btn_DodajKnjigu
             // 
@@ -487,6 +501,55 @@
             this.data_Korisnici.Size = new System.Drawing.Size(1064, 437);
             this.data_Korisnici.TabIndex = 5;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Width = 50;
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            // 
+            // Prezime
+            // 
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "email";
+            this.Email.Name = "Email";
+            // 
+            // DatumRodenja
+            // 
+            this.DatumRodenja.HeaderText = "Datum Rodenja";
+            this.DatumRodenja.Name = "DatumRodenja";
+            this.DatumRodenja.Width = 120;
+            // 
+            // MjestoStanovanja
+            // 
+            this.MjestoStanovanja.HeaderText = "Mjesto Stanovanja";
+            this.MjestoStanovanja.Name = "MjestoStanovanja";
+            this.MjestoStanovanja.Width = 120;
+            // 
+            // Adresa
+            // 
+            this.Adresa.HeaderText = "Adresa";
+            this.Adresa.Name = "Adresa";
+            // 
+            // DatumIstekaClanarine
+            // 
+            this.DatumIstekaClanarine.HeaderText = "Istek clanarine";
+            this.DatumIstekaClanarine.Name = "DatumIstekaClanarine";
+            this.DatumIstekaClanarine.Width = 120;
+            // 
+            // Spol
+            // 
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
+            // 
             // btn_PretragaKorisnika
             // 
             this.btn_PretragaKorisnika.Location = new System.Drawing.Point(483, 54);
@@ -646,11 +709,21 @@
             // 
             // data_Posudbe
             // 
+            this.data_Posudbe.AllowUserToAddRows = false;
+            this.data_Posudbe.AllowUserToDeleteRows = false;
+            this.data_Posudbe.AllowUserToOrderColumns = true;
+            this.data_Posudbe.AllowUserToResizeRows = false;
             this.data_Posudbe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.data_Posudbe.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.data_Posudbe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_Posudbe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.posudbaID,
+            this.imeIprezimeKorisnika,
+            this.datumPosudbe,
+            this.datumIstekaPosudbe,
+            this.brojKnjiga});
             this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
             this.data_Posudbe.Name = "data_Posudbe";
             this.data_Posudbe.Size = new System.Drawing.Size(1064, 437);
@@ -698,63 +771,30 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
-            // tb_Godina
+            // posudbaID
             // 
-            this.tb_Godina.Location = new System.Drawing.Point(801, 19);
-            this.tb_Godina.MaxLength = 4;
-            this.tb_Godina.Name = "tb_Godina";
-            this.tb_Godina.Size = new System.Drawing.Size(100, 20);
-            this.tb_Godina.TabIndex = 43;
-            this.tb_Godina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Godina_KeyPress);
+            this.posudbaID.HeaderText = "ID";
+            this.posudbaID.Name = "posudbaID";
             // 
-            // ID
+            // imeIprezimeKorisnika
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Width = 50;
+            this.imeIprezimeKorisnika.HeaderText = "Korisnik";
+            this.imeIprezimeKorisnika.Name = "imeIprezimeKorisnika";
             // 
-            // Ime
+            // datumPosudbe
             // 
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
+            this.datumPosudbe.HeaderText = "Datum posudbe";
+            this.datumPosudbe.Name = "datumPosudbe";
             // 
-            // Prezime
+            // datumIstekaPosudbe
             // 
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
+            this.datumIstekaPosudbe.HeaderText = "Datum isteka posudbe";
+            this.datumIstekaPosudbe.Name = "datumIstekaPosudbe";
             // 
-            // Email
+            // brojKnjiga
             // 
-            this.Email.HeaderText = "email";
-            this.Email.Name = "Email";
-            // 
-            // DatumRodenja
-            // 
-            this.DatumRodenja.HeaderText = "Datum Rodenja";
-            this.DatumRodenja.Name = "DatumRodenja";
-            this.DatumRodenja.Width = 120;
-            // 
-            // MjestoStanovanja
-            // 
-            this.MjestoStanovanja.HeaderText = "Mjesto Stanovanja";
-            this.MjestoStanovanja.Name = "MjestoStanovanja";
-            this.MjestoStanovanja.Width = 120;
-            // 
-            // Adresa
-            // 
-            this.Adresa.HeaderText = "Adresa";
-            this.Adresa.Name = "Adresa";
-            // 
-            // DatumIstekaClanarine
-            // 
-            this.DatumIstekaClanarine.HeaderText = "Istek clanarine";
-            this.DatumIstekaClanarine.Name = "DatumIstekaClanarine";
-            this.DatumIstekaClanarine.Width = 120;
-            // 
-            // Spol
-            // 
-            this.Spol.HeaderText = "Spol";
-            this.Spol.Name = "Spol";
+            this.brojKnjiga.HeaderText = "Broj knjiga";
+            this.brojKnjiga.Name = "brojKnjiga";
             // 
             // MainWindow
             // 
@@ -859,6 +899,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIstekaClanarine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posudbaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imeIprezimeKorisnika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datumPosudbe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datumIstekaPosudbe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn brojKnjiga;
     }
 }
 

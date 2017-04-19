@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Knjiznica
 {
     public partial class NovaPosudba : Form
     {
+        MySqlConnection conn;
         List<Knjiga> listaKnjiga;
         List<Korisnik> listaKorisnika;
         int korSelectedCBoxRowIndex = -1;
 
 
-        public NovaPosudba(List<Knjiga> listaKnjiga, List<Korisnik> listaKorisnika)
+        public NovaPosudba(MySqlConnection conn, List<Knjiga> listaKnjiga, List<Korisnik> listaKorisnika)
         {
+            this.conn = conn;
             this.listaKnjiga = listaKnjiga;
             this.listaKorisnika = listaKorisnika;
             InitializeComponent();
@@ -147,9 +150,51 @@ namespace Knjiznica
 
             korisnik = listaKorisnika.Find(kor => kor.id == (int)dgw_KorisnikSearch.Rows[korSelectedCBoxRowIndex].Cells[0].Value);
 
-            pos = new Posudba(korisnik, listaKnjigaPosudba, DateTime.Now);
+            pos = new Posudba()
+            {
+                korisnik = korisnik,
+                listaKnjiga = listaKnjigaPosudba,
+                datumPosudbe = DateTime.Now,
+                datumIstekaPosudbe = DateTime.Now.AddDays(14)
+            };
 
+            bool error = false;
 
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "INSERT INTO posudbe (userID, knjigeID, datumPosudbe, datumIstekaPosudbe) VALUES (@userID, @knjigeID, @datumPosudbe, @datumIstekaPosudbe)";
+                command.Parameters.AddWithValue("@userID", pos.korisnik.id);
+                command.Parameters.AddWithValue("@knjigeID", dohvatiIdKnjiga(pos.listaKnjiga));
+                command.Parameters.AddWithValue("@datumPosudbe", pos.datumPosudbe.ToString("dd.MM.yyyy."));
+                command.Parameters.AddWithValue("@datumIstekaPosudbe", pos.datumIstekaPosudbe.ToString("dd.MM.yyyy."));
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                error = true;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (!error)
+                {
+                    MessageBox.Show("Posudba uspjesno unesena");
+                    this.Close();
+                }
+            }
+        }
+
+        private string dohvatiIdKnjiga(List<Knjiga> lista)
+        {
+            string retVal = string.Empty;
+
+            foreach(Knjiga k in lista)
+            {
+                retVal += k.id + ",";
+            }
+
+            return retVal.Substring(0,retVal.Length-1);
         }
     }
 }
