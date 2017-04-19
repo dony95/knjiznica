@@ -164,7 +164,7 @@ namespace Knjiznica
                         kategorija = (string)dt.Rows[i][3],
                         izdavac = (string)dt.Rows[i][4],
                         godina = (int)dt.Rows[i][5],
-                        isbn = (int)dt.Rows[i][6],
+                        isbn = (string)dt.Rows[i][6],
                         brojStranica = (int)dt.Rows[i][7],
                         cijena = (double)dt.Rows[i][8],
                         brojKopija = (int)dt.Rows[i][9]
@@ -192,7 +192,7 @@ namespace Knjiznica
 
             foreach (Knjiga k in listaKnjiga)
             {
-                data_Knjige.Rows.Add(k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.isbn, k.brojStranica, k.cijena, k.brojKopija);
+                data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.brojStranica, k.cijena, k.brojKopija);
                 data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
                 dataGridCount++;
             }

@@ -11,7 +11,7 @@ namespace Knjiznica
     {
         List<Knjiga> listaKnjiga;
         List<Korisnik> listaKorisnika;
-        int selectedCheckBoxRowIndex = -1;
+        int korSelectedCBoxRowIndex = -1;
 
 
         public NovaPosudba(List<Knjiga> listaKnjiga, List<Korisnik> listaKorisnika)
@@ -127,22 +127,32 @@ namespace Knjiznica
 
             if(dgw.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
             {
-                if(selectedCheckBoxRowIndex != -1)
-                    dgw.Rows[selectedCheckBoxRowIndex].Cells["OznaciKorisnik"].Value = false;
+                if(korSelectedCBoxRowIndex != -1)
+                    dgw.Rows[korSelectedCBoxRowIndex].Cells["OznaciKorisnik"].Value = false;
 
-                selectedCheckBoxRowIndex = e.RowIndex;
+                korSelectedCBoxRowIndex = e.RowIndex;
             }
         }
 
         private void btn_Posudi_Click(object sender, EventArgs e)
         {
-            List<Knjiga> listaKnjigaPosudba;
+            Posudba pos;
+            Korisnik korisnik = new Korisnik();
+            List<Knjiga> listaKnjigaPosudba = new List<Knjiga>();
 
             foreach(DataGridViewRow r in dgw_KnjigeSearch.Rows)
             {
                 if (r.Cells["Posudi"].Value != null && (bool)r.Cells["Posudi"].Value == true)
-                    MessageBox.Show((string)r.Cells[2].Value);
+                {
+                    listaKnjigaPosudba.Add(listaKnjiga.Find(k => k.isbn == (string)r.Cells[0].Value));
+                }
             }
+
+            korisnik = listaKorisnika.Find(kor => kor.id == (int)dgw_KorisnikSearch.Rows[korSelectedCBoxRowIndex].Cells[0].Value);
+
+            pos = new Posudba(korisnik, listaKnjigaPosudba, DateTime.Now);
+
+
         }
     }
 }
