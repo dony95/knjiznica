@@ -53,7 +53,7 @@
             this.tb_Prezime.Location = new System.Drawing.Point(110, 54);
             this.tb_Prezime.Name = "tb_Prezime";
             this.tb_Prezime.Size = new System.Drawing.Size(181, 20);
-            this.tb_Prezime.TabIndex = 7;
+            this.tb_Prezime.TabIndex = 2;
             // 
             // label1
             // 
@@ -114,35 +114,35 @@
             this.tb_Ime.Location = new System.Drawing.Point(110, 21);
             this.tb_Ime.Name = "tb_Ime";
             this.tb_Ime.Size = new System.Drawing.Size(181, 20);
-            this.tb_Ime.TabIndex = 6;
+            this.tb_Ime.TabIndex = 1;
             // 
             // tb_MjestoStan
             // 
             this.tb_MjestoStan.Location = new System.Drawing.Point(110, 193);
             this.tb_MjestoStan.Name = "tb_MjestoStan";
             this.tb_MjestoStan.Size = new System.Drawing.Size(181, 20);
-            this.tb_MjestoStan.TabIndex = 9;
+            this.tb_MjestoStan.TabIndex = 7;
             // 
             // tb_Adresa
             // 
             this.tb_Adresa.Location = new System.Drawing.Point(110, 157);
             this.tb_Adresa.Name = "tb_Adresa";
             this.tb_Adresa.Size = new System.Drawing.Size(181, 20);
-            this.tb_Adresa.TabIndex = 8;
+            this.tb_Adresa.TabIndex = 6;
             // 
             // dtp_DatRodjenja
             // 
             this.dtp_DatRodjenja.Location = new System.Drawing.Point(110, 121);
             this.dtp_DatRodjenja.Name = "dtp_DatRodjenja";
             this.dtp_DatRodjenja.Size = new System.Drawing.Size(181, 20);
-            this.dtp_DatRodjenja.TabIndex = 11;
+            this.dtp_DatRodjenja.TabIndex = 5;
             // 
             // btn_SpremiKorisnika
             // 
             this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 289);
             this.btn_SpremiKorisnika.Name = "btn_SpremiKorisnika";
             this.btn_SpremiKorisnika.Size = new System.Drawing.Size(93, 30);
-            this.btn_SpremiKorisnika.TabIndex = 1;
+            this.btn_SpremiKorisnika.TabIndex = 9;
             this.btn_SpremiKorisnika.Text = "Spremi";
             this.btn_SpremiKorisnika.UseVisualStyleBackColor = true;
             this.btn_SpremiKorisnika.Click += new System.EventHandler(this.button1_Click);
@@ -153,7 +153,7 @@
             this.rb_Muski.Location = new System.Drawing.Point(173, 89);
             this.rb_Muski.Name = "rb_Muski";
             this.rb_Muski.Size = new System.Drawing.Size(53, 17);
-            this.rb_Muski.TabIndex = 1;
+            this.rb_Muski.TabIndex = 4;
             this.rb_Muski.TabStop = true;
             this.rb_Muski.Text = "Muški";
             this.rb_Muski.UseVisualStyleBackColor = true;
@@ -164,7 +164,7 @@
             this.rb_Zenski.Location = new System.Drawing.Point(110, 89);
             this.rb_Zenski.Name = "rb_Zenski";
             this.rb_Zenski.Size = new System.Drawing.Size(57, 17);
-            this.rb_Zenski.TabIndex = 0;
+            this.rb_Zenski.TabIndex = 3;
             this.rb_Zenski.TabStop = true;
             this.rb_Zenski.Text = "Ženski";
             this.rb_Zenski.UseVisualStyleBackColor = true;
@@ -208,7 +208,7 @@
             this.tb_Email.Location = new System.Drawing.Point(110, 230);
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(181, 20);
-            this.tb_Email.TabIndex = 13;
+            this.tb_Email.TabIndex = 8;
             // 
             // DodajUrediKorisnika
             // 

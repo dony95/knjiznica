@@ -49,6 +49,7 @@ namespace Knjiznica
                 command.Parameters.AddWithValue("@adresa", korisnik.adresa);
                 command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToShortDateString());
                 command.Parameters.AddWithValue("@spol", korisnik.spol);
+                command.Parameters.AddWithValue("@email", korisnik.email);
                 command.ExecuteNonQuery();
             }
             catch (MySqlException ex)

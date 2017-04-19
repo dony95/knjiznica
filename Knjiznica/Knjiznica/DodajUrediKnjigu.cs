@@ -37,14 +37,13 @@ namespace Knjiznica
                 isbn = Int32.Parse(tb_ISBN.Text),
                 kategorija = cb_Kategorija.SelectedText,
                 brojStranica = (int)num_BrojStranica.Value,
-                cijena = double.Parse(tb_Cijena.Text),
                 brojKopija = (int)num_BrKopija.Value
             };
 
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, cijena, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @Cijena, @BrojKopija)";
+                command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
                 command.Parameters.AddWithValue("@Autor", knjiga.autor);
                 command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
                 command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
@@ -52,7 +51,6 @@ namespace Knjiznica
                 command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
                 command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
                 command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
-                command.Parameters.AddWithValue("@Cijena", knjiga.cijena);
                 command.Parameters.AddWithValue("@BrojKopija", knjiga.brojStranica);
                 command.ExecuteNonQuery();
             }

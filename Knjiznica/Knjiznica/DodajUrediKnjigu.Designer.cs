@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.num_BrKopija = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.btn_DodajUredi = new System.Windows.Forms.Button();
             this.dtp_Godina = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,14 +46,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_Autor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_Cijena = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.num_BrKopija = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_BrKopija)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -61,9 +58,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.num_BrKopija);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.tb_Cijena);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btn_DodajUredi);
             this.groupBox1.Controls.Add(this.dtp_Godina);
             this.groupBox1.Controls.Add(this.label7);
@@ -86,13 +80,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci o knjizi";
             // 
+            // num_BrKopija
+            // 
+            this.num_BrKopija.Location = new System.Drawing.Point(196, 198);
+            this.num_BrKopija.Name = "num_BrKopija";
+            this.num_BrKopija.Size = new System.Drawing.Size(181, 20);
+            this.num_BrKopija.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(193, 182);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Broj kopija";
+            // 
             // btn_DodajUredi
             // 
             this.btn_DodajUredi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_DodajUredi.Location = new System.Drawing.Point(119, 289);
             this.btn_DodajUredi.Name = "btn_DodajUredi";
             this.btn_DodajUredi.Size = new System.Drawing.Size(146, 32);
-            this.btn_DodajUredi.TabIndex = 10;
+            this.btn_DodajUredi.TabIndex = 9;
             this.btn_DodajUredi.Text = "Potvrdi";
             this.btn_DodajUredi.UseVisualStyleBackColor = true;
             this.btn_DodajUredi.Click += new System.EventHandler(this.btn_DodajUredi_Click);
@@ -212,48 +222,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Autor";
             // 
-            // tb_Cijena
-            // 
-            this.tb_Cijena.Location = new System.Drawing.Point(196, 198);
-            this.tb_Cijena.Name = "tb_Cijena";
-            this.tb_Cijena.Size = new System.Drawing.Size(145, 20);
-            this.tb_Cijena.TabIndex = 8;
-            this.tb_Cijena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Cijena_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(193, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Cijena";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(347, 201);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "HRK";
-            // 
-            // num_BrKopija
-            // 
-            this.num_BrKopija.Location = new System.Drawing.Point(9, 244);
-            this.num_BrKopija.Name = "num_BrKopija";
-            this.num_BrKopija.Size = new System.Drawing.Size(83, 20);
-            this.num_BrKopija.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 228);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Broj kopija";
-            // 
             // DodajUrediKnjigu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,8 +236,8 @@
             this.Text = "DodajUrediKnjigu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_BrKopija)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,9 +260,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_ISBN;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tb_Cijena;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown num_BrKopija;
         private System.Windows.Forms.Label label10;
     }
