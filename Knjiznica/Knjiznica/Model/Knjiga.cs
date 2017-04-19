@@ -14,7 +14,7 @@ namespace Knjiznica.Model
         public string kategorija { get; set; }
         public string izdavac { get; set; }
         public int godina { get; set; }
-        public int isbn { get; set; }
+        public string isbn { get; set; }
         public int brojStranica { get; set; }
         public double cijena { get; set; }
         public int brojKopija { get; set; }

@@ -44,10 +44,10 @@ namespace Knjiznica
                 command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol)";
                 command.Parameters.AddWithValue("@ime", korisnik.ime);
                 command.Parameters.AddWithValue("@prezime", korisnik.prezime);
-                command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToShortDateString());
+                command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToString("dd.MM.yyyy."));
                 command.Parameters.AddWithValue("@mjestoStanovanja", korisnik.mjestoStanovanja);
                 command.Parameters.AddWithValue("@adresa", korisnik.adresa);
-                command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToShortDateString());
+                command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToString("dd.MM.yyyy."));
                 command.Parameters.AddWithValue("@spol", korisnik.spol);
                 command.Parameters.AddWithValue("@email", korisnik.email);
                 command.ExecuteNonQuery();

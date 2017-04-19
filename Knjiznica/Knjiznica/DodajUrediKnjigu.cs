@@ -34,7 +34,7 @@ namespace Knjiznica
                 naziv = tb_NazivKnjige.Text,
                 izdavac = tb_Izdavac.Text,
                 godina = dtp_Godina.Value.Year,
-                isbn = Int32.Parse(tb_ISBN.Text),
+                isbn = tb_ISBN.Text,
                 kategorija = cb_Kategorija.SelectedText,
                 brojStranica = (int)num_BrojStranica.Value,
                 brojKopija = (int)num_BrKopija.Value
