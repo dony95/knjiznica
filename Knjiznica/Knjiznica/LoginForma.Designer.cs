@@ -37,6 +37,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(42, 62);
             this.label1.Name = "label1";
@@ -46,6 +49,9 @@
             // 
             // tb_Username
             // 
+            this.tb_Username.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Username.Location = new System.Drawing.Point(123, 59);
             this.tb_Username.Name = "tb_Username";
             this.tb_Username.Size = new System.Drawing.Size(164, 20);
@@ -53,6 +59,9 @@
             // 
             // tb_Password
             // 
+            this.tb_Password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Password.Location = new System.Drawing.Point(123, 85);
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '*';
@@ -61,6 +70,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(42, 88);
             this.label2.Name = "label2";
@@ -70,6 +82,9 @@
             // 
             // btn_Login
             // 
+            this.btn_Login.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Login.Location = new System.Drawing.Point(212, 111);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(75, 23);
@@ -83,7 +98,7 @@
             this.AcceptButton = this.btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 195);
+            this.ClientSize = new System.Drawing.Size(343, 194);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.tb_Password);
             this.Controls.Add(this.label2);

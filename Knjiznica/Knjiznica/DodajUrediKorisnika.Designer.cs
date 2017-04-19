@@ -43,6 +43,8 @@
             this.rb_Muski = new System.Windows.Forms.RadioButton();
             this.rb_Zenski = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_Email = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,7 +139,7 @@
             // 
             // btn_SpremiKorisnika
             // 
-            this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 243);
+            this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 289);
             this.btn_SpremiKorisnika.Name = "btn_SpremiKorisnika";
             this.btn_SpremiKorisnika.Size = new System.Drawing.Size(93, 30);
             this.btn_SpremiKorisnika.TabIndex = 1;
@@ -169,6 +171,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.tb_Email);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_SpremiKorisnika);
             this.groupBox1.Controls.Add(this.label6);
@@ -185,20 +189,36 @@
             this.groupBox1.Controls.Add(this.tb_Adresa);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 286);
+            this.groupBox1.Size = new System.Drawing.Size(304, 325);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci o korisniku";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 233);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Email";
+            // 
+            // tb_Email
+            // 
+            this.tb_Email.Location = new System.Drawing.Point(110, 230);
+            this.tb_Email.Name = "tb_Email";
+            this.tb_Email.Size = new System.Drawing.Size(181, 20);
+            this.tb_Email.TabIndex = 13;
             // 
             // DodajUrediKorisnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 309);
+            this.ClientSize = new System.Drawing.Size(326, 349);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(342, 348);
-            this.MinimumSize = new System.Drawing.Size(342, 348);
+            this.MaximumSize = new System.Drawing.Size(342, 388);
+            this.MinimumSize = new System.Drawing.Size(342, 388);
             this.Name = "DodajUrediKorisnika";
             this.Text = "DodajUrediKorisnika";
             this.groupBox1.ResumeLayout(false);
@@ -223,5 +243,7 @@
         private System.Windows.Forms.RadioButton rb_Muski;
         private System.Windows.Forms.RadioButton rb_Zenski;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tb_Email;
     }
 }
