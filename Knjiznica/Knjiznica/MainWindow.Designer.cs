@@ -66,6 +66,15 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_DodajKorisnika = new System.Windows.Forms.Button();
             this.data_Korisnici = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumRodenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MjestoStanovanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIstekaClanarine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_PretragaKorisnika = new System.Windows.Forms.Button();
             this.tb_Prezime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -85,15 +94,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumRodenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MjestoStanovanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumIstekaClanarine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tb_email = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -420,6 +422,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.tb_email);
             this.tabPage2.Controls.Add(this.btn_DodajKorisnika);
             this.tabPage2.Controls.Add(this.data_Korisnici);
             this.tabPage2.Controls.Add(this.btn_PretragaKorisnika);
@@ -474,9 +478,54 @@
             this.data_Korisnici.Size = new System.Drawing.Size(1041, 437);
             this.data_Korisnici.TabIndex = 5;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            // 
+            // Prezime
+            // 
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "email";
+            this.Email.Name = "Email";
+            // 
+            // DatumRodenja
+            // 
+            this.DatumRodenja.HeaderText = "Datum Rodenja";
+            this.DatumRodenja.Name = "DatumRodenja";
+            // 
+            // MjestoStanovanja
+            // 
+            this.MjestoStanovanja.HeaderText = "Mjesto Stanovanja";
+            this.MjestoStanovanja.Name = "MjestoStanovanja";
+            // 
+            // Adresa
+            // 
+            this.Adresa.HeaderText = "Adresa";
+            this.Adresa.Name = "Adresa";
+            // 
+            // Spol
+            // 
+            this.Spol.HeaderText = "Spol";
+            this.Spol.Name = "Spol";
+            // 
+            // DatumIstekaClanarine
+            // 
+            this.DatumIstekaClanarine.HeaderText = "Istek clanarine";
+            this.DatumIstekaClanarine.Name = "DatumIstekaClanarine";
+            // 
             // btn_PretragaKorisnika
             // 
-            this.btn_PretragaKorisnika.Location = new System.Drawing.Point(324, 55);
+            this.btn_PretragaKorisnika.Location = new System.Drawing.Point(483, 55);
             this.btn_PretragaKorisnika.Name = "btn_PretragaKorisnika";
             this.btn_PretragaKorisnika.Size = new System.Drawing.Size(90, 22);
             this.btn_PretragaKorisnika.TabIndex = 4;
@@ -649,50 +698,21 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
-            // ID
+            // tb_email
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
+            this.tb_email.Location = new System.Drawing.Point(324, 55);
+            this.tb_email.Name = "tb_email";
+            this.tb_email.Size = new System.Drawing.Size(153, 20);
+            this.tb_email.TabIndex = 44;
             // 
-            // Ime
+            // label14
             // 
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            // 
-            // Prezime
-            // 
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "email";
-            this.Email.Name = "Email";
-            // 
-            // DatumRodenja
-            // 
-            this.DatumRodenja.HeaderText = "Datum Rodenja";
-            this.DatumRodenja.Name = "DatumRodenja";
-            // 
-            // MjestoStanovanja
-            // 
-            this.MjestoStanovanja.HeaderText = "Mjesto Stanovanja";
-            this.MjestoStanovanja.Name = "MjestoStanovanja";
-            // 
-            // Adresa
-            // 
-            this.Adresa.HeaderText = "Adresa";
-            this.Adresa.Name = "Adresa";
-            // 
-            // Spol
-            // 
-            this.Spol.HeaderText = "Spol";
-            this.Spol.Name = "Spol";
-            // 
-            // DatumIstekaClanarine
-            // 
-            this.DatumIstekaClanarine.HeaderText = "Istek clanarine";
-            this.DatumIstekaClanarine.Name = "DatumIstekaClanarine";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(321, 39);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 13);
+            this.label14.TabIndex = 45;
+            this.label14.Text = "Email";
             // 
             // MainWindow
             // 
@@ -792,6 +812,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spol;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIstekaClanarine;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tb_email;
     }
 }
 

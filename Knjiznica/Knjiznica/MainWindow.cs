@@ -68,7 +68,21 @@ namespace Knjiznica
 
         private void btn_PretragaKorisnika_Click(object sender, EventArgs e)
         {
+            IEnumerable<Korisnik> listaKorisnikatmp = listaKorisnika;
 
+            if (tb_IDkorisnik.Text != "")
+                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.id == int.Parse(tb_IDkorisnik.Text));
+
+            if (tb_ImeKorisnika.Text != "")
+                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.ime.ToLower().Contains(tb_ImeKorisnika.Text.ToLower()));
+
+            if (tb_Prezime.Text != "")
+                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.prezime.ToLower().Contains(tb_Prezime.Text.ToLower()));
+
+            if (tb_email.Text != "")
+                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.email.ToLower().Contains(tb_email.Text.ToLower()));
+
+            dodajKorisnikeUGrid(listaKorisnikatmp.ToList());
         }
 
         private void btn_PretragaPosudbe_Click(object sender, EventArgs e)
@@ -248,13 +262,14 @@ namespace Knjiznica
 
             foreach (Korisnik k in listaKorisnika)
             {
-                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja, k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine, k.spol);
+                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja.ToShortDateString(), 
+                    k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine.ToShortDateString(), k.spol);
             }
         }
 
         private DateTime parsirajDatum(string s)
         {
-            return DateTime.ParseExact("10.4.2017", "dd.M.YYYY", CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(s, "dd.MM.yyyy", CultureInfo.InvariantCulture);
         }
     }
 }
