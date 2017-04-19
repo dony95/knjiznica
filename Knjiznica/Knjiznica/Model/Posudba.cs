@@ -8,8 +8,9 @@ namespace Knjiznica.Model
 {
     public class Posudba
     {
+        public int IDposudba { get; set; } //ID bi bio userid + broj posudjenih knjiga jer moramo imat nacin pracenja 1 posudbe za vise knjiga
         public Korisnik korisnik { get; set; }
-        public List<Knjiga> knjige { get; set; }
+        public Knjiga knjiga { get; set; }
         public DateTime datumPosudbe { get; set; }
         public DateTime datumIstekaPosudbe { get; set; }
     }

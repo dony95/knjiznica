@@ -64,6 +64,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_email = new System.Windows.Forms.TextBox();
             this.btn_DodajKorisnika = new System.Windows.Forms.Button();
             this.data_Korisnici = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,8 +96,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tb_email = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.tb_KorisnikPrez = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tb_KorisnikID = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -441,6 +445,22 @@
             this.tabPage2.Text = "Korisnici";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(321, 39);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 13);
+            this.label14.TabIndex = 45;
+            this.label14.Text = "Email";
+            // 
+            // tb_email
+            // 
+            this.tb_email.Location = new System.Drawing.Point(324, 55);
+            this.tb_email.Name = "tb_email";
+            this.tb_email.Size = new System.Drawing.Size(153, 20);
+            this.tb_email.TabIndex = 44;
+            // 
             // btn_DodajKorisnika
             // 
             this.btn_DodajKorisnika.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -583,6 +603,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tb_KorisnikPrez);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.tb_KorisnikID);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.textBox3);
@@ -658,7 +682,7 @@
             // 
             // btn_PretragaPosudbe
             // 
-            this.btn_PretragaPosudbe.Location = new System.Drawing.Point(324, 55);
+            this.btn_PretragaPosudbe.Location = new System.Drawing.Point(483, 54);
             this.btn_PretragaPosudbe.Name = "btn_PretragaPosudbe";
             this.btn_PretragaPosudbe.Size = new System.Drawing.Size(90, 22);
             this.btn_PretragaPosudbe.TabIndex = 5;
@@ -698,21 +722,37 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
-            // tb_email
+            // tb_KorisnikPrez
             // 
-            this.tb_email.Location = new System.Drawing.Point(324, 55);
-            this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(153, 20);
-            this.tb_email.TabIndex = 44;
+            this.tb_KorisnikPrez.Location = new System.Drawing.Point(324, 56);
+            this.tb_KorisnikPrez.Name = "tb_KorisnikPrez";
+            this.tb_KorisnikPrez.Size = new System.Drawing.Size(153, 20);
+            this.tb_KorisnikPrez.TabIndex = 59;
             // 
-            // label14
+            // label15
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(321, 39);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 13);
-            this.label14.TabIndex = 45;
-            this.label14.Text = "Email";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(321, 40);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 13);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "Prezime korisnika";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(321, 3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 13);
+            this.label16.TabIndex = 60;
+            this.label16.Text = "ID korisnika";
+            // 
+            // tb_KorisnikID
+            // 
+            this.tb_KorisnikID.Location = new System.Drawing.Point(324, 19);
+            this.tb_KorisnikID.Name = "tb_KorisnikID";
+            this.tb_KorisnikID.Size = new System.Drawing.Size(153, 20);
+            this.tb_KorisnikID.TabIndex = 58;
             // 
             // MainWindow
             // 
@@ -814,6 +854,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIstekaClanarine;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tb_email;
+        private System.Windows.Forms.TextBox tb_KorisnikPrez;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tb_KorisnikID;
     }
 }
 
