@@ -140,7 +140,7 @@ namespace Knjiznica
 
             foreach(DataGridViewRow r in dgw_KnjigeSearch.Rows)
             {
-                if ((bool)r.Cells["Posudi"].Value == true)
+                if (r.Cells["Posudi"].Value != null && (bool)r.Cells["Posudi"].Value == true)
                     MessageBox.Show((string)r.Cells[2].Value);
             }
         }

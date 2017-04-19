@@ -41,7 +41,7 @@ namespace Knjiznica
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol)";
+                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol, email) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol, @email)";
                 command.Parameters.AddWithValue("@ime", korisnik.ime);
                 command.Parameters.AddWithValue("@prezime", korisnik.prezime);
                 command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToShortDateString());
