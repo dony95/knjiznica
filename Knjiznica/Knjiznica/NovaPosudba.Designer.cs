@@ -51,19 +51,20 @@
             this.tb_ISBN = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgw_KnjigeSearch = new System.Windows.Forms.DataGridView();
-            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Posudi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgw_KorisnikSearch = new System.Windows.Forms.DataGridView();
+            this.btn_Posudi = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MjestoStan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OznaciKorisnik = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btn_Posudi = new System.Windows.Forms.Button();
+            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Posudi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gb_Korisnik.SuspendLayout();
             this.gb_Knjiga.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_KnjigeSearch)).BeginInit();
@@ -282,6 +283,10 @@
             // 
             // dgw_KnjigeSearch
             // 
+            this.dgw_KnjigeSearch.AllowUserToAddRows = false;
+            this.dgw_KnjigeSearch.AllowUserToDeleteRows = false;
+            this.dgw_KnjigeSearch.AllowUserToOrderColumns = true;
+            this.dgw_KnjigeSearch.AllowUserToResizeRows = false;
             this.dgw_KnjigeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgw_KnjigeSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
@@ -292,6 +297,7 @@
             this.Autor,
             this.Izdavac,
             this.godina,
+            this.BrojKopija,
             this.Posudi});
             this.dgw_KnjigeSearch.Location = new System.Drawing.Point(12, 385);
             this.dgw_KnjigeSearch.Name = "dgw_KnjigeSearch";
@@ -299,41 +305,12 @@
             this.dgw_KnjigeSearch.Size = new System.Drawing.Size(804, 121);
             this.dgw_KnjigeSearch.TabIndex = 11;
             // 
-            // isbn
-            // 
-            this.isbn.HeaderText = "ISBN";
-            this.isbn.Name = "isbn";
-            // 
-            // NazivKnjige
-            // 
-            this.NazivKnjige.HeaderText = "Naziv knjige";
-            this.NazivKnjige.Name = "NazivKnjige";
-            this.NazivKnjige.ReadOnly = true;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            // 
-            // Izdavac
-            // 
-            this.Izdavac.HeaderText = "Izdavač";
-            this.Izdavac.Name = "Izdavac";
-            // 
-            // godina
-            // 
-            this.godina.HeaderText = "Godina";
-            this.godina.Name = "godina";
-            // 
-            // Posudi
-            // 
-            this.Posudi.HeaderText = "Posudi";
-            this.Posudi.Name = "Posudi";
-            this.Posudi.Width = 50;
-            // 
             // dgw_KorisnikSearch
             // 
+            this.dgw_KorisnikSearch.AllowUserToAddRows = false;
+            this.dgw_KorisnikSearch.AllowUserToDeleteRows = false;
+            this.dgw_KorisnikSearch.AllowUserToOrderColumns = true;
+            this.dgw_KorisnikSearch.AllowUserToResizeRows = false;
             this.dgw_KorisnikSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgw_KorisnikSearch.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
@@ -349,6 +326,17 @@
             this.dgw_KorisnikSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgw_KorisnikSearch.Size = new System.Drawing.Size(804, 121);
             this.dgw_KorisnikSearch.TabIndex = 12;
+            this.dgw_KorisnikSearch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgw_KorisnikSearch_CellContentClick);
+            // 
+            // btn_Posudi
+            // 
+            this.btn_Posudi.Location = new System.Drawing.Point(12, 605);
+            this.btn_Posudi.Name = "btn_Posudi";
+            this.btn_Posudi.Size = new System.Drawing.Size(103, 31);
+            this.btn_Posudi.TabIndex = 13;
+            this.btn_Posudi.Text = "Posudi";
+            this.btn_Posudi.UseVisualStyleBackColor = true;
+            this.btn_Posudi.Click += new System.EventHandler(this.btn_Posudi_Click);
             // 
             // ID
             // 
@@ -379,20 +367,49 @@
             this.OznaciKorisnik.Name = "OznaciKorisnik";
             this.OznaciKorisnik.Width = 50;
             // 
-            // btn_Posudi
+            // isbn
             // 
-            this.btn_Posudi.Location = new System.Drawing.Point(12, 605);
-            this.btn_Posudi.Name = "btn_Posudi";
-            this.btn_Posudi.Size = new System.Drawing.Size(103, 31);
-            this.btn_Posudi.TabIndex = 13;
-            this.btn_Posudi.Text = "Posudi";
-            this.btn_Posudi.UseVisualStyleBackColor = true;
+            this.isbn.HeaderText = "ISBN";
+            this.isbn.Name = "isbn";
+            // 
+            // NazivKnjige
+            // 
+            this.NazivKnjige.HeaderText = "Naziv knjige";
+            this.NazivKnjige.Name = "NazivKnjige";
+            this.NazivKnjige.ReadOnly = true;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.HeaderText = "Izdavač";
+            this.Izdavac.Name = "Izdavac";
+            // 
+            // godina
+            // 
+            this.godina.HeaderText = "Godina";
+            this.godina.Name = "godina";
+            // 
+            // BrojKopija
+            // 
+            this.BrojKopija.HeaderText = "Broj kopija";
+            this.BrojKopija.Name = "BrojKopija";
+            // 
+            // Posudi
+            // 
+            this.Posudi.HeaderText = "Posudi";
+            this.Posudi.Name = "Posudi";
+            this.Posudi.Width = 50;
             // 
             // NovaPosudba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 648);
+            this.ClientSize = new System.Drawing.Size(828, 649);
             this.Controls.Add(this.btn_Posudi);
             this.Controls.Add(this.dgw_KorisnikSearch);
             this.Controls.Add(this.dgw_KnjigeSearch);
@@ -436,6 +453,8 @@
         private System.Windows.Forms.DataGridView dgw_KorisnikSearch;
         private System.Windows.Forms.Button btn_Posudi;
         private System.Windows.Forms.TextBox tb_Godina;
+        private System.Windows.Forms.Button btn_PretragaKorisnik;
+        private System.Windows.Forms.Button btn_PretragaKnjiga;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
@@ -446,8 +465,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
         private System.Windows.Forms.DataGridViewTextBoxColumn godina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojKopija;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Posudi;
-        private System.Windows.Forms.Button btn_PretragaKorisnik;
-        private System.Windows.Forms.Button btn_PretragaKnjiga;
     }
 }

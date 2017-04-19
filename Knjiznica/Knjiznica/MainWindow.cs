@@ -112,7 +112,7 @@ namespace Knjiznica
 
         private void btn_NovaPosudba_Click(object sender, EventArgs e)
         {
-            NovaPosudba forma = new NovaPosudba();
+            NovaPosudba forma = new NovaPosudba(listaKnjiga, listaKorisnika);
             forma.Show();
         }
 

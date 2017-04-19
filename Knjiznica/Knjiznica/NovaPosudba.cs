@@ -1,13 +1,8 @@
 ﻿using Knjiznica.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Knjiznica
@@ -16,12 +11,16 @@ namespace Knjiznica
     {
         List<Knjiga> listaKnjiga;
         List<Korisnik> listaKorisnika;
+        int selectedCheckBoxRowIndex = -1;
 
 
-        public NovaPosudba()
+        public NovaPosudba(List<Knjiga> listaKnjiga, List<Korisnik> listaKorisnika)
         {
-            listaKorisnika = new List<Korisnik>();
+            this.listaKnjiga = listaKnjiga;
+            this.listaKorisnika = listaKorisnika;
             InitializeComponent();
+            dodajKnjigeUGrid(listaKnjiga);
+            dodajKorisnikeUGrid(listaKorisnika);
         }
 
         //_____________________________________________________________________
@@ -80,7 +79,7 @@ namespace Knjiznica
             if (tb_MjestoStan.Text != "")
                 listaKorisnikatmp = listaKorisnikatmp.Where(u => u.ime.ToLower().Contains(tb_MjestoStan.Text.ToLower()));
 
-            //filtriraj datagrid
+            dodajKorisnikeUGrid(listaKorisnikatmp.ToList());
 
         }
 
@@ -103,9 +102,41 @@ namespace Knjiznica
             if (tb_NazivKnjige.Text != "")
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
 
-            //dodajKnjigeUGrid(listaKnjigatmp.ToList());
+            dodajKnjigeUGrid(listaKnjigatmp.ToList());
         }
 
-        
+        private void dodajKnjigeUGrid(List<Knjiga> listaKnjiga)
+        {
+            dgw_KnjigeSearch.Rows.Clear();
+
+            foreach (Knjiga k in listaKnjiga)
+                dgw_KnjigeSearch.Rows.Add(k.isbn, k.naziv, k.autor, k.izdavac, k.godina, k.brojKopija);
+        }
+
+        private void dodajKorisnikeUGrid(List<Korisnik> listaKorisnika)
+        {
+            dgw_KorisnikSearch.Rows.Clear();
+
+            foreach (Korisnik k in listaKorisnika)
+                dgw_KorisnikSearch.Rows.Add(k.id, k.ime, k.prezime, k.mjestoStanovanja);
+        }
+
+        private void dgw_KorisnikSearch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgw = (DataGridView)sender;
+
+            if(dgw.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+            {
+                if(selectedCheckBoxRowIndex != -1)
+                    dgw.Rows[selectedCheckBoxRowIndex].Cells["OznaciKorisnik"].Value = false;
+
+                selectedCheckBoxRowIndex = e.RowIndex;
+            }
+        }
+
+        private void btn_Posudi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

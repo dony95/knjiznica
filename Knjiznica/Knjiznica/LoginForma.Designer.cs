@@ -98,7 +98,7 @@
             this.AcceptButton = this.btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 194);
+            this.ClientSize = new System.Drawing.Size(343, 195);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.tb_Password);
             this.Controls.Add(this.label2);
@@ -108,6 +108,9 @@
             this.MaximumSize = new System.Drawing.Size(359, 233);
             this.MinimumSize = new System.Drawing.Size(359, 233);
             this.Name = "LoginForma";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForma";
             this.ResumeLayout(false);
             this.PerformLayout();
