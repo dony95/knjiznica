@@ -108,6 +108,7 @@ namespace Knjiznica
         {
             DodajUrediKorisnika forma = new DodajUrediKorisnika(conn);
             forma.Show();
+            ucitajKorisnike();
         }
 
         private void btn_NovaPosudba_Click(object sender, EventArgs e)
@@ -269,7 +270,7 @@ namespace Knjiznica
 
         private DateTime parsirajDatum(string s)
         {
-            return DateTime.ParseExact(s, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(s, "dd.MM.yyyy.", CultureInfo.InvariantCulture);
         }
     }
 }
