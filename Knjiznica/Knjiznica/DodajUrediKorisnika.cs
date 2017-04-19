@@ -30,7 +30,9 @@ namespace Knjiznica
                 datumRodenja = dtp_DatRodjenja.Value,
                 ime = tb_Ime.Text,
                 mjestoStanovanja = tb_MjestoStan.Text,
-                prezime = tb_Prezime.Text
+                prezime = tb_Prezime.Text,
+                email = tb_Email.Text,
+                datumIstekaClanarine = DateTime.Now.AddYears(1)
             };
             if (rb_Muski.Enabled)
                 korisnik.spol = 'M';
@@ -39,12 +41,13 @@ namespace Knjiznica
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, spol) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @spol)";
+                command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol)";
                 command.Parameters.AddWithValue("@ime", korisnik.ime);
                 command.Parameters.AddWithValue("@prezime", korisnik.prezime);
-                command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja);
+                command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToShortDateString());
                 command.Parameters.AddWithValue("@mjestoStanovanja", korisnik.mjestoStanovanja);
                 command.Parameters.AddWithValue("@adresa", korisnik.adresa);
+                command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToShortDateString());
                 command.Parameters.AddWithValue("@spol", korisnik.spol);
                 command.ExecuteNonQuery();
             }

@@ -136,7 +136,13 @@ namespace Knjiznica
 
         private void btn_Posudi_Click(object sender, EventArgs e)
         {
+            List<Knjiga> listaKnjigaPosudba;
 
+            foreach(DataGridViewRow r in dgw_KnjigeSearch.Rows)
+            {
+                if ((bool)r.Cells["Posudi"].Value == true)
+                    MessageBox.Show((string)r.Cells[2].Value);
+            }
         }
     }
 }
