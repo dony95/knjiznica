@@ -21,74 +21,114 @@ namespace Knjiznica
         {
             this.conn = conn;
             InitializeComponent();
-            dtp_Godina.Format = DateTimePickerFormat.Custom;
-            dtp_Godina.CustomFormat = "yyyy";
-            dtp_Godina.ShowUpDown = true;
         }
 
         private void btn_DodajUredi_Click(object sender, EventArgs e)
         {
-            Knjiga knjiga = new Knjiga()
+            if(validacijaKnjige())
             {
-                autor = tb_Autor.Text,
-                naziv = tb_NazivKnjige.Text,
-                izdavac = tb_Izdavac.Text,
-                godina = dtp_Godina.Value.Year,
-                isbn = tb_ISBN.Text,
-                kategorija = cb_Kategorija.SelectedText,
-                brojStranica = (int)num_BrojStranica.Value,
-                brojKopija = (int)num_BrKopija.Value
-            };
-
-            try
-            {
-                MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
-                command.Parameters.AddWithValue("@Autor", knjiga.autor);
-                command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
-                command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
-                command.Parameters.AddWithValue("@Godina", knjiga.godina);
-                command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
-                command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
-                command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
-                command.Parameters.AddWithValue("@BrojKopija", knjiga.brojStranica);
-                command.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                error = true;
-            }
-            finally
-            {
-                if (!error)
+                Knjiga knjiga = new Knjiga()
                 {
-                    MessageBox.Show("Knjiga uspjesno unesena");
-                    this.Close();
+                    autor = tb_Autor.Text,
+                    naziv = tb_NazivKnjige.Text,
+                    izdavac = tb_Izdavac.Text,
+                    godina = int.Parse(tb_Godina.Text),
+                    isbn = tb_ISBN.Text,
+                    kategorija = cb_Kategorija.SelectedText,
+                    brojStranica = (int)num_BrojStranica.Value,
+                    brojKopija = (int)num_BrKopija.Value
+                };
+
+                try
+                {
+                    MySqlCommand command = conn.CreateCommand();
+                    command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
+                    command.Parameters.AddWithValue("@Autor", knjiga.autor);
+                    command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
+                    command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
+                    command.Parameters.AddWithValue("@Godina", knjiga.godina);
+                    command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
+                    command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
+                    command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
+                    command.Parameters.AddWithValue("@BrojKopija", knjiga.brojStranica);
+                    command.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    error = true;
+                }
+                finally
+                {
+                    if (!error)
+                    {
+                        MessageBox.Show("Knjiga uspjesno unesena");
+                        this.Close();
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Sva polja moraju biti popunjena.");
+            }
 
-            //MainWindow mw = (MainWindow)Application.OpenForms["MainWindow"];
-            //mw.ucitajPodatke();
+            
+        }
 
+        //____________________________________________
+        //Validacija
+        //____________________________________________
+
+        private bool validacijaKnjige()
+        {
+            //Provjera da li su sva polja popunjena 
+
+            if (tb_Autor.Text == "")
+                return false;
+
+            if (tb_NazivKnjige.Text == "")
+                return false;
+
+            if (tb_ISBN.Text == "")
+                return false;
+
+            if (tb_Izdavac.Text == "")
+                return false;
+
+            if (tb_Godina.Text == "")
+                return false;
+
+            if (num_BrojStranica.Value <= 0)
+                return false;
+
+            if (num_BrKopija.Value <= 0)
+                return false;
+
+            //TODO: Da li isbn postoji u bazi           
+
+            return true;
         }
 
         private void tb_ISBN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true;               
             }
         }
 
-        private void tb_Cijena_KeyPress(object sender, KeyPressEventArgs e)
+        private void tb_ISBN_Leave(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if(tb_ISBN.Text.Length != 13 && tb_ISBN.Text != "")
             {
-                e.Handled = true;
+                MessageBox.Show("ISBN mora sadržavati 13 znamenki");
+                tb_ISBN.Focus();
             }
+        }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+        private void tb_Godina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }

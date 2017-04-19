@@ -154,13 +154,13 @@
             this.rb_Muski.Name = "rb_Muski";
             this.rb_Muski.Size = new System.Drawing.Size(53, 17);
             this.rb_Muski.TabIndex = 4;
-            this.rb_Muski.TabStop = true;
             this.rb_Muski.Text = "Muški";
             this.rb_Muski.UseVisualStyleBackColor = true;
             // 
             // rb_Zenski
             // 
             this.rb_Zenski.AutoSize = true;
+            this.rb_Zenski.Checked = true;
             this.rb_Zenski.Location = new System.Drawing.Point(110, 89);
             this.rb_Zenski.Name = "rb_Zenski";
             this.rb_Zenski.Size = new System.Drawing.Size(57, 17);
@@ -209,6 +209,7 @@
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(181, 20);
             this.tb_Email.TabIndex = 8;
+            this.tb_Email.Leave += new System.EventHandler(this.tb_Email_Leave);
             // 
             // DodajUrediKorisnika
             // 

@@ -32,7 +32,6 @@
             this.num_BrKopija = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_DodajUredi = new System.Windows.Forms.Button();
-            this.dtp_Godina = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cb_Kategorija = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_Autor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tb_Godina = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_BrKopija)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_BrojStranica)).BeginInit();
@@ -56,10 +56,10 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tb_Godina);
             this.groupBox1.Controls.Add(this.num_BrKopija);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btn_DodajUredi);
-            this.groupBox1.Controls.Add(this.dtp_Godina);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cb_Kategorija);
             this.groupBox1.Controls.Add(this.label5);
@@ -107,14 +107,6 @@
             this.btn_DodajUredi.UseVisualStyleBackColor = true;
             this.btn_DodajUredi.Click += new System.EventHandler(this.btn_DodajUredi_Click);
             // 
-            // dtp_Godina
-            // 
-            this.dtp_Godina.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Godina.Location = new System.Drawing.Point(196, 150);
-            this.dtp_Godina.Name = "dtp_Godina";
-            this.dtp_Godina.Size = new System.Drawing.Size(181, 20);
-            this.dtp_Godina.TabIndex = 6;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -160,10 +152,12 @@
             // tb_ISBN
             // 
             this.tb_ISBN.Location = new System.Drawing.Point(196, 102);
+            this.tb_ISBN.MaxLength = 13;
             this.tb_ISBN.Name = "tb_ISBN";
             this.tb_ISBN.Size = new System.Drawing.Size(181, 20);
             this.tb_ISBN.TabIndex = 4;
             this.tb_ISBN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ISBN_KeyPress);
+            this.tb_ISBN.Leave += new System.EventHandler(this.tb_ISBN_Leave);
             // 
             // label4
             // 
@@ -222,6 +216,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Autor";
             // 
+            // tb_Godina
+            // 
+            this.tb_Godina.Location = new System.Drawing.Point(196, 150);
+            this.tb_Godina.Name = "tb_Godina";
+            this.tb_Godina.Size = new System.Drawing.Size(181, 20);
+            this.tb_Godina.TabIndex = 16;
+            this.tb_Godina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Godina_KeyPress);
+            // 
             // DodajUrediKnjigu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,7 +254,6 @@
         private System.Windows.Forms.TextBox tb_Autor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_DodajUredi;
-        private System.Windows.Forms.DateTimePicker dtp_Godina;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cb_Kategorija;
         private System.Windows.Forms.Label label5;
@@ -262,5 +263,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown num_BrKopija;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tb_Godina;
     }
 }

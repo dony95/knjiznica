@@ -41,10 +41,7 @@ namespace Knjiznica
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                if(tb_Godina.Text.Length < 5)
-                {
-                    e.Handled = true;
-                } 
+                e.Handled = true;
             }          
         }
 

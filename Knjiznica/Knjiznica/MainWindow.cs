@@ -48,14 +48,17 @@ namespace Knjiznica
             if (tb_AutorKnjige.Text != "")
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.autor.ToLower().Contains(tb_AutorKnjige.Text.ToLower()));
 
-            if (tb_IDknjiga.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.id == int.Parse(tb_IDknjiga.Text));
+            if (tb_ISBN.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.isbn == tb_ISBN.Text);
 
             if (tb_Izdavac.Text != "")
                 listaKnjigatmp = listaKnjigatmp.Where(k => k.izdavac.ToLower().Contains(tb_Izdavac.Text.ToLower()));
 
-            if (num_Godina.Value != 0)
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == num_Godina.Value);
+            //if (num_Godina.Value != 0)
+            //    listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == num_Godina.Value);
+
+            if (tb_Godina.Text != "")
+                listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == int.Parse(tb_Godina.Text));
 
             //if (cb_Kategorija.SelectedIndex != 0)
             //    listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
@@ -107,7 +110,7 @@ namespace Knjiznica
         private void btn_DodajKorisnika_Click(object sender, EventArgs e)
         {
             DodajUrediKorisnika forma = new DodajUrediKorisnika(conn);
-            forma.Show();
+            forma.ShowDialog();
             ucitajKorisnike();
         }
 
@@ -271,6 +274,14 @@ namespace Knjiznica
         private DateTime parsirajDatum(string s)
         {
             return DateTime.ParseExact(s, "dd.MM.yyyy.", CultureInfo.InvariantCulture);
+        }
+
+        private void tb_Godina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
