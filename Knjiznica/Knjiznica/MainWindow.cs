@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
@@ -48,25 +44,32 @@ namespace Knjiznica
             IEnumerable<Knjiga> listaKnjigatmp = listaKnjiga;
 
             if (tb_AutorKnjige.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.autor.ToLower().Contains(tb_AutorKnjige.Text.ToLower()));
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.autor.ToLower().Contains(tb_AutorKnjige.Text.ToLower()));
 
             if (tb_ISBN.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.isbn == tb_ISBN.Text);
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.isbn == tb_ISBN.Text);
 
             if (tb_Izdavac.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.izdavac.ToLower().Contains(tb_Izdavac.Text.ToLower()));
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.izdavac.ToLower().Contains(tb_Izdavac.Text.ToLower()));
 
             //if (num_Godina.Value != 0)
-            //    listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == num_Godina.Value);
+            //    listaKnjigatmp = listaKnjigatmp.
+                    //Where(k => k.godina == num_Godina.Value);
 
             if (tb_Godina.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.godina == int.Parse(tb_Godina.Text));
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.godina == int.Parse(tb_Godina.Text));
 
             //if (cb_Kategorija.SelectedIndex != 0)
-            //    listaKnjigatmp = listaKnjigatmp.Where(k => k.kategorija == cb_Kategorija.SelectedText);
+            //    listaKnjigatmp = listaKnjigatmp.
+                    //Where(k => k.kategorija == cb_Kategorija.SelectedText);
 
             if (tb_NazivKnjige.Text != "")
-                listaKnjigatmp = listaKnjigatmp.Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.naziv.ToLower().Contains(tb_NazivKnjige.Text.ToLower()));
 
             dodajKnjigeUGrid(listaKnjigatmp.ToList());
         }
@@ -76,16 +79,20 @@ namespace Knjiznica
             IEnumerable<Korisnik> listaKorisnikatmp = listaKorisnika;
 
             if (tb_IDkorisnik.Text != "")
-                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.id == int.Parse(tb_IDkorisnik.Text));
+                listaKorisnikatmp = listaKorisnikatmp.
+                    Where(k => k.id == int.Parse(tb_IDkorisnik.Text));
 
             if (tb_ImeKorisnika.Text != "")
-                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.ime.ToLower().Contains(tb_ImeKorisnika.Text.ToLower()));
+                listaKorisnikatmp = listaKorisnikatmp.
+                    Where(k => k.ime.ToLower().Contains(tb_ImeKorisnika.Text.ToLower()));
 
             if (tb_Prezime.Text != "")
-                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.prezime.ToLower().Contains(tb_Prezime.Text.ToLower()));
+                listaKorisnikatmp = listaKorisnikatmp.
+                    Where(k => k.prezime.ToLower().Contains(tb_Prezime.Text.ToLower()));
 
             if (tb_email.Text != "")
-                listaKorisnikatmp = listaKorisnikatmp.Where(k => k.email.ToLower().Contains(tb_email.Text.ToLower()));
+                listaKorisnikatmp = listaKorisnikatmp.
+                    Where(k => k.email.ToLower().Contains(tb_email.Text.ToLower()));
 
             dodajKorisnikeUGrid(listaKorisnikatmp.ToList());
         }
@@ -234,9 +241,9 @@ namespace Knjiznica
 
             foreach (Knjiga k in listaKnjiga)
             {
-                data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, k.godina, k.brojStranica, k.cijena, k.brojKopija);
-                data_Knjige.Rows[dataGridCount].Cells["edit"].Value = "text" + k.id;
-                dataGridCount++;
+                data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, 
+                    k.godina, k.brojStranica, k.cijena, k.brojKopija);
+                data_Knjige.Rows[dataGridCount++].Cells["edit"].Value = "Izbrisi";
             }
         }
 
@@ -246,8 +253,9 @@ namespace Knjiznica
 
             foreach (Korisnik k in listaKorisnika)
             {
-                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, k.datumRodenja.ToShortDateString(),
-                    k.mjestoStanovanja, k.adresa, k.datumIstekaClanarine.ToShortDateString(), k.spol);
+                data_Korisnici.Rows.Add(k.id, k.ime, k.prezime, k.email, 
+                    k.datumRodenja.ToShortDateString(), k.mjestoStanovanja, 
+                    k.adresa, k.datumIstekaClanarine.ToShortDateString(), k.spol);
             }
         }
 
@@ -259,7 +267,8 @@ namespace Knjiznica
             foreach (Posudba p in listaPosudba)
             {
                 data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
-                                        p.datumPosudbe.ToShortDateString(), p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
+                                        p.datumPosudbe.ToShortDateString(), 
+                                        p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
                 data_Posudbe.Rows[dataGridCount].Cells["Produzi"].Value = "text" + p.ID;
                 dataGridCount++;
             }
@@ -324,7 +333,10 @@ namespace Knjiznica
 
             if(data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                MessageBox.Show("Id knjige je " + data_grid.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                IzbrisiKnjigu forma = new IzbrisiKnjigu(conn, 
+                    listaKnjiga.Find(k => k.isbn == (string)data_grid.Rows[e.RowIndex].Cells["ISBN"].Value));
+                forma.ShowDialog();
+                dodajKnjigeUGrid(listaKnjiga);
             }
         }
 

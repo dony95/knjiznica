@@ -219,7 +219,7 @@ namespace Knjiznica
                 {
                     MessageBox.Show(ex.Message);
                 }
-                listaKnjiga[id].brojStranica -= 1;
+                listaKnjiga[id].brojKopija -= 1;
             }
         }
     }
