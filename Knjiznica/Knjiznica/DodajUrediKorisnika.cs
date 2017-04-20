@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
+using System.Net.Mail;
 
 namespace Knjiznica
 {
@@ -68,7 +69,7 @@ namespace Knjiznica
                         command.CommandText = "UPDATE users SET ime = @ime, prezime = @prezime, datumRodenja = @datumRodenja, " +
                             "mjestoStanovanja = @mjestoStanovanja, adresa = @adresa, spol = @spol, email = @email WHERE id = @id";
                         command.Parameters.AddWithValue("@id", lbl_idKorisnkika.Text);
-                    } 
+                    }
                     command.Parameters.AddWithValue("@ime", korisnik.ime);
                     command.Parameters.AddWithValue("@prezime", korisnik.prezime);
                     command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToString("dd.MM.yyyy."));

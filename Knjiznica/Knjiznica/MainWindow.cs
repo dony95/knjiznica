@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Globalization;
+using MongoDB.Driver;
 
 namespace Knjiznica
 {
@@ -16,6 +17,7 @@ namespace Knjiznica
         List<Posudba> listaPosudba;
         MySqlConnection conn;
         string ConnectionString = string.Empty;
+        MongoClient mongoClient;
         public MainWindow()
         {
             connectionType();
@@ -31,6 +33,7 @@ namespace Knjiznica
             ucitajKnjige();
             ucitajKorisnike();
             ucitajPosudbe();
+            mongoClient = new MongoClient("mongodb://192.168.1.8:27017");
         }
 
         //_____________________________________________________________________
