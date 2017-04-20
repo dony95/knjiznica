@@ -350,6 +350,8 @@
             this.data_Knjige.Size = new System.Drawing.Size(1064, 444);
             this.data_Knjige.TabIndex = 8;
             this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
+            this.data_Knjige.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellDoubleClick);
+            this.data_Knjige.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellDoubleClick);
             // 
             // ISBN
             // 
