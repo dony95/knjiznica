@@ -14,7 +14,7 @@ namespace Knjiznica
         List<Knjiga> listaKnjiga;
         List<Korisnik> listaKorisnika;
         int korSelectedCBoxRowIndex = -1;
-
+        List<int> listaIDposudenihKnjiga;
 
         public NovaPosudba(MySqlConnection conn, List<Knjiga> listaKnjiga, List<Korisnik> listaKorisnika)
         {
@@ -110,7 +110,8 @@ namespace Knjiznica
             dgw_KnjigeSearch.Rows.Clear();
 
             foreach (Knjiga k in listaKnjiga)
-                dgw_KnjigeSearch.Rows.Add(k.isbn, k.naziv, k.autor, k.izdavac, k.godina, k.brojKopija);
+                if(k.brojKopija > 0)
+                    dgw_KnjigeSearch.Rows.Add(k.isbn, k.naziv, k.autor, k.izdavac, k.godina, k.brojKopija);
         }
 
         private void dodajKorisnikeUGrid(List<Korisnik> listaKorisnika)
@@ -139,8 +140,9 @@ namespace Knjiznica
             Posudba pos;
             Korisnik korisnik = new Korisnik();
             List<Knjiga> listaKnjigaPosudba = new List<Knjiga>();
+            listaIDposudenihKnjiga = new List<int>();
 
-            foreach(DataGridViewRow r in dgw_KnjigeSearch.Rows)
+            foreach (DataGridViewRow r in dgw_KnjigeSearch.Rows)
             {
                 if (r.Cells["Posudi"].Value != null && (bool)r.Cells["Posudi"].Value == true)
                 {
@@ -180,6 +182,11 @@ namespace Knjiznica
                 if (!error)
                 {
                     MessageBox.Show("Posudba uspjesno unesena");
+                    foreach(Knjiga knjiga in listaKnjigaPosudba)
+                    {
+                        listaIDposudenihKnjiga.Add(knjiga.id);
+                    }
+                    osvjeziBazu();
                     this.Close();
                 }
             }
@@ -195,6 +202,25 @@ namespace Knjiznica
             }
 
             return retVal.Substring(0,retVal.Length-1);
+        }
+
+        private void osvjeziBazu()
+        {
+            foreach (int id in listaIDposudenihKnjiga)
+            {
+                try
+                {
+                    MySqlCommand command = conn.CreateCommand();
+                    command.CommandText = "UPDATE knjige SET brojKopija = brojKopija-1 WHERE id = @id";
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                listaKnjiga[id].brojStranica -= 1;
+            }
         }
     }
 }

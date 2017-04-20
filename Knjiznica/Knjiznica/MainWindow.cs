@@ -119,7 +119,7 @@ namespace Knjiznica
         private void btn_NovaPosudba_Click(object sender, EventArgs e)
         {
             NovaPosudba forma = new NovaPosudba(conn, listaKnjiga, listaKorisnika);
-            forma.Show();
+            forma.ShowDialog();
             ucitajPosudbe();
         }
 
@@ -193,7 +193,7 @@ namespace Knjiznica
         {
             listaPosudba = new List<Posudba>();
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM posudbe";
+            command.CommandText = "SELECT * FROM posudbe where vraceno = 'N'";
             command.ExecuteNonQuery();
             using (MySqlDataReader reader = command.ExecuteReader())
             {
@@ -206,8 +206,8 @@ namespace Knjiznica
                         ID = (int)dt.Rows[i][0],
                         korisnik = listaKorisnika.Find(k => k.id == (int)dt.Rows[i][1]),
                         listaKnjiga = knjigeIdUObjekte((string)dt.Rows[i][2]),
-                        datumIstekaPosudbe = parsirajDatum((string)dt.Rows[i][3]),
-                        datumPosudbe = parsirajDatum((string)dt.Rows[i][4])
+                        datumPosudbe = parsirajDatum((string)dt.Rows[i][3]),
+                        datumIstekaPosudbe = parsirajDatum((string)dt.Rows[i][4])
                     });
                 }
             }
@@ -253,9 +253,18 @@ namespace Knjiznica
 
         private void dodajPosudbeUGrid(List<Posudba> listaPosudba)
         {
+            data_Posudbe.Rows.Clear();
+            int dataGridCount = 0;
+
             foreach (Posudba p in listaPosudba)
+            {
                 data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
                                         p.datumPosudbe.ToShortDateString(), p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
+                data_Posudbe.Rows[dataGridCount].Cells["Produzi"].Value = "text" + p.ID;
+                dataGridCount++;
+            }
+                
+            
         }
 
         //_____________________________________________________________________
@@ -351,6 +360,16 @@ namespace Knjiznica
             {
                 e.Handled = true;
             }
-        }    
+        }
+
+        private void data_Posudbe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView data_grid = (DataGridView)sender;
+
+            if (data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                
+            }
+        }
     }
 }

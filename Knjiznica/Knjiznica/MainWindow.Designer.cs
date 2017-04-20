@@ -105,6 +105,7 @@
             this.datumPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumIstekaPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brojKnjiga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produzi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -723,11 +724,14 @@
             this.imeIprezimeKorisnika,
             this.datumPosudbe,
             this.datumIstekaPosudbe,
-            this.brojKnjiga});
+            this.brojKnjiga,
+            this.Produzi});
             this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
             this.data_Posudbe.Name = "data_Posudbe";
+            this.data_Posudbe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_Posudbe.Size = new System.Drawing.Size(1064, 437);
             this.data_Posudbe.TabIndex = 6;
+            this.data_Posudbe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Posudbe_CellContentClick);
             // 
             // btn_PretragaPosudbe
             // 
@@ -795,6 +799,13 @@
             // 
             this.brojKnjiga.HeaderText = "Broj knjiga";
             this.brojKnjiga.Name = "brojKnjiga";
+            // 
+            // Produzi
+            // 
+            this.Produzi.HeaderText = "Produzi";
+            this.Produzi.Name = "Produzi";
+            this.Produzi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Produzi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // MainWindow
             // 
@@ -904,6 +915,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datumPosudbe;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumIstekaPosudbe;
         private System.Windows.Forms.DataGridViewTextBoxColumn brojKnjiga;
+        private System.Windows.Forms.DataGridViewButtonColumn Produzi;
     }
 }
 
