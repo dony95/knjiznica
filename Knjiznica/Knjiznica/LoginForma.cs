@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MongoDB.Bson;
 
 namespace Knjiznica
 {
@@ -22,6 +23,7 @@ namespace Knjiznica
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
+            var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("login");
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT * FROM employees where username = @username and password = @password";
             command.Parameters.AddWithValue("@username", tb_Username.Text);
@@ -32,11 +34,21 @@ namespace Knjiznica
                 if (reader.HasRows == false)
                 {
                     MessageBox.Show("Neispravni podaci!");
+                    kolekcija.InsertOneAsync(new BsonDocument
+                    {
+                        { "info", "Neispravni korisnički login podaci" },
+                        { "datumIvrijeme", DateTime.Now}
+                    });
                     return;
                 }
                 else
                 {
                     MessageBox.Show("Uspješna prijava!");
+                    kolekcija.InsertOneAsync(new BsonDocument
+                    {
+                        { "info", "Uspješna prijava korisnika, username = " + tb_Username.Text },
+                        { "datumIvrijeme", DateTime.Now}
+                    });
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

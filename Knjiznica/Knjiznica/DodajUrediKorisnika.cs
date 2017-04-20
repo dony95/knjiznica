@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Net.Mail;
+using MongoDB.Bson;
 
 namespace Knjiznica
 {
@@ -39,6 +40,8 @@ namespace Knjiznica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("korisnici");
+
             if (ValidacijaKorisnika())
             {
                 Korisnik korisnik = new Korisnik()
@@ -88,7 +91,25 @@ namespace Knjiznica
                 {
                     if (!error)
                     {
-                        MessageBox.Show("Korisnik uspjesno unesen");
+                        if(!edit)
+                        {
+                            MessageBox.Show("Korisnik uspjesno unesen");
+                            kolekcija.InsertOneAsync(new BsonDocument
+                            {
+                                { "info", "Unesen je novi korisnik, email = " + korisnik.email},
+                                { "datumIvrijeme", DateTime.Now }
+                            });
+                        }
+                        else
+                        {
+                            MessageBox.Show("Korisnički podaci uspješno uređeni");
+                            kolekcija.InsertOneAsync(new BsonDocument
+                            {
+                                { "info", "Korisnički podaci uređeni, email = " + korisnik.email},
+                                { "datumIvrijeme", DateTime.Now }
+                            });
+                        }
+                        
                         this.Close();
                     }
                 }

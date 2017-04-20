@@ -1,4 +1,5 @@
 ﻿using Knjiznica.Model;
+using MongoDB.Bson;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,9 @@ namespace Knjiznica
 
         private void btn_DodajUredi_Click(object sender, EventArgs e)
         {
-            if(validacijaKnjige())
+            var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("knjige");
+
+            if (validacijaKnjige())
             {
                 Knjiga knjiga = new Knjiga()
                 {
@@ -89,9 +92,24 @@ namespace Knjiznica
                     if (!error)
                     {
                         if (!edit)
+                        {
                             MessageBox.Show("Knjiga uspješno unesena");
+                            kolekcija.InsertOneAsync(new BsonDocument
+                            {
+                                { "info", "Unesena je nova knjiga, ISBN = " + knjiga.isbn},
+                                { "datumIvrijeme", DateTime.Now }
+                            });
+                        }
+                            
                         else
+                        {
                             MessageBox.Show("Knjiga uspješno uređena");
+                            kolekcija.InsertOneAsync(new BsonDocument
+                            {
+                                { "info", "Uređena je knjiga, ISBN = " + knjiga.isbn},
+                                { "datumIvrijeme", DateTime.Now }
+                            });
+                        }
                         this.Close();
                     }
                 }

@@ -52,5 +52,23 @@ namespace Knjiznica.Properties {
                 this["databaseLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://192.168.1.8:27017")]
+        public string mongoLocalConn {
+            get {
+                return ((string)(this["mongoLocalConn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://donyslav.ddns.net:27017")]
+        public string mongoRemoteConn {
+            get {
+                return ((string)(this["mongoRemoteConn"]));
+            }
+        }
     }
 }

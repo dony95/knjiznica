@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Globalization;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace Knjiznica
 {
@@ -17,13 +18,15 @@ namespace Knjiznica
         List<Posudba> listaPosudba;
         MySqlConnection conn;
         string ConnectionString = string.Empty;
-        MongoClient mongoClient;
+        string mongoConnString = string.Empty;
+        public static MongoClient mongoClient;
         public MainWindow()
         {
             connectionType();
             conn = new MySqlConnection(ConnectionString);
             conn.Open();
-            if(ucitajLoginFormu() != DialogResult.OK)
+            mongoClient = new MongoClient(mongoConnString);
+            if (ucitajLoginFormu() != DialogResult.OK)
             {
                 MessageBox.Show("Neuspjesna prijava. Aplikacija ce se sada zatvoriti!");
                 this.Close();
@@ -33,7 +36,6 @@ namespace Knjiznica
             ucitajKnjige();
             ucitajKorisnike();
             ucitajPosudbe();
-            mongoClient = new MongoClient("mongodb://192.168.1.8:27017");
         }
 
         //_____________________________________________________________________
@@ -166,7 +168,6 @@ namespace Knjiznica
                     });
                 }
             }
-
             dodajKnjigeUGrid(listaKnjiga);
         }
 
@@ -307,11 +308,13 @@ namespace Knjiznica
             if (Properties.Settings.Default["databaseLocation"].ToString() == "local")
             {
                 ConnectionString = Properties.Settings.Default["localConnection"].ToString();
+                mongoConnString = Properties.Settings.Default["mongoLocalConn"].ToString();
                 return;
             }
             else if (Properties.Settings.Default["databaseLocation"].ToString() == "remote")
             {
                 ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
+                mongoConnString = Properties.Settings.Default["mongoRemoteConn"].ToString();
                 return;
             }
 
@@ -319,11 +322,13 @@ namespace Knjiznica
             if (dialog == DialogResult.Yes)
             {
                 ConnectionString = Properties.Settings.Default["localConnection"].ToString();
+                mongoConnString = Properties.Settings.Default["mongoLocalConn"].ToString();
                 Properties.Settings.Default["databaseLocation"] = "local";
             }
             else if (dialog == DialogResult.No)
             {
                 ConnectionString = Properties.Settings.Default["remoteConneciton"].ToString();
+                mongoConnString = Properties.Settings.Default["mongoRemoteConn"].ToString();
                 Properties.Settings.Default["databaseLocation"] = "remote";
             }
             Properties.Settings.Default.Save();

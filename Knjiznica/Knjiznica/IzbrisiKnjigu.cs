@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Collections.Generic;
+using MongoDB.Bson;
 
 namespace Knjiznica
 {
@@ -31,6 +32,7 @@ namespace Knjiznica
 
         private void btn_izbrisi_Click(object sender, EventArgs e)
         {
+            var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("knjige");
             bool error = false;
             try
             {
@@ -51,6 +53,12 @@ namespace Knjiznica
                 {
                     knjiga.brojKopija -= (int)box_brojKnjiga.Value;
                     MessageBox.Show("Knjige uspješno izbrisane!");
+                    kolekcija.InsertOneAsync(new BsonDocument
+                    {
+                        { "info", "Izbrisano je " + (int)box_brojKnjiga.Value + 
+                        " kopija knjige, ISBN = " + knjiga.isbn},
+                        { "datumIvrijeme", DateTime.Now }
+                    });
                     this.Close();
                 }
             }
