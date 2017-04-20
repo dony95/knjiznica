@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Knjiznica.Model;
+using System.Globalization;
 
 namespace Knjiznica
 {
@@ -16,10 +17,31 @@ namespace Knjiznica
     {
         MySqlConnection conn;
         bool error = false;
-        public DodajUrediKorisnika(MySqlConnection conn)
+        bool edit = false;
+
+        public DodajUrediKorisnika(MySqlConnection conn, Korisnik korisnik)
         {
             this.conn = conn;
             InitializeComponent();
+            ucitajPodatkeOkorisniku(korisnik);
+        }
+
+        private void ucitajPodatkeOkorisniku(Korisnik korisnik)
+        {
+            if(korisnik != null)
+            {
+                lbl_idKorisnkika.Text = korisnik.id.ToString();
+                tb_Adresa.Text = korisnik.adresa;
+                tb_Email.Text = korisnik.email;
+                tb_Ime.Text = korisnik.ime;
+                tb_Prezime.Text = korisnik.prezime;
+                tb_MjestoStan.Text = korisnik.mjestoStanovanja;
+                dtp_DatRodjenja.Value = korisnik.datumRodenja;
+                if (korisnik.spol == 'M')
+                    rb_Muski.Checked = true;
+                else rb_Zenski.Checked = true;
+                edit = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,20 +58,30 @@ namespace Knjiznica
                     email = tb_Email.Text,
                     datumIstekaClanarine = DateTime.Now.AddYears(1)
                 };
-                if (rb_Muski.Enabled)
+                if (rb_Muski.Checked)
                     korisnik.spol = 'M';
                 else korisnik.spol = 'Ž';
 
                 try
                 {
                     MySqlCommand command = conn.CreateCommand();
-                    command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol, email) VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol, @email)";
+                    if (!edit)
+                    {
+                        command.CommandText = "INSERT INTO users (ime, prezime, datumRodenja, mjestoStanovanja, adresa, datumIstekaClanarine, spol, email)" +
+                            "VALUES (@ime, @prezime, @datumRodenja, @mjestoStanovanja, @adresa, @datumIstekaClanarine, @spol, @email)";
+                        command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToString("dd.MM.yyyy."));
+                    }
+                    else
+                    {
+                        command.CommandText = "UPDATE users SET ime = @ime, prezime = @prezime, datumRodenja = @datumRodenja, " +
+                            "mjestoStanovanja = @mjestoStanovanja, adresa = @adresa, spol = @spol, email = @email WHERE id = @id";
+                        command.Parameters.AddWithValue("@id", lbl_idKorisnkika.Text);
+                    } 
                     command.Parameters.AddWithValue("@ime", korisnik.ime);
                     command.Parameters.AddWithValue("@prezime", korisnik.prezime);
                     command.Parameters.AddWithValue("@datumRodenja", korisnik.datumRodenja.ToString("dd.MM.yyyy."));
                     command.Parameters.AddWithValue("@mjestoStanovanja", korisnik.mjestoStanovanja);
                     command.Parameters.AddWithValue("@adresa", korisnik.adresa);
-                    command.Parameters.AddWithValue("@datumIstekaClanarine", korisnik.datumIstekaClanarine.ToString("dd.MM.yyyy."));
                     command.Parameters.AddWithValue("@spol", korisnik.spol);
                     command.Parameters.AddWithValue("@email", korisnik.email);
                     command.ExecuteNonQuery();

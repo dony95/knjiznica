@@ -118,7 +118,7 @@ namespace Knjiznica
 
         private void btn_DodajKorisnika_Click(object sender, EventArgs e)
         {
-            DodajUrediKorisnika forma = new DodajUrediKorisnika(conn);
+            DodajUrediKorisnika forma = new DodajUrediKorisnika(conn, null);
             forma.ShowDialog();
             ucitajKorisnike();
         }
@@ -381,6 +381,19 @@ namespace Knjiznica
             if (data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 
+            }
+        }
+
+        private void data_Korisnici_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView data_grid = (DataGridView)sender;
+
+            if (e.RowIndex >= 0)
+            {
+                DodajUrediKorisnika forma = new DodajUrediKorisnika(conn,
+                    listaKorisnika.Find(k => k.id == (int)data_grid.Rows[e.RowIndex].Cells["ID"].Value));
+                forma.ShowDialog();
+                ucitajKorisnike();
             }
         }
     }

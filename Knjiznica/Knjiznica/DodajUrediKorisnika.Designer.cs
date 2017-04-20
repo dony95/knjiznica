@@ -43,6 +43,7 @@
             this.rb_Muski = new System.Windows.Forms.RadioButton();
             this.rb_Zenski = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_idKorisnkika = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_Email = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -171,6 +172,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_idKorisnkika);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tb_Email);
             this.groupBox1.Controls.Add(this.label1);
@@ -194,6 +196,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci o korisniku";
             // 
+            // lbl_idKorisnkika
+            // 
+            this.lbl_idKorisnkika.AutoSize = true;
+            this.lbl_idKorisnkika.Location = new System.Drawing.Point(180, 257);
+            this.lbl_idKorisnkika.Name = "lbl_idKorisnkika";
+            this.lbl_idKorisnkika.Size = new System.Drawing.Size(0, 13);
+            this.lbl_idKorisnkika.TabIndex = 14;
+            this.lbl_idKorisnkika.Visible = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -215,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 349);
+            this.ClientSize = new System.Drawing.Size(326, 350);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(342, 388);
@@ -246,5 +257,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tb_Email;
+        private System.Windows.Forms.Label lbl_idKorisnkika;
     }
 }

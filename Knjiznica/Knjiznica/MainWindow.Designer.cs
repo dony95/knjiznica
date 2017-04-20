@@ -95,17 +95,17 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btn_NovaPosudba = new System.Windows.Forms.Button();
             this.data_Posudbe = new System.Windows.Forms.DataGridView();
-            this.btn_PretragaPosudbe = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_IDposudba = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.posudbaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeIprezimeKorisnika = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumIstekaPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brojKnjiga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Produzi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_PretragaPosudbe = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_IDposudba = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -501,6 +501,8 @@
             this.data_Korisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_Korisnici.Size = new System.Drawing.Size(1064, 437);
             this.data_Korisnici.TabIndex = 5;
+            this.data_Korisnici.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Korisnici_CellContentDoubleClick);
+            this.data_Korisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Korisnici_CellContentDoubleClick);
             // 
             // ID
             // 
@@ -733,6 +735,38 @@
             this.data_Posudbe.TabIndex = 6;
             this.data_Posudbe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Posudbe_CellContentClick);
             // 
+            // posudbaID
+            // 
+            this.posudbaID.HeaderText = "ID";
+            this.posudbaID.Name = "posudbaID";
+            // 
+            // imeIprezimeKorisnika
+            // 
+            this.imeIprezimeKorisnika.HeaderText = "Korisnik";
+            this.imeIprezimeKorisnika.Name = "imeIprezimeKorisnika";
+            // 
+            // datumPosudbe
+            // 
+            this.datumPosudbe.HeaderText = "Datum posudbe";
+            this.datumPosudbe.Name = "datumPosudbe";
+            // 
+            // datumIstekaPosudbe
+            // 
+            this.datumIstekaPosudbe.HeaderText = "Datum isteka posudbe";
+            this.datumIstekaPosudbe.Name = "datumIstekaPosudbe";
+            // 
+            // brojKnjiga
+            // 
+            this.brojKnjiga.HeaderText = "Broj knjiga";
+            this.brojKnjiga.Name = "brojKnjiga";
+            // 
+            // Produzi
+            // 
+            this.Produzi.HeaderText = "Produzi";
+            this.Produzi.Name = "Produzi";
+            this.Produzi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Produzi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // btn_PretragaPosudbe
             // 
             this.btn_PretragaPosudbe.Location = new System.Drawing.Point(483, 54);
@@ -774,38 +808,6 @@
             this.label11.Size = new System.Drawing.Size(18, 13);
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
-            // 
-            // posudbaID
-            // 
-            this.posudbaID.HeaderText = "ID";
-            this.posudbaID.Name = "posudbaID";
-            // 
-            // imeIprezimeKorisnika
-            // 
-            this.imeIprezimeKorisnika.HeaderText = "Korisnik";
-            this.imeIprezimeKorisnika.Name = "imeIprezimeKorisnika";
-            // 
-            // datumPosudbe
-            // 
-            this.datumPosudbe.HeaderText = "Datum posudbe";
-            this.datumPosudbe.Name = "datumPosudbe";
-            // 
-            // datumIstekaPosudbe
-            // 
-            this.datumIstekaPosudbe.HeaderText = "Datum isteka posudbe";
-            this.datumIstekaPosudbe.Name = "datumIstekaPosudbe";
-            // 
-            // brojKnjiga
-            // 
-            this.brojKnjiga.HeaderText = "Broj knjiga";
-            this.brojKnjiga.Name = "brojKnjiga";
-            // 
-            // Produzi
-            // 
-            this.Produzi.HeaderText = "Produzi";
-            this.Produzi.Name = "Produzi";
-            this.Produzi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Produzi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // MainWindow
             // 
