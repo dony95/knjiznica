@@ -83,6 +83,12 @@
     <Compile Include="IzbrisiKnjigu.Designer.cs">
       <DependentUpon>IzbrisiKnjigu.cs</DependentUpon>
     </Compile>
+    <Compile Include="IzvjestajForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzvjestajForma.Designer.cs">
+      <DependentUpon>IzvjestajForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IzbrisiKnjigu.resx">
       <DependentUpon>IzbrisiKnjigu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzvjestajForma.resx">
+      <DependentUpon>IzvjestajForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForma.resx">
       <DependentUpon>LoginForma.cs</DependentUpon>

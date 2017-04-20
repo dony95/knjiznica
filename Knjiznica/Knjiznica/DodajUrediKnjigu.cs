@@ -97,7 +97,7 @@ namespace Knjiznica
                             kolekcija.InsertOneAsync(new BsonDocument
                             {
                                 { "info", "Unesena je nova knjiga, ISBN = " + knjiga.isbn},
-                                { "datumIvrijeme", DateTime.Now }
+                                { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
                             
@@ -107,7 +107,7 @@ namespace Knjiznica
                             kolekcija.InsertOneAsync(new BsonDocument
                             {
                                 { "info", "Uređena je knjiga, ISBN = " + knjiga.isbn},
-                                { "datumIvrijeme", DateTime.Now }
+                                { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
                         this.Close();

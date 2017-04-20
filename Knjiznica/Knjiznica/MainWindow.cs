@@ -417,5 +417,11 @@ namespace Knjiznica
                 ucitajKnjige();
             }
         }
+
+        private void ispisLogovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IzvjestajForma forma = new IzvjestajForma();
+            forma.ShowDialog();
+        }
     }
 }

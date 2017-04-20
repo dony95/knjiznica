@@ -57,7 +57,7 @@ namespace Knjiznica
                     {
                         { "info", "Izbrisano je " + (int)box_brojKnjiga.Value + 
                         " kopija knjige, ISBN = " + knjiga.isbn},
-                        { "datumIvrijeme", DateTime.Now }
+                        { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                     });
                     this.Close();
                 }

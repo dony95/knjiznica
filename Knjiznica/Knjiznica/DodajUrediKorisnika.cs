@@ -97,7 +97,7 @@ namespace Knjiznica
                             kolekcija.InsertOneAsync(new BsonDocument
                             {
                                 { "info", "Unesen je novi korisnik, email = " + korisnik.email},
-                                { "datumIvrijeme", DateTime.Now }
+                                { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
                         else
@@ -106,7 +106,7 @@ namespace Knjiznica
                             kolekcija.InsertOneAsync(new BsonDocument
                             {
                                 { "info", "Korisnički podaci uređeni, email = " + korisnik.email},
-                                { "datumIvrijeme", DateTime.Now }
+                                { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
                         

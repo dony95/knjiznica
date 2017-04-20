@@ -106,6 +106,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.ispisLogovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -167,6 +168,8 @@
             // 
             // optionsToolStripMenuItem
             // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ispisLogovaToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -811,6 +814,13 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
+            // ispisLogovaToolStripMenuItem
+            // 
+            this.ispisLogovaToolStripMenuItem.Name = "ispisLogovaToolStripMenuItem";
+            this.ispisLogovaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ispisLogovaToolStripMenuItem.Text = "Ispis logova";
+            this.ispisLogovaToolStripMenuItem.Click += new System.EventHandler(this.ispisLogovaToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.btn_PretragaKnjige;
@@ -920,6 +930,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datumIstekaPosudbe;
         private System.Windows.Forms.DataGridViewTextBoxColumn brojKnjiga;
         private System.Windows.Forms.DataGridViewButtonColumn Produzi;
+        private System.Windows.Forms.ToolStripMenuItem ispisLogovaToolStripMenuItem;
     }
 }
 

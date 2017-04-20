@@ -37,7 +37,7 @@ namespace Knjiznica
                     kolekcija.InsertOneAsync(new BsonDocument
                     {
                         { "info", "Neispravni korisnički login podaci" },
-                        { "datumIvrijeme", DateTime.Now}
+                        { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm")}
                     });
                     return;
                 }
@@ -47,7 +47,7 @@ namespace Knjiznica
                     kolekcija.InsertOneAsync(new BsonDocument
                     {
                         { "info", "Uspješna prijava korisnika, username = " + tb_Username.Text },
-                        { "datumIvrijeme", DateTime.Now}
+                        { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm")}
                     });
                     this.DialogResult = DialogResult.OK;
                     this.Close();
