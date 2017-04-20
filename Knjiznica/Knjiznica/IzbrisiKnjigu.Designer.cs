@@ -74,7 +74,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label3.Location = new System.Drawing.Point(99, 56);
@@ -214,8 +213,14 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "IzbrisiKnjigu";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IzbrisiKnjigu";
             ((System.ComponentModel.ISupportInitialize)(this.box_brojKnjiga)).EndInit();
             this.ResumeLayout(false);

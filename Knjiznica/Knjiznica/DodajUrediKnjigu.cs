@@ -14,13 +14,31 @@ namespace Knjiznica
 {
     public partial class DodajUrediKnjigu : Form
     {
-
         MySqlConnection conn;
         bool error = false;
-        public DodajUrediKnjigu(MySqlConnection conn)
+        bool edit = false;
+        public DodajUrediKnjigu(MySqlConnection conn, Knjiga knjiga)
         {
             this.conn = conn;
             InitializeComponent();
+            ucitajPodatkeOknjizi(knjiga);
+        }
+
+        private void ucitajPodatkeOknjizi(Knjiga knjiga)
+        {
+            if(knjiga != null)
+            {
+                lbl_idKnjige.Text = knjiga.id.ToString();
+                tb_Autor.Text = knjiga.autor;
+                tb_NazivKnjige.Text = knjiga.naziv;
+                tb_Izdavac.Text = knjiga.izdavac;
+                tb_Godina.Text = knjiga.godina.ToString();
+                tb_ISBN.Text = knjiga.isbn;
+                cb_Kategorija.Text = knjiga.kategorija;
+                num_BrojStranica.Value = knjiga.brojStranica;
+                num_BrKopija.Value = knjiga.brojKopija;
+                edit = true;
+            }
         }
 
         private void btn_DodajUredi_Click(object sender, EventArgs e)
@@ -42,7 +60,15 @@ namespace Knjiznica
                 try
                 {
                     MySqlCommand command = conn.CreateCommand();
-                    command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija) VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
+                    if (!edit)
+                        command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija)"
+                            + " VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
+                    else
+                    {
+                        command.CommandText = "UPDATE knjige SET autor = @autor, naziv = @naziv, izdavac = @izdavac, godina = @godina, isbn = @isbn ," +
+                            "kategorija = @kategorija, brojStranica = @brojStranica, brojKopija = @brojKopija WHERE id = @id";
+                        command.Parameters.AddWithValue("@id", lbl_idKnjige.Text);
+                    }  
                     command.Parameters.AddWithValue("@Autor", knjiga.autor);
                     command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
                     command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
@@ -50,7 +76,7 @@ namespace Knjiznica
                     command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
                     command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
                     command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
-                    command.Parameters.AddWithValue("@BrojKopija", knjiga.brojStranica);
+                    command.Parameters.AddWithValue("@BrojKopija", knjiga.brojKopija);
                     command.ExecuteNonQuery();
                 }
                 catch (MySqlException ex)
@@ -62,7 +88,10 @@ namespace Knjiznica
                 {
                     if (!error)
                     {
-                        MessageBox.Show("Knjiga uspjesno unesena");
+                        if (!edit)
+                            MessageBox.Show("Knjiga uspješno unesena");
+                        else
+                            MessageBox.Show("Knjiga uspješno uređena");
                         this.Close();
                     }
                 }

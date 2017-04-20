@@ -114,7 +114,7 @@ namespace Knjiznica
         private void btn_DodajKnjigu_Click(object sender, EventArgs e)
         {
             //Prikazi formu za dodavanje i uredjivanje knjige
-            DodajUrediKnjigu forma = new DodajUrediKnjigu(conn);
+            DodajUrediKnjigu forma = new DodajUrediKnjigu(conn, null);
             forma.ShowDialog();
             ucitajKnjige();
         }
@@ -397,6 +397,19 @@ namespace Knjiznica
                     listaKorisnika.Find(k => k.id == (int)data_grid.Rows[e.RowIndex].Cells["ID"].Value));
                 forma.ShowDialog();
                 ucitajKorisnike();
+            }
+        }
+
+        private void data_Knjige_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView data_grid = (DataGridView)sender;
+
+            if (e.RowIndex >= 0)
+            {
+                DodajUrediKnjigu forma = new DodajUrediKnjigu(conn,
+                    listaKnjiga.Find(k => k.isbn == (string)data_grid.Rows[e.RowIndex].Cells["ISBN"].Value));
+                forma.ShowDialog();
+                ucitajKnjige();
             }
         }
     }
