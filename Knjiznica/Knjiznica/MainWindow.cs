@@ -36,6 +36,7 @@ namespace Knjiznica
             ucitajKnjige();
             ucitajKorisnike();
             ucitajPosudbe();
+            ucitajKategorije();
         }
 
         //_____________________________________________________________________
@@ -68,9 +69,9 @@ namespace Knjiznica
                 listaKnjigatmp = listaKnjigatmp.
                     Where(k => k.godina == int.Parse(tb_Godina.Text));
 
-            //if (cb_Kategorija.SelectedIndex != 0)
-            //    listaKnjigatmp = listaKnjigatmp.
-                    //Where(k => k.kategorija == cb_Kategorija.SelectedText);
+            if ((int)cb_Kategorija.SelectedValue != 0)
+                listaKnjigatmp = listaKnjigatmp.
+                    Where(k => k.kategorija == cb_Kategorija.Text);
 
             if (tb_NazivKnjige.Text != "")
                 listaKnjigatmp = listaKnjigatmp.
@@ -224,6 +225,34 @@ namespace Knjiznica
             }
 
             dodajPosudbeUGrid(listaPosudba);
+        }
+
+        private void ucitajKategorije()
+        {
+            List<Object> items = new List<object>();
+            cb_Kategorija.DisplayMember = "Text";
+            cb_Kategorija.ValueMember = "Value";
+            items.Add(new { Value = 0, Text = "" });
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT * from kategorije_knjiga";
+                command.ExecuteNonQuery();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        items.Add(new { Value = (int)dt.Rows[i][0], Text = (string)dt.Rows[i][1] });
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cb_Kategorija.DataSource = items;
         }
 
         private DialogResult ucitajLoginFormu()
