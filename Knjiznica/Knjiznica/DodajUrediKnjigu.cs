@@ -22,12 +22,13 @@ namespace Knjiznica
         {
             this.conn = conn;
             InitializeComponent();
+            ucitajKategorije();
             ucitajPodatkeOknjizi(knjiga);
         }
 
         private void ucitajPodatkeOknjizi(Knjiga knjiga)
         {
-            if(knjiga != null)
+            if (knjiga != null)
             {
                 lbl_idKnjige.Text = knjiga.id.ToString();
                 tb_Autor.Text = knjiga.autor;
@@ -55,7 +56,7 @@ namespace Knjiznica
                     izdavac = tb_Izdavac.Text,
                     godina = int.Parse(tb_Godina.Text),
                     isbn = tb_ISBN.Text,
-                    kategorija = cb_Kategorija.SelectedText,
+                    kategorija = cb_Kategorija.Text,
                     brojStranica = (int)num_BrojStranica.Value,
                     brojKopija = (int)num_BrKopija.Value
                 };
@@ -64,20 +65,20 @@ namespace Knjiznica
                 {
                     MySqlCommand command = conn.CreateCommand();
                     if (!edit)
-                        command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorija, brojStranica, brojKopija)"
-                            + " VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @Kategorija, @BrojStranica, @BrojKopija)";
+                        command.CommandText = "INSERT INTO knjige (autor, naziv, izdavac, godina, isbn, kategorijaID, brojStranica, brojKopija)"
+                            + " VALUES (@Autor, @Naziv, @Izdavac, @Godina, @ISBN, @KategorijaID, @BrojStranica, @BrojKopija)";
                     else
                     {
                         command.CommandText = "UPDATE knjige SET autor = @autor, naziv = @naziv, izdavac = @izdavac, godina = @godina, isbn = @isbn ," +
-                            "kategorija = @kategorija, brojStranica = @brojStranica, brojKopija = @brojKopija WHERE id = @id";
+                            "kategorijaID = @kategorijaID, brojStranica = @brojStranica, brojKopija = @brojKopija WHERE id = @id";
                         command.Parameters.AddWithValue("@id", lbl_idKnjige.Text);
-                    }  
+                    }
                     command.Parameters.AddWithValue("@Autor", knjiga.autor);
                     command.Parameters.AddWithValue("@Naziv", knjiga.naziv);
                     command.Parameters.AddWithValue("@Izdavac", knjiga.izdavac);
                     command.Parameters.AddWithValue("@Godina", knjiga.godina);
                     command.Parameters.AddWithValue("@ISBN", knjiga.isbn);
-                    command.Parameters.AddWithValue("@Kategorija", knjiga.kategorija);
+                    command.Parameters.AddWithValue("@KategorijaID", cb_Kategorija.SelectedValue);
                     command.Parameters.AddWithValue("@BrojStranica", knjiga.brojStranica);
                     command.Parameters.AddWithValue("@BrojKopija", knjiga.brojKopija);
                     command.ExecuteNonQuery();
@@ -100,7 +101,7 @@ namespace Knjiznica
                                 { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
-                            
+
                         else
                         {
                             MessageBox.Show("Knjiga uspješno uređena");
@@ -119,7 +120,7 @@ namespace Knjiznica
                 MessageBox.Show("Sva polja moraju biti popunjena.");
             }
 
-            
+
         }
 
         //____________________________________________
@@ -158,15 +159,15 @@ namespace Knjiznica
 
         private void tb_ISBN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;               
+                e.Handled = true;
             }
         }
 
         private void tb_ISBN_Leave(object sender, EventArgs e)
         {
-            if(tb_ISBN.Text.Length != 13 && tb_ISBN.Text != "")
+            if (tb_ISBN.Text.Length != 13 && tb_ISBN.Text != "")
             {
                 MessageBox.Show("ISBN mora sadržavati 13 znamenki");
                 tb_ISBN.Focus();
@@ -179,6 +180,34 @@ namespace Knjiznica
             {
                 e.Handled = true;
             }
+        }
+
+        private void ucitajKategorije()
+        {
+            List<Object> items = new List<object>();
+            cb_Kategorija.DisplayMember = "Text";
+            cb_Kategorija.ValueMember = "Value";
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT * from kategorije_knjiga";
+                command.ExecuteNonQuery();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        items.Add(new { Value = dt.Rows[i][0], Text = dt.Rows[i][1] });
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                error = true;
+            }
+            cb_Kategorija.DataSource = items;
         }
     }
 }

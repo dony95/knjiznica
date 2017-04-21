@@ -145,7 +145,8 @@ namespace Knjiznica
         {
             listaKnjiga = new List<Knjiga>();
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM knjige";
+            command.CommandText = "SELECT knjige.*, kategorije_knjiga.naziv_kategorije FROM knjige " +
+                "join kategorije_knjiga on knjige.kategorijaID = kategorije_knjiga.id_kategorije";
             command.ExecuteNonQuery();
             using (MySqlDataReader reader = command.ExecuteReader())
             {
@@ -158,13 +159,12 @@ namespace Knjiznica
                         id = (int)dt.Rows[i][0],
                         autor = (string)dt.Rows[i][1],
                         naziv = (string)dt.Rows[i][2],
-                        kategorija = (string)dt.Rows[i][3],
+                        kategorija = (string)dt.Rows[i][9],
                         izdavac = (string)dt.Rows[i][4],
                         godina = (int)dt.Rows[i][5],
                         isbn = (string)dt.Rows[i][6],
                         brojStranica = (int)dt.Rows[i][7],
-                        cijena = (double)dt.Rows[i][8],
-                        brojKopija = (int)dt.Rows[i][9]
+                        brojKopija = (int)dt.Rows[i][8]
                     });
                 }
             }
@@ -246,7 +246,7 @@ namespace Knjiznica
             foreach (Knjiga k in listaKnjiga)
             {
                 data_Knjige.Rows.Add(k.isbn, k.naziv, k.autor, k.kategorija, k.izdavac, 
-                    k.godina, k.brojStranica, k.cijena, k.brojKopija);
+                    k.godina, k.brojStranica, k.brojKopija);
                 data_Knjige.Rows[dataGridCount++].Cells["edit"].Value = "Izbrisi";
             }
         }
@@ -273,7 +273,7 @@ namespace Knjiznica
                 data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
                                         p.datumPosudbe.ToShortDateString(), 
                                         p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
-                data_Posudbe.Rows[dataGridCount].Cells["Produzi"].Value = "text" + p.ID;
+                data_Posudbe.Rows[dataGridCount].Cells["Vrati"].Value = "text" + p.ID;
                 dataGridCount++;
             }
                 
@@ -388,7 +388,9 @@ namespace Knjiznica
 
             if (data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                
+                Posudba p = listaPosudba.Find(pos => pos.ID == (int)data_grid.Rows[e.RowIndex].Cells["posudbaID"].Value);
+                NovaPosudba forma = new NovaPosudba(conn, listaKnjiga, new List<Korisnik>() { p.korisnik });
+                forma.ShowDialog();
             }
         }
 

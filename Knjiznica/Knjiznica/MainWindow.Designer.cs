@@ -35,6 +35,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.novaPosudbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ispisLogovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,16 +52,6 @@
             this.tb_AutorKnjige = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.data_Knjige = new System.Windows.Forms.DataGridView();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AutorKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_NazivKnjige = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -100,13 +91,21 @@
             this.datumPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumIstekaPosudbe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brojKnjiga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produzi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Vrati = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_PretragaPosudbe = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tb_IDposudba = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.ispisLogovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AutorKnjige = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Izdavac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Godina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojKopija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -173,6 +172,13 @@
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // ispisLogovaToolStripMenuItem
+            // 
+            this.ispisLogovaToolStripMenuItem.Name = "ispisLogovaToolStripMenuItem";
+            this.ispisLogovaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.ispisLogovaToolStripMenuItem.Text = "Ispis logova";
+            this.ispisLogovaToolStripMenuItem.Click += new System.EventHandler(this.ispisLogovaToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -343,7 +349,6 @@
             this.Izdavac,
             this.Godina,
             this.BrojStranica,
-            this.Cijena,
             this.BrojKopija,
             this.edit});
             this.data_Knjige.Location = new System.Drawing.Point(6, 46);
@@ -355,67 +360,6 @@
             this.data_Knjige.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellContentClick);
             this.data_Knjige.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellDoubleClick);
             this.data_Knjige.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Knjige_CellDoubleClick);
-            // 
-            // ISBN
-            // 
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
-            // 
-            // NazivKnjige
-            // 
-            this.NazivKnjige.HeaderText = "Naziv Knjige";
-            this.NazivKnjige.Name = "NazivKnjige";
-            this.NazivKnjige.ReadOnly = true;
-            // 
-            // AutorKnjige
-            // 
-            this.AutorKnjige.HeaderText = "Autor Knjige";
-            this.AutorKnjige.Name = "AutorKnjige";
-            this.AutorKnjige.ReadOnly = true;
-            // 
-            // Kategorija
-            // 
-            this.Kategorija.HeaderText = "Kategorija";
-            this.Kategorija.Name = "Kategorija";
-            this.Kategorija.ReadOnly = true;
-            // 
-            // Izdavac
-            // 
-            this.Izdavac.HeaderText = "Izdavac";
-            this.Izdavac.Name = "Izdavac";
-            this.Izdavac.ReadOnly = true;
-            // 
-            // Godina
-            // 
-            this.Godina.HeaderText = "Godina";
-            this.Godina.Name = "Godina";
-            this.Godina.ReadOnly = true;
-            // 
-            // BrojStranica
-            // 
-            this.BrojStranica.HeaderText = "BrojStranica";
-            this.BrojStranica.Name = "BrojStranica";
-            this.BrojStranica.ReadOnly = true;
-            // 
-            // Cijena
-            // 
-            this.Cijena.HeaderText = "Cijena";
-            this.Cijena.Name = "Cijena";
-            this.Cijena.ReadOnly = true;
-            // 
-            // BrojKopija
-            // 
-            this.BrojKopija.HeaderText = "BrojKopija";
-            this.BrojKopija.Name = "BrojKopija";
-            this.BrojKopija.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.HeaderText = "Kontrola";
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Text = "Uredi";
             // 
             // label1
             // 
@@ -732,7 +676,7 @@
             this.datumPosudbe,
             this.datumIstekaPosudbe,
             this.brojKnjiga,
-            this.Produzi});
+            this.Vrati});
             this.data_Posudbe.Location = new System.Drawing.Point(6, 84);
             this.data_Posudbe.Name = "data_Posudbe";
             this.data_Posudbe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -765,12 +709,12 @@
             this.brojKnjiga.HeaderText = "Broj knjiga";
             this.brojKnjiga.Name = "brojKnjiga";
             // 
-            // Produzi
+            // Vrati
             // 
-            this.Produzi.HeaderText = "Produzi";
-            this.Produzi.Name = "Produzi";
-            this.Produzi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Produzi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Vrati.HeaderText = "Vrati";
+            this.Vrati.Name = "Vrati";
+            this.Vrati.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Vrati.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btn_PretragaPosudbe
             // 
@@ -814,12 +758,60 @@
             this.label11.TabIndex = 48;
             this.label11.Text = "ID";
             // 
-            // ispisLogovaToolStripMenuItem
+            // ISBN
             // 
-            this.ispisLogovaToolStripMenuItem.Name = "ispisLogovaToolStripMenuItem";
-            this.ispisLogovaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ispisLogovaToolStripMenuItem.Text = "Ispis logova";
-            this.ispisLogovaToolStripMenuItem.Click += new System.EventHandler(this.ispisLogovaToolStripMenuItem_Click);
+            this.ISBN.HeaderText = "ISBN";
+            this.ISBN.Name = "ISBN";
+            this.ISBN.ReadOnly = true;
+            // 
+            // NazivKnjige
+            // 
+            this.NazivKnjige.HeaderText = "Naziv Knjige";
+            this.NazivKnjige.Name = "NazivKnjige";
+            this.NazivKnjige.ReadOnly = true;
+            // 
+            // AutorKnjige
+            // 
+            this.AutorKnjige.HeaderText = "Autor Knjige";
+            this.AutorKnjige.Name = "AutorKnjige";
+            this.AutorKnjige.ReadOnly = true;
+            // 
+            // Kategorija
+            // 
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
+            // 
+            // Izdavac
+            // 
+            this.Izdavac.HeaderText = "Izdavac";
+            this.Izdavac.Name = "Izdavac";
+            this.Izdavac.ReadOnly = true;
+            // 
+            // Godina
+            // 
+            this.Godina.HeaderText = "Godina";
+            this.Godina.Name = "Godina";
+            this.Godina.ReadOnly = true;
+            // 
+            // BrojStranica
+            // 
+            this.BrojStranica.HeaderText = "BrojStranica";
+            this.BrojStranica.Name = "BrojStranica";
+            this.BrojStranica.ReadOnly = true;
+            // 
+            // BrojKopija
+            // 
+            this.BrojKopija.HeaderText = "BrojKopija";
+            this.BrojKopija.Name = "BrojKopija";
+            this.BrojKopija.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.HeaderText = "Kontrola";
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Text = "Uredi";
             // 
             // MainWindow
             // 
@@ -904,16 +896,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox tb_KorisnikID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazivKnjige;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AutorKnjige;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kategorija;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Godina;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojStranica;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojKopija;
-        private System.Windows.Forms.DataGridViewButtonColumn edit;
         private System.Windows.Forms.TextBox tb_Godina;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
@@ -924,13 +906,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIstekaClanarine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spol;
+        private System.Windows.Forms.ToolStripMenuItem ispisLogovaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn posudbaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn imeIprezimeKorisnika;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumPosudbe;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumIstekaPosudbe;
         private System.Windows.Forms.DataGridViewTextBoxColumn brojKnjiga;
-        private System.Windows.Forms.DataGridViewButtonColumn Produzi;
-        private System.Windows.Forms.ToolStripMenuItem ispisLogovaToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewButtonColumn Vrati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivKnjige;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AutorKnjige;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kategorija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Izdavac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Godina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojStranica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojKopija;
+        private System.Windows.Forms.DataGridViewButtonColumn edit;
     }
 }
 

@@ -80,7 +80,6 @@ namespace Knjiznica
                 listaKorisnikatmp = listaKorisnikatmp.Where(u => u.ime.ToLower().Contains(tb_MjestoStan.Text.ToLower()));
 
             dodajKorisnikeUGrid(listaKorisnikatmp.ToList());
-
         }
 
         private void btn_PretragaKnjiga_Click(object sender, EventArgs e)
@@ -119,14 +118,13 @@ namespace Knjiznica
             dgw_KorisnikSearch.Rows.Clear();
 
             foreach (Korisnik k in listaKorisnika)
-                dgw_KorisnikSearch.Rows.Add(k.id, k.ime, k.prezime, k.mjestoStanovanja);
+                dgw_KorisnikSearch.Rows.Add(k.id, k.ime, k.prezime, k.mjestoStanovanja);          
         }
 
         private void dgw_KorisnikSearch_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgw = (DataGridView)sender;
-
-            if(dgw.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+            if (dgw.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
             {
                 if(korSelectedCBoxRowIndex != -1)
                     dgw.Rows[korSelectedCBoxRowIndex].Cells["OznaciKorisnik"].Value = false;
