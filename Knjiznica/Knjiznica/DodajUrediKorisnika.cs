@@ -4,6 +4,9 @@ using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Net.Mail;
 using MongoDB.Bson;
+using System.Globalization;
+using System.Net;
+using System.Collections.Generic;
 
 namespace Knjiznica
 {
@@ -22,7 +25,7 @@ namespace Knjiznica
 
         private void ucitajPodatkeOkorisniku(Korisnik korisnik)
         {
-            if(korisnik != null)
+            if (korisnik != null)
             {
                 lbl_idKorisnkika.Text = korisnik.id.ToString();
                 tb_Adresa.Text = korisnik.adresa;
@@ -34,8 +37,15 @@ namespace Knjiznica
                 if (korisnik.spol == 'M')
                     rb_Muski.Checked = true;
                 else rb_Zenski.Checked = true;
+                lbl_datumIsteka.Text = korisnik.datumIstekaClanarine.ToString("dd.MM.yyyy.");
                 edit = true;
             }
+            else
+            {
+                lbl_datumIsteka.Text = DateTime.Now.AddYears(1).ToString("dd.MM.yyyy.");
+            }
+            if (DateTime.Now < DateTime.Parse(lbl_datumIsteka.Text).AddDays(-15))
+                btn_obnoviClanarinu.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +62,7 @@ namespace Knjiznica
                     mjestoStanovanja = tb_MjestoStan.Text,
                     prezime = tb_Prezime.Text,
                     email = tb_Email.Text,
-                    datumIstekaClanarine = DateTime.Now.AddYears(1)
+                    datumIstekaClanarine = DateTime.Parse(lbl_datumIsteka.Text)
                 };
                 if (rb_Muski.Checked)
                     korisnik.spol = 'M';
@@ -91,7 +101,7 @@ namespace Knjiznica
                 {
                     if (!error)
                     {
-                        if(!edit)
+                        if (!edit)
                         {
                             MessageBox.Show("Korisnik uspjesno unesen");
                             kolekcija.InsertOneAsync(new BsonDocument
@@ -99,6 +109,7 @@ namespace Knjiznica
                                 { "info", "Unesen je novi korisnik, email = " + korisnik.email},
                                 { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
+                            MainWindow.SendMessage(korisnik);
                         }
                         else
                         {
@@ -109,7 +120,7 @@ namespace Knjiznica
                                 { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
                         }
-                        
+
                         this.Close();
                     }
                 }
@@ -117,7 +128,7 @@ namespace Knjiznica
             else
                 MessageBox.Show("Sva polja moraju biti popunjena.");
 
-            
+
         }
 
         private bool validacijaEmail()
@@ -125,7 +136,7 @@ namespace Knjiznica
             if (tb_Email.Text.Contains("@"))
             {
                 int at = tb_Email.Text.IndexOf("@");
-                if(tb_Email.Text.Contains("."))
+                if (tb_Email.Text.Contains("."))
                 {
                     int dot = tb_Email.Text.IndexOf(".");
                     if (at < dot)
@@ -164,12 +175,38 @@ namespace Knjiznica
 
         private void tb_Email_Leave(object sender, EventArgs e)
         {
-            if(!validacijaEmail())
+            if (!validacijaEmail())
             {
-                if(tb_Email.Text != "")
+                if (tb_Email.Text != "")
                 {
                     MessageBox.Show("Neispravan email.");
                     tb_Email.Focus();
+                }
+            }
+        }
+
+        private void btn_obnoviClanarinu_Click(object sender, EventArgs e)
+        {
+            DateTime datumIsteka = DateTime.ParseExact(lbl_datumIsteka.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture).AddYears(1);
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "UPDATE users SET datumIstekaClanarine = @datumIstekaClanarine WHERE id = @id";
+                command.Parameters.AddWithValue("@id", lbl_idKorisnkika.Text);
+                command.Parameters.AddWithValue("@datumIstekaClanarine", datumIsteka.ToString("dd.MM.yyyy."));
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                error = true;
+            }
+            finally
+            {
+                if(!error)
+                {
+                    MessageBox.Show("Članarina uspješno obnovljena!");
+                    this.Close();
                 }
             }
         }

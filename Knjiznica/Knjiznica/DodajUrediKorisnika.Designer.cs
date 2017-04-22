@@ -46,6 +46,9 @@
             this.lbl_idKorisnkika = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_Email = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_datumIsteka = new System.Windows.Forms.Label();
+            this.btn_obnoviClanarinu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,9 +143,9 @@
             // 
             // btn_SpremiKorisnika
             // 
-            this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 289);
+            this.btn_SpremiKorisnika.Location = new System.Drawing.Point(6, 299);
             this.btn_SpremiKorisnika.Name = "btn_SpremiKorisnika";
-            this.btn_SpremiKorisnika.Size = new System.Drawing.Size(93, 30);
+            this.btn_SpremiKorisnika.Size = new System.Drawing.Size(93, 40);
             this.btn_SpremiKorisnika.TabIndex = 9;
             this.btn_SpremiKorisnika.Text = "Spremi";
             this.btn_SpremiKorisnika.UseVisualStyleBackColor = true;
@@ -172,6 +175,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_obnoviClanarinu);
+            this.groupBox1.Controls.Add(this.lbl_datumIsteka);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.lbl_idKorisnkika);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tb_Email);
@@ -191,7 +197,7 @@
             this.groupBox1.Controls.Add(this.tb_Adresa);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 325);
+            this.groupBox1.Size = new System.Drawing.Size(304, 345);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Podaci o korisniku";
@@ -222,15 +228,42 @@
             this.tb_Email.TabIndex = 8;
             this.tb_Email.Leave += new System.EventHandler(this.tb_Email_Leave);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 270);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Datum isteka cl.";
+            // 
+            // lbl_datumIsteka
+            // 
+            this.lbl_datumIsteka.AutoSize = true;
+            this.lbl_datumIsteka.Location = new System.Drawing.Point(107, 270);
+            this.lbl_datumIsteka.Name = "lbl_datumIsteka";
+            this.lbl_datumIsteka.Size = new System.Drawing.Size(0, 13);
+            this.lbl_datumIsteka.TabIndex = 16;
+            // 
+            // btn_obnoviClanarinu
+            // 
+            this.btn_obnoviClanarinu.Location = new System.Drawing.Point(198, 299);
+            this.btn_obnoviClanarinu.Name = "btn_obnoviClanarinu";
+            this.btn_obnoviClanarinu.Size = new System.Drawing.Size(93, 40);
+            this.btn_obnoviClanarinu.TabIndex = 17;
+            this.btn_obnoviClanarinu.Text = "Obnovi clanarinu";
+            this.btn_obnoviClanarinu.UseVisualStyleBackColor = true;
+            this.btn_obnoviClanarinu.Click += new System.EventHandler(this.btn_obnoviClanarinu_Click);
+            // 
             // DodajUrediKorisnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 350);
+            this.ClientSize = new System.Drawing.Size(326, 362);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(342, 388);
-            this.MinimumSize = new System.Drawing.Size(342, 388);
+            this.MaximumSize = new System.Drawing.Size(342, 400);
+            this.MinimumSize = new System.Drawing.Size(342, 400);
             this.Name = "DodajUrediKorisnika";
             this.Text = "DodajUrediKorisnika";
             this.groupBox1.ResumeLayout(false);
@@ -258,5 +291,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tb_Email;
         private System.Windows.Forms.Label lbl_idKorisnkika;
+        private System.Windows.Forms.Label lbl_datumIsteka;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_obnoviClanarinu;
     }
 }

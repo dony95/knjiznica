@@ -7,7 +7,8 @@ using MySql.Data.MySqlClient;
 using Knjiznica.Model;
 using System.Globalization;
 using MongoDB.Driver;
-using MongoDB.Bson;
+using System.Net;
+using System.Net.Mail;
 
 namespace Knjiznica
 {
@@ -453,6 +454,34 @@ namespace Knjiznica
         {
             IzvjestajForma forma = new IzvjestajForma();
             forma.ShowDialog();
+        }
+
+        public static async void SendMessage(Korisnik k)
+        {
+            try
+            {
+                using (var smtpClient = new SmtpClient("smtp-mail.outlook.com"))
+                {
+                    smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtpClient.Port = 587;
+                    smtpClient.EnableSsl = true;
+                    if (!string.IsNullOrEmpty("KnjiznicaPassword123"))
+                        smtpClient.Credentials = new NetworkCredential("knjiznica_aplikacija@outlook.com", "KnjiznicaPassword123");
+                    MailMessage mailMessage = new MailMessage();
+                    mailMessage.From = new MailAddress("knjiznica_aplikacija@outlook.com");
+                    mailMessage.Subject = "Dobrodošli u knjižnicu";
+                    mailMessage.IsBodyHtml = false;
+                    mailMessage.Body = "Poštovani/a " + k.ime + " " + k.prezime +
+                        ", dobrodošli u Knjižnicu. Na mail ćemo vam slati obavijesti o isteku članarine, kako biste pravovremeno" +
+                        " mogli ovnoviti svoju članarinu. Želimo vam mnogo mudrih misli. ";
+                    mailMessage.To.Add(k.email);
+                    await smtpClient.SendMailAsync(mailMessage);
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

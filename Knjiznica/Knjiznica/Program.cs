@@ -20,7 +20,7 @@ namespace Knjiznica
             {
                 Application.Run(new MainWindow());
             }
-            catch(System.ObjectDisposedException e)
+            catch
             {
             }
         }

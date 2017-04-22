@@ -29,8 +29,8 @@ namespace Knjiznica
 
         private void btn_logPrijave_Click(object sender, EventArgs e)
         {
-            var filter = filterBuilder.Gt("datumIvrijeme", cb_startDTprijave.Value.ToString("dd.MM.yyyy HH:mm"))
-                         & filterBuilder.Lte("datumIvrijeme", cb_endDTprijave.Value.ToString("dd.MM.yyyy HH:mm"));
+            var filter = filterBuilder.Gt("datumIvrijeme", cb_startDTprijave.Value.ToString("dd.MM.yyyy. HH:mm"))
+                         & filterBuilder.Lte("datumIvrijeme", cb_endDTprijave.Value.ToString("dd.MM.yyyy. HH:mm"));
             var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("login");
             var dokumenti = kolekcija.Find(filter).ToList();
 
