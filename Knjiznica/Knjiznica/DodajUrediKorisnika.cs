@@ -109,7 +109,11 @@ namespace Knjiznica
                                 { "info", "Unesen je novi korisnik, email = " + korisnik.email},
                                 { "datumIvrijeme", DateTime.Now.ToString("dd.MM.yyyy HH:mm") }
                             });
-                            MainWindow.SendMessage(korisnik);
+                            string message = "Poštovani/a " + korisnik.ime + " " + korisnik.prezime +
+                        ", dobrodošli u Knjižnicu. Na mail ćemo vam slati obavijesti o isteku članarine, kako biste pravovremeno" +
+                        " mogli ovnoviti svoju članarinu. Želimo vam mnogo mudrih misli. ";
+                            string subject = "Dobrodosli u knjiznicu";
+                            MainWindow.SendMessage(korisnik.email, message, subject);
                         }
                         else
                         {

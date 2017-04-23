@@ -9,6 +9,7 @@ using System.Globalization;
 using MongoDB.Driver;
 using System.Net;
 using System.Net.Mail;
+using System.Drawing;
 
 namespace Knjiznica
 {
@@ -106,7 +107,12 @@ namespace Knjiznica
 
         private void btn_PretragaPosudbe_Click(object sender, EventArgs e)
         {
+            IEnumerable<Posudba> listaPosudbatmp = listaPosudba;
 
+            if (!chb_prikaziVracene.Checked)
+                listaPosudbatmp = listaPosudbatmp.Where(p => p.status != 'Y');
+
+            dodajPosudbeUGrid(listaPosudbatmp.ToList());
         }
 
         //_____________________________________________________________________
@@ -145,85 +151,112 @@ namespace Knjiznica
 
         public void ucitajKnjige()
         {
-            listaKnjiga = new List<Knjiga>();
-            MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT knjige.*, kategorije_knjiga.naziv_kategorije FROM knjige " +
-                "join kategorije_knjiga on knjige.kategorijaID = kategorije_knjiga.id_kategorije";
-            command.ExecuteNonQuery();
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                for (int i = 0; i < dt.Rows.Count; i++)
+                listaKnjiga = new List<Knjiga>();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT knjige.*, kategorije_knjiga.naziv_kategorije FROM knjige " +
+                    "join kategorije_knjiga on knjige.kategorijaID = kategorije_knjiga.id_kategorije";
+                command.ExecuteNonQuery();
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    listaKnjiga.Add(new Knjiga()
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        id = (int)dt.Rows[i][0],
-                        autor = (string)dt.Rows[i][1],
-                        naziv = (string)dt.Rows[i][2],
-                        kategorija = (string)dt.Rows[i][9],
-                        izdavac = (string)dt.Rows[i][4],
-                        godina = (int)dt.Rows[i][5],
-                        isbn = (string)dt.Rows[i][6],
-                        brojStranica = (int)dt.Rows[i][7],
-                        brojKopija = (int)dt.Rows[i][8]
-                    });
+                        listaKnjiga.Add(new Knjiga()
+                        {
+                            id = (int)dt.Rows[i][0],
+                            autor = (string)dt.Rows[i][1],
+                            naziv = (string)dt.Rows[i][2],
+                            kategorija = (string)dt.Rows[i][9],
+                            izdavac = (string)dt.Rows[i][4],
+                            godina = (int)dt.Rows[i][5],
+                            isbn = (string)dt.Rows[i][6],
+                            brojStranica = (int)dt.Rows[i][7],
+                            brojKopija = (int)dt.Rows[i][8]
+                        });
+                    }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             dodajKnjigeUGrid(listaKnjiga);
         }
 
         private void ucitajKorisnike()
         {
-            listaKorisnika = new List<Korisnik>();
-            MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM users";
-            command.ExecuteNonQuery();
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                for (int i = 0; i < dt.Rows.Count; i++)
+                listaKorisnika = new List<Korisnik>();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT * FROM users";
+                command.ExecuteNonQuery();
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    listaKorisnika.Add(new Korisnik()
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        id = (int)dt.Rows[i][0],
-                        ime = (string)dt.Rows[i][1],
-                        prezime = (string)dt.Rows[i][2],
-                        datumRodenja = parsirajDatum((string)dt.Rows[i][3]),
-                        mjestoStanovanja = (string)dt.Rows[i][4],
-                        adresa = (string)dt.Rows[i][5],
-                        datumIstekaClanarine = parsirajDatum((string)dt.Rows[i][6]),
-                        spol = ((string)dt.Rows[i][7])[0],
-                        email = (string)dt.Rows[i][8]
-                    });
+                        listaKorisnika.Add(new Korisnik()
+                        {
+                            id = (int)dt.Rows[i][0],
+                            ime = (string)dt.Rows[i][1],
+                            prezime = (string)dt.Rows[i][2],
+                            datumRodenja = parsirajDatum((string)dt.Rows[i][3]),
+                            mjestoStanovanja = (string)dt.Rows[i][4],
+                            adresa = (string)dt.Rows[i][5],
+                            datumIstekaClanarine = parsirajDatum((string)dt.Rows[i][6]),
+                            spol = ((string)dt.Rows[i][7])[0],
+                            email = (string)dt.Rows[i][8]
+                        });
+                    }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             dodajKorisnikeUGrid(listaKorisnika);
         }
 
         private void ucitajPosudbe()
         {
-            listaPosudba = new List<Posudba>();
-            MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM posudbe where vraceno = 'N'";
-            command.ExecuteNonQuery();
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                for (int i = 0; i < dt.Rows.Count; i++)
+                listaPosudba = new List<Posudba>();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT * FROM posudbe";
+                command.ExecuteNonQuery();
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    listaPosudba.Add(new Posudba()
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        ID = (int)dt.Rows[i][0],
-                        korisnik = listaKorisnika.Find(k => k.id == (int)dt.Rows[i][1]),
-                        listaKnjiga = knjigeIdUObjekte((string)dt.Rows[i][2]),
-                        datumPosudbe = parsirajDatum((string)dt.Rows[i][3]),
-                        datumIstekaPosudbe = parsirajDatum((string)dt.Rows[i][4])
-                    });
+                        listaPosudba.Add(new Posudba()
+                        {
+                            ID = (int)dt.Rows[i][0],
+                            korisnik = listaKorisnika.Find(k => k.id == (int)dt.Rows[i][1]),
+                            listaKnjiga = knjigeIdUObjekte((string)dt.Rows[i][2]),
+                            datumPosudbe = parsirajDatum((string)dt.Rows[i][3]),
+                            datumIstekaPosudbe = parsirajDatum((string)dt.Rows[i][4]),
+                            status = ((string)dt.Rows[i][5])[0]
+                        });
+                    }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            foreach (Posudba p in listaPosudba)
+                p.srediPosudbu(conn);
 
             dodajPosudbeUGrid(listaPosudba);
         }
@@ -301,9 +334,15 @@ namespace Knjiznica
             foreach (Posudba p in listaPosudba)
             {
                 data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
-                                        p.datumPosudbe.ToShortDateString(), 
-                                        p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
-                data_Posudbe.Rows[dataGridCount].Cells["Vrati"].Value = "text" + p.ID;
+                                    p.datumPosudbe.ToShortDateString(),
+                                    p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
+                data_Posudbe.Rows[dataGridCount].Cells["Vrati"].Value = "Vrati";
+
+                if (p.status == 'Y')
+                    data_Posudbe.Rows[dataGridCount].DefaultCellStyle.BackColor = Color.Green;
+                if (p.status == 'O')
+                    data_Posudbe.Rows[dataGridCount].DefaultCellStyle.BackColor = Color.Yellow;
+
                 dataGridCount++;
             }
                 
@@ -418,10 +457,21 @@ namespace Knjiznica
 
             if (data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                string message = string.Empty;
                 Posudba p = listaPosudba.Find(pos => pos.ID == (int)data_grid.Rows[e.RowIndex].Cells["posudbaID"].Value);
-                NovaPosudba forma = new NovaPosudba(conn, listaKnjiga, new List<Korisnik>() { p.korisnik });
-                forma.ShowDialog();
+                if (p.datumIstekaPosudbe < DateTime.Now)
+                    message = "Nema nazaksnine";
+                else
+                    message = "Zakasnina iznosi " + 
+                        (( DateTime.Now - p.datumIstekaPosudbe ).Days * 0.5 * p.listaKnjiga.Count) + "kn";
+
+
+                MessageBox.Show("Posudba vraćena" + Environment.NewLine + message);
+
+                p.vratiPosudbu(conn);
             }
+            ucitajKnjige();
+            ucitajPosudbe();
         }
 
         private void data_Korisnici_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -456,7 +506,7 @@ namespace Knjiznica
             forma.ShowDialog();
         }
 
-        public static async void SendMessage(Korisnik k)
+        public static async void SendMessage(string email, string message, string subject)
         {
             try
             {
@@ -469,12 +519,10 @@ namespace Knjiznica
                         smtpClient.Credentials = new NetworkCredential("knjiznica_aplikacija@outlook.com", "KnjiznicaPassword123");
                     MailMessage mailMessage = new MailMessage();
                     mailMessage.From = new MailAddress("knjiznica_aplikacija@outlook.com");
-                    mailMessage.Subject = "Dobrodošli u knjižnicu";
-                    mailMessage.IsBodyHtml = false;
-                    mailMessage.Body = "Poštovani/a " + k.ime + " " + k.prezime +
-                        ", dobrodošli u Knjižnicu. Na mail ćemo vam slati obavijesti o isteku članarine, kako biste pravovremeno" +
-                        " mogli ovnoviti svoju članarinu. Želimo vam mnogo mudrih misli. ";
-                    mailMessage.To.Add(k.email);
+                    mailMessage.Subject = subject;
+                    mailMessage.IsBodyHtml = true;
+                    mailMessage.Body = message;
+                    mailMessage.To.Add(email);
                     await smtpClient.SendMailAsync(mailMessage);
                 }
             }
