@@ -13,10 +13,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="mongoLocalConn" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb://192.168.1.8:27017</Value>
+      <Value Profile="(Default)">mongodb://dony_mongo:MongoPw123@knjiznica-shard-00-00-kxqhb.mongodb.net:27017,knjiznica-shard-00-01-kxqhb.mongodb.net:27017,knjiznica-shard-00-02-kxqhb.mongodb.net:27017/knjiznica?ssl=true&amp;replicaSet=knjiznica-shard-0&amp;authSource=admin</Value>
     </Setting>
     <Setting Name="mongoRemoteConn" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb://donyslav.ddns.net:27017</Value>
+      <Value Profile="(Default)">mongodb://dony_mongo:MongoPw123@knjiznica-shard-00-00-kxqhb.mongodb.net:27017,knjiznica-shard-00-01-kxqhb.mongodb.net:27017,knjiznica-shard-00-02-kxqhb.mongodb.net:27017/knjiznica?ssl=true&amp;replicaSet=knjiznica-shard-0&amp;authSource=admin</Value>
     </Setting>
   </Settings>
 </SettingsFile>

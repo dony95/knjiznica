@@ -55,7 +55,9 @@ namespace Knjiznica.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://192.168.1.8:27017")]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://dony_mongo:MongoPw123@knjiznica-shard-00-00-kxqhb.mongodb.net:27017,knj" +
+            "iznica-shard-00-01-kxqhb.mongodb.net:27017,knjiznica-shard-00-02-kxqhb.mongodb.n" +
+            "et:27017/knjiznica?ssl=true&replicaSet=knjiznica-shard-0&authSource=admin")]
         public string mongoLocalConn {
             get {
                 return ((string)(this["mongoLocalConn"]));
@@ -64,7 +66,9 @@ namespace Knjiznica.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://donyslav.ddns.net:27017")]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://dony_mongo:MongoPw123@knjiznica-shard-00-00-kxqhb.mongodb.net:27017,knj" +
+            "iznica-shard-00-01-kxqhb.mongodb.net:27017,knjiznica-shard-00-02-kxqhb.mongodb.n" +
+            "et:27017/knjiznica?ssl=true&replicaSet=knjiznica-shard-0&authSource=admin")]
         public string mongoRemoteConn {
             get {
                 return ((string)(this["mongoRemoteConn"]));

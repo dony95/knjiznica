@@ -255,6 +255,8 @@ namespace Knjiznica
                 MessageBox.Show(ex.Message);
             }
 
+            chb_prikaziVracene.Checked = true;
+
             foreach (Posudba p in listaPosudba)
                 p.srediPosudbu(conn);
 
@@ -334,12 +336,16 @@ namespace Knjiznica
             foreach (Posudba p in listaPosudba)
             {
                 data_Posudbe.Rows.Add(p.ID, p.korisnik.ime + " " + p.korisnik.prezime,
-                                    p.datumPosudbe.ToShortDateString(),
-                                    p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
+                                p.datumPosudbe.ToShortDateString(),
+                                p.datumIstekaPosudbe.ToShortDateString(), p.listaKnjiga.Count);
                 data_Posudbe.Rows[dataGridCount].Cells["Vrati"].Value = "Vrati";
 
                 if (p.status == 'Y')
+                {
                     data_Posudbe.Rows[dataGridCount].DefaultCellStyle.BackColor = Color.Green;
+                    data_Posudbe.Rows[dataGridCount].Cells["Vrati"].Value = null;
+                }
+                    
                 if (p.status == 'O')
                     data_Posudbe.Rows[dataGridCount].DefaultCellStyle.BackColor = Color.Yellow;
 
@@ -455,20 +461,23 @@ namespace Knjiznica
         {
             DataGridView data_grid = (DataGridView)sender;
 
+            if (data_grid.Rows[e.RowIndex].Cells["Vrati"].Value == null)
+                return;
+
             if (data_grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 string message = string.Empty;
                 Posudba p = listaPosudba.Find(pos => pos.ID == (int)data_grid.Rows[e.RowIndex].Cells["posudbaID"].Value);
+
+                p.vratiPosudbu(conn);
+
                 if (p.datumIstekaPosudbe < DateTime.Now)
                     message = "Nema nazaksnine";
                 else
                     message = "Zakasnina iznosi " + 
                         (( DateTime.Now - p.datumIstekaPosudbe ).Days * 0.5 * p.listaKnjiga.Count) + "kn";
 
-
                 MessageBox.Show("Posudba vraćena" + Environment.NewLine + message);
-
-                p.vratiPosudbu(conn);
             }
             ucitajKnjige();
             ucitajPosudbe();

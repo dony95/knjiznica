@@ -66,8 +66,8 @@ namespace Knjiznica.Model
                 command.Parameters.AddWithValue("@id", this.ID);
                 for(int i = 0; i < listaKnjiga.Count; i++)
                 {
-                    command.CommandText += "UPDATE knjige SET BrojKopija = BrojKopija + 1 WHERE id = @knjID" + listaKnjiga[i].id;
-                    command.Parameters.AddWithValue("@knjID", listaKnjiga[i].id);
+                    command.CommandText += "UPDATE knjige SET BrojKopija = BrojKopija + 1 WHERE id = @knjID" + listaKnjiga[i].id + ";";
+                    command.Parameters.AddWithValue("@knjID" + listaKnjiga[i].id, listaKnjiga[i].id);
                 }
                 command.ExecuteNonQueryAsync();
             }

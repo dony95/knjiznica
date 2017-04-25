@@ -29,6 +29,7 @@ namespace Knjiznica
 
         private void btn_logPrijave_Click(object sender, EventArgs e)
         {
+            tb_prijave.Text = "";
             var filter = filterBuilder.Gt("datumIvrijeme", cb_startDTprijave.Value.ToString("dd.MM.yyyy. HH:mm"))
                          & filterBuilder.Lte("datumIvrijeme", cb_endDTprijave.Value.ToString("dd.MM.yyyy. HH:mm"));
             var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("login");
@@ -44,6 +45,7 @@ namespace Knjiznica
 
         private void btn_logKnjige_Click(object sender, EventArgs e)
         {
+            tb_knjige.Text = "";
             var filter = filterBuilder.Gt("datumIvrijeme", cb_startDTknjige.Value.ToString("dd.MM.yyyy HH:mm"))
                          & filterBuilder.Lte("datumIvrijeme", cb_endDTknjige.Value.ToString("dd.MM.yyyy HH:mm"));
             var kolekcija = MainWindow.mongoClient.GetDatabase("knjiznica").GetCollection<BsonDocument>("knjige");
